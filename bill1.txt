@@ -1,0 +1,6 @@
+Bill NO.1
+ISBN		Title		Price		Quantity
+1		Book1		15.0		1
+2		Book2		15.0		1
+
+Date:Fri Feb 17 22:05:30 CET 2023	Total is:30.0
