@@ -59,16 +59,12 @@ public class DeleteStaffView extends BorderPane {
         if(choice ==1)
         {
             accounts = RegisterStaffController.getLibrarians();
-            accountsObservable = FXCollections.observableList(accounts);
-            //tableView.getItems().addAll(accountsObservable);
             tableView.setItems(FXCollections.observableList(RegisterStaffController.getLibrarians()));
 
         }
         else if (choice == 2)
         {
             accounts = RegisterStaffController.getManagers();
-            accountsObservable = FXCollections.observableArrayList(accounts);
-            //tableView.getItems().addAll(accountsObservable);
             tableView.setItems(FXCollections.observableList(RegisterStaffController.getManagers()));
         }
 

@@ -26,7 +26,7 @@ public class AddToStockView extends BorderPane {
     private final TableColumn<Book,String> titleColumn = new TableColumn<>("Title");
     private final TableColumn<Book,Integer> stockColumn = new TableColumn<>("Stock");
 
-    private ArrayList<Book> books = null;
+    private ArrayList<Book> books;
 
     private final Button pageBt= new Button();
     private final TextField copiesTf = new TextField();

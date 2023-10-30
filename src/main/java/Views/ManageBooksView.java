@@ -44,7 +44,7 @@ public class ManageBooksView extends BorderPane {
     private final TableColumn<Book, String> categoryColumn = new TableColumn<>("Category");
     private final ArrayList<CheckBox> checkBoxes = new ArrayList<>();
 
-    private  ArrayList<Book> books = null;
+    private  ArrayList<Book> books;
     public ManageBooksView(Stage stage,int choice)
     {
         this.books = new ArrayList<>();
