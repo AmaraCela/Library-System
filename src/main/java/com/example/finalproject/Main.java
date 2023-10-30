@@ -19,10 +19,6 @@ public class Main extends Application {
         RegisterStaffController.readFromFile();
         CategoryController.updateCategories();
         WelcomeView welcomeView = new WelcomeView();
-        if(1==1)
-        {
-
-        }
 
         Scene scene = new Scene(welcomeView,1000,600);
         welcomeView.getEnterBt().setOnAction(e->

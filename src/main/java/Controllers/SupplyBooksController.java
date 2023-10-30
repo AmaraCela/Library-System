@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class SupplyBooksController {
     private final SupplyBooksView supplyBooksView;
-    private ArrayList<Book> books = null;
+    private ArrayList<Book> books;
 
     public SupplyBooksController(Person administrator, SupplyBooksView supplyBooksView)
     {
