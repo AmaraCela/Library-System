@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import models.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SupplyBooksController {
     private final SupplyBooksView supplyBooksView;
@@ -286,7 +287,7 @@ public class SupplyBooksController {
 
     public void supply(String ISBN, String title, String categoryName, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock)
     {
-        Book book = new Book(ISBN,title,CategoryController.getCategory(categoryName),supplier,purchasedPrice,originalPrice,sellingPrice,author,stock);
+        Book book = new Book(ISBN,title, Objects.requireNonNull(CategoryController.getCategory(categoryName)),supplier,purchasedPrice,originalPrice,sellingPrice,author,stock);
         books.add(book);
     }
 

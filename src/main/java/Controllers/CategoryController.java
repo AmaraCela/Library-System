@@ -1,5 +1,6 @@
 package Controllers;
 
+import Auxilaries.HeaderlessObjectOutputStream;
 import Views.AddCategoryView;
 import Views.AdministratorView;
 import Views.ManagerView;
@@ -8,12 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import models.Administrator;
 import models.Category;
+import models.Manager;
+import models.Person;
 
 import java.io.*;
 import java.util.ArrayList;
-import Auxilaries.*;
-import models.Manager;
-import models.Person;
 
 public class CategoryController {
 
@@ -136,7 +136,6 @@ public class CategoryController {
                 Category category = (Category) inputStream.readObject();
                 categories.add(category);
                 category.updateCategory();
-
 
             }
         }
