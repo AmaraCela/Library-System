@@ -130,14 +130,17 @@ public class CategoryController {
         categories.clear();
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(binaryFile)))
         {
-
-            while (true)
+            int count = -1000000000;
+            do
             {
                 Category category = (Category) inputStream.readObject();
                 categories.add(category);
                 category.updateCategory();
+                count++;
 
             }
+            while (count<=999999999);
+
         }
         catch (EOFException e)
         {

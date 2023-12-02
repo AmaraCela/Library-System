@@ -1,11 +1,9 @@
 package models;
 
+import Auxilaries.HeaderlessObjectOutputStream;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Set;
-
-import Auxilaries.*;
-import Controllers.CategoryController;
 
 public class Category implements Serializable {
 
@@ -30,11 +28,13 @@ public class Category implements Serializable {
         booksOfCategory.clear();
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(binaryFile)))
         {
-            while (true)
-            {
+            int count = -1000000000;
+            do {
                 booksOfCategory.add((Book) inputStream.readObject());
-                System.out.println("Category " + categoryName+"is updating");
-            }
+                System.out.println("Category " + categoryName + "is updating");
+                count++;
+
+            } while (count <= 999999999);
         }
         catch (EOFException e)
         {
