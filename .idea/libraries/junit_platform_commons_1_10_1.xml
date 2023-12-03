@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="junit-platform-commons-1.10.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jar_files/junit-platform-commons-1.10.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
