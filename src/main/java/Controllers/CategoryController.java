@@ -26,19 +26,7 @@ public class CategoryController {
         this.categoryView = addCategoryView;
         this.categoryView.getAddBt().setOnAction(e->
         {
-            this.categoryView.getSuccessfulLabel().setVisible(false);
-            this.categoryView.getUnsuccessfulLabel().setVisible(false);
-            String categoryName = this.categoryView.getCategoryTf().getText();
-            if(handleCategory(categoryName))
-            {
-                this.categoryView.getSuccessfulLabel().setVisible(true);
-                this.categoryView.getCategoryTableView().getItems().clear();
-                this.categoryView.getCategoryTableView().getItems().addAll(FXCollections.observableList(categories));
-            }
-            else
-            {
-                this.categoryView.getUnsuccessfulLabel().setVisible(true);
-            }
+            addCategories();
         });
 
         this.categoryView.getAdministratorPageBt().setOnAction(e->
@@ -224,4 +212,24 @@ public class CategoryController {
         }
         return null;
     }
+
+    public ObservableList<Category> addCategories()
+    {
+        this.categoryView.getSuccessfulLabel().setVisible(false);
+        this.categoryView.getUnsuccessfulLabel().setVisible(false);
+        String categoryName = this.categoryView.getCategoryTf().getText();
+        if(handleCategory(categoryName))
+        {
+            this.categoryView.getSuccessfulLabel().setVisible(true);
+            this.categoryView.getCategoryTableView().getItems().clear();
+            this.categoryView.getCategoryTableView().getItems().addAll(FXCollections.observableList(categories));
+        }
+        else
+        {
+            this.categoryView.getUnsuccessfulLabel().setVisible(true);
+        }
+
+        return this.categoryView.getCategoryTableView().getItems();
+    }
+
 }

@@ -12,9 +12,7 @@ public class AdministratorController {
 
         this.administratorView.getLogOutItem().setOnAction(e->
         {
-            LogInView logInView=new LogInView(administratorView.getStage());
-            new LogInController(logInView);
-
+           goBack();
         });
 
         this.administratorView.getRegisterLibrarian().setOnAction(e->
@@ -82,5 +80,11 @@ public class AdministratorController {
         });
 
 
+    }
+
+    public LogInController goBack()
+    {
+        LogInView logInView=new LogInView(administratorView.getStage());
+        return new LogInController(logInView);
     }
 }

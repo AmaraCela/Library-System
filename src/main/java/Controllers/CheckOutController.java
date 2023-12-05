@@ -35,57 +35,9 @@ public class CheckOutController {
 
         this.checkOutView.getProceedBt().setOnAction(e ->
         {
-            ArrayList<Integer> quantities = new ArrayList<>();
-            this.checkOutView.getErrorLabel().setVisible(false);
-            this.checkOutView.getMustSelectLabel().setVisible(false);
-
-
-
-                for (int i = 0; i < this.checkOutView.getTextFields().size(); i++) {
-                    try {
-                        quantities.add(Integer.parseInt(this.checkOutView.getTextFields().get(i).getText()));
-                    }
-                    catch (NumberFormatException ex) {
-                        this.checkOutView.getErrorLabel().setVisible(true);
-                        quantities.add(-1);
-                    }
-
-                }
-
-                if (validateCheckOut(this.checkOutView.getBooks(), quantities)) {
-
-                    Bill bill = new Bill(this.checkOutView.getBooks(), quantities);
-                    Text text = new Text("The total is "+ bill.getTotal());
-                    text.setFont(Font.font("Arial Rounded MT Bold",12));
-                    text.setFill(Color.DARKBLUE);
-                    this.checkOutView.getGridPane().add(text,4,4);
-                    if(administrator instanceof Librarian)
-                    {
-                       ((Librarian) administrator).setNumberOfBills();
-                        ((Librarian) administrator).setPersonalRevenue(bill.getTotal());
-                        int num = 0;
-                        for (int i =0;i< quantities.size();i++)
-                        {
-                            num+= quantities.get(i);
-                        }
-                        ((Librarian) administrator).setNumOfBooksSold(num);
-
-                    }
-
-                    for (int i=0;i<this.checkOutView.getBooks().size();i++)
-                    {
-                        this.checkOutView.getBooks().get(i).getCategory().getBookOfCategory(this.checkOutView.getBooks().get(i).getISBN()).decreaseStock(quantities.get(i));
-                        this.checkOutView.getBooks().get(i).getCategory().updateBinaryFile();
-
-                    }
-                }
-                else
-                {
-                    this.checkOutView.getErrorLabel().setVisible(true);
-                }
-
-
-        });
+            checkOut(administrator);
+        }
+        );
         this.checkOutView.getBackBt().setOnAction(e ->
         {
             ManageBooksView manageBooksView ;
@@ -114,5 +66,85 @@ public class CheckOutController {
             }
         }
         return true;
+    }
+
+    public void checkOut(Person administrator)
+    {
+
+        this.checkOutView.getErrorLabel().setVisible(false);
+        this.checkOutView.getMustSelectLabel().setVisible(false);
+
+        ArrayList<Integer> quantities = getQuantities();
+
+        checkOutAction(quantities,administrator);
+    }
+
+
+    public Bill checkOutAction(ArrayList<Integer> quantities, Person administrator)
+    {
+        Bill bill = null;
+        if (validateCheckOut(this.checkOutView.getBooks(), quantities)) {
+
+            bill = new Bill(this.checkOutView.getBooks(), quantities);
+            Text text = new Text("The total is "+ bill.getTotal());
+            text.setFont(Font.font("Arial Rounded MT Bold",12));
+            text.setFill(Color.DARKBLUE);
+            this.checkOutView.getGridPane().add(text,4,4);
+            if(administrator instanceof Librarian)
+            {
+               librarianCheckOut(administrator,bill,quantities);
+
+            }
+
+            decreaseStockOfItems(quantities);
+        }
+        else
+        {
+            this.checkOutView.getErrorLabel().setVisible(true);
+        }
+        return bill;
+    }
+
+    public Person librarianCheckOut(Person administrator, Bill bill, ArrayList<Integer> quantities)
+    {
+        ((Librarian) administrator).setNumberOfBills();
+        ((Librarian) administrator).setPersonalRevenue(bill.getTotal());
+        int num = 0;
+        for (int i =0;i< quantities.size();i++)
+        {
+            num+= quantities.get(i);
+        }
+        ((Librarian) administrator).setNumOfBooksSold(num);
+        return administrator;
+    }
+
+    public ObservableList<Book> decreaseStockOfItems(ArrayList<Integer> quantities)
+    {
+        for (int i=0;i<this.checkOutView.getBooks().size();i++)
+        {
+            this.checkOutView.getBooks().get(i).getCategory().getBookOfCategory(this.checkOutView.getBooks().get(i).getISBN()).decreaseStock(quantities.get(i));
+            this.checkOutView.getBooks().get(i).getCategory().updateBinaryFile();
+
+        }
+
+        return this.checkOutView.getBooks();
+
+    }
+    public ArrayList<Integer> getQuantities()
+    {
+        ArrayList<Integer> quantities = new ArrayList<>();
+
+        for (int i = 0; i < this.checkOutView.getTextFields().size(); i++) {
+            try {
+                quantities.add(Integer.parseInt(this.checkOutView.getTextFields().get(i).getText()));
+            }
+            catch (NumberFormatException ex) {
+                this.checkOutView.getErrorLabel().setVisible(true);
+                quantities.add(-1);
+            }
+
+        }
+
+        return quantities;
     }
 }
