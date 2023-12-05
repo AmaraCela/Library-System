@@ -1,3 +1,9 @@
-Administrator: acela21 12345678
-Manager: manager1 12345678
-Librarian: librarian1 12345678
+Manager: johndoe john1234
+Manager: johndoe john1234
+Manager: johndoe john1234
+Manager: johndoe john1234
+Manager: johndoe john1234
+Manager: johndoe john1234
+Manager: johndoe john1234
+Manager: johndoe john1234
+Manager: johndoe john1234
