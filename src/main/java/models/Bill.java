@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Bill {
-
     private ObservableList<Book> books;
     private ArrayList<Integer> quantities;
     private double total;
