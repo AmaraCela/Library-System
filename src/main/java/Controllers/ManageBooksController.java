@@ -5,8 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.*;
 
-import java.util.ArrayList;
-
 public class ManageBooksController {
 
     private final ManageBooksView manageBooksView;
@@ -48,14 +46,8 @@ public class ManageBooksController {
 
         this.manageBooksView.getSelectBt().setOnAction(e->
         {
-
-
             this.manageBooksView.getBooks().clear();
-
             this.manageBooksView.getTableView().getItems().clear();
-
-            //////
-
 
             for(int i = 0; i<this.manageBooksView.getCheckBoxes().size();i++)
             {
