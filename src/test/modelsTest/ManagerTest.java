@@ -56,9 +56,15 @@ public class ManagerTest {
             "true, true",
             "false, false"
     })
-    void test_isManageCategories(boolean manageCategories, boolean result){
+    void test_ManageCategories(boolean manageCategories, boolean result){
         manager.setManageCategories(manageCategories);
         Assertions.assertEquals(manageCategories,result);
+    }
+
+    @Test
+    void test_isManageCategories(){
+        manager.setManageCategories(true);
+        Assertions.assertTrue(manager.isManageCategories());
     }
 
     @Test
