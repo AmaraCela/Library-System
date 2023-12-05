@@ -21,18 +21,15 @@ public class ManagerTest {
         Assertions.assertTrue(manager.isDeleteBooks());
     }
 
-    @Test
-    void test_isDeleteBooksFalse(){
-        manager.setDeleteBooks(false);
-        Assertions.assertFalse(manager.isDeleteBooks());
+    @ParameterizedTest
+    @CsvSource({
+            "true",
+            "false"
+    })
+    void test_isDeleteBooks(boolean boolVal){
+        manager.setDeleteBooks(boolVal);
+        Assertions.assertEquals(manager.isDeleteBooks(),boolVal);
     }
-
-    @Test
-    void test_isAddBooksTrue(){
-        manager.setAddBooks(true);
-        Assertions.assertTrue(manager.isAddBooks());
-    }
-
     @Test
     void test_isAddBooksFalse(){
         manager.setAddBooks(false);
@@ -53,18 +50,12 @@ public class ManagerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "true, true",
-            "false, false"
+            "true",
+            "false"
     })
-    void test_ManageCategories(boolean manageCategories, boolean result){
-        manager.setManageCategories(manageCategories);
-        Assertions.assertEquals(manageCategories,result);
-    }
-
-    @Test
-    void test_isManageCategories(){
-        manager.setManageCategories(true);
-        Assertions.assertTrue(manager.isManageCategories());
+    void test_ManageCategories(boolean boolVal){
+        manager.setManageCategories(boolVal);
+        Assertions.assertEquals(manager.isManageCategories(),boolVal);
     }
 
     @Test
