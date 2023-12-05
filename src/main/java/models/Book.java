@@ -36,7 +36,7 @@ public class Book implements Serializable {
         category.addBookToCategory(this);
         readFromFile();
         totalCost+=this.purchasedPrice*this.stock;
-        writeToFile();
+        writeToFile("cost.txt");
     }
 
     public String getISBN() {
@@ -128,7 +128,7 @@ public class Book implements Serializable {
     {
         this.stock += quantity;
         totalCost +=this.purchasedPrice*quantity;
-        writeToFile();
+        writeToFile("cost.txt");
     }
 
 
@@ -136,9 +136,9 @@ public class Book implements Serializable {
         return categoryName;
     }
 
-    public static void writeToFile()
+    public static void writeToFile(String filename)
     {
-        try(PrintWriter writer = new PrintWriter("cost.txt"))
+        try(PrintWriter writer = new PrintWriter(filename))
         {
             writer.println(totalCost);
         }

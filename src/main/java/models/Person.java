@@ -1,11 +1,9 @@
 package models;
 
+import Controllers.RegisterStaffController;
+
 import java.io.Serial;
 import java.io.Serializable;
-import Controllers.*;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public abstract class Person implements Serializable {
 
@@ -120,75 +118,6 @@ public abstract class Person implements Serializable {
     }
 
     public abstract String personnelData();
-
-    public static double getEmployeesCost()
-    {
-        return employeeCost;
-    }
-
-//    public String getNameProperty() {
-//        return nameProperty.get();
-//    }
-//
-//    public SimpleStringProperty namePropertyProperty() {
-//        return nameProperty;
-//    }
-//
-//    public String getSurnameProperty() {
-//        return surnameProperty.get();
-//    }
-//
-//    public SimpleStringProperty surnamePropertyProperty() {
-//        return surnameProperty;
-//    }
-//
-//    public String getEmailProperty() {
-//        return emailProperty.get();
-//    }
-//
-//    public SimpleStringProperty emailPropertyProperty() {
-//        return emailProperty;
-//    }
-//
-//    public String getBirthdayProperty() {
-//        return birthdayProperty.get();
-//    }
-//
-//    public SimpleStringProperty birthdayPropertyProperty() {
-//        return birthdayProperty;
-//    }
-//
-//    public String getUsernameProperty() {
-//        return usernameProperty.get();
-//    }
-//
-//    public SimpleStringProperty usernamePropertyProperty() {
-//        return usernameProperty;
-//    }
-//
-//    public String getPasswordProperty() {
-//        return passwordProperty.get();
-//    }
-//
-//    public SimpleStringProperty passwordPropertyProperty() {
-//        return passwordProperty;
-//    }
-//
-//    public double getSalaryProperty() {
-//        return salaryProperty.get();
-//    }
-//
-//    public SimpleDoubleProperty salaryPropertyProperty() {
-//        return salaryProperty;
-//    }
-//
-//    public String getPhoneNoProperty() {
-//        return phoneNoProperty.get();
-//    }
-//
-//    public SimpleStringProperty phoneNoPropertyProperty() {
-//        return phoneNoProperty;
-//    }
 
     public static double getEmployeeCost() {
         return employeeCost;

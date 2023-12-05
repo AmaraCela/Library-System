@@ -1,7 +1,6 @@
 package Controllers;
 
 import Views.AddBooksPermissionView;
-import Views.AdministratorView;
 import Views.ManagerPermissionsView;
 import models.Manager;
 import models.Person;
@@ -17,7 +16,6 @@ public class AddBooksPermissionController {
         {
             ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(addBooksPermissionView.getStage());
             new ManagerPermissionsController(person,managerPermissionsView);
-//
         });
 
         this.addBooksPermissionView.getProceedBt().setOnAction(e->

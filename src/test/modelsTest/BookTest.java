@@ -128,5 +128,20 @@ public class BookTest {
         assertEquals(p,book.getStock());
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "1,9",
+            "10,0",
+            "11,-1"
+    })
+    void test_decreaseStock(int d, int r)
+    {
+        book.decreaseStock(d);
+        assertEquals(book.getStock(),r);
+    }
+
+
+
+
 
 }
