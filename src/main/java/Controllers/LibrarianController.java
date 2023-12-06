@@ -4,8 +4,9 @@ import Views.LibrarianView;
 import Views.LogInView;
 import Views.ManageBooksView;
 import models.Person;
+import models.Controller;
 
-public class LibrarianController {
+public class LibrarianController extends Controller {
 
     private final LibrarianView librarianView;
 

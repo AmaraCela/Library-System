@@ -1,10 +1,11 @@
 package Controllers;
 
 import Views.IncomesView;
-import Views.ManagerView;
 import models.Person;
+import models.Controller;
 
-public class IncomesController {
+public class IncomesController extends Controller //ok
+{
 
     private final IncomesView incomesView;
     public IncomesController(Person person, IncomesView incomesView)
@@ -12,8 +13,7 @@ public class IncomesController {
         this.incomesView = incomesView;
         this.incomesView.getBackBt().setOnAction(e->
         {
-            ManagerView managerView = new ManagerView(incomesView.getStage());
-            new ManagerController(person,managerView);
+            this.goBack(incomesView,person);
         });
     }
 }

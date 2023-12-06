@@ -1,13 +1,14 @@
 package Controllers;
 
-import Views.AdministratorView;
 import Views.DeleteStaffView;
 import javafx.collections.ObservableList;
 import models.Person;
+import models.Controller;
 
 import java.util.ArrayList;
 
-public class DeleteStaffController {
+public class DeleteStaffController extends Controller //ok
+{
 
     private final DeleteStaffView deleteStaffView;
     public DeleteStaffController(Person administrator, DeleteStaffView viewStaffView)
@@ -15,9 +16,7 @@ public class DeleteStaffController {
         this.deleteStaffView = viewStaffView;
         this.deleteStaffView.getAdministratorPageBt().setOnAction(e->
         {
-            AdministratorView administratorView = new AdministratorView(viewStaffView.getStage());
-            new AdministratorController(administrator,administratorView);
-
+            this.goBack(deleteStaffView,administrator);
         });
 
         this.deleteStaffView.getDeleteBt().setOnAction(e->

@@ -17,7 +17,7 @@ import models.Person;
 
 import java.util.ArrayList;
 
-public class AddBooksPermissionView extends BorderPane {
+public class AddBooksPermissionView extends BorderPane{
 
     private final Stage stage;
     private final ArrayList<CheckBox> checkBoxes1 = new ArrayList<>();

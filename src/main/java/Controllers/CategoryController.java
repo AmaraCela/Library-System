@@ -2,20 +2,18 @@ package Controllers;
 
 import Auxilaries.HeaderlessObjectOutputStream;
 import Views.AddCategoryView;
-import Views.AdministratorView;
-import Views.ManagerView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import models.Administrator;
 import models.Category;
-import models.Manager;
 import models.Person;
+import models.Controller;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class CategoryController {
+public class CategoryController extends Controller //ok
+{
 
     private static File binaryFile = new File("categories.dat");
     private static ArrayList<Category> categories = new ArrayList<>();
@@ -31,16 +29,7 @@ public class CategoryController {
 
         this.categoryView.getAdministratorPageBt().setOnAction(e->
         {
-            if(administrator instanceof Administrator)
-            {
-                AdministratorView administratorView = new AdministratorView(this.categoryView.getStage());
-                new AdministratorController(administrator,administratorView);
-            }
-            else if(administrator instanceof Manager)
-            {
-                ManagerView managerView = new ManagerView(this.categoryView.getStage());
-                new ManagerController(administrator,managerView);
-            }
+            this.goBack(categoryView,administrator);
 
         });
 

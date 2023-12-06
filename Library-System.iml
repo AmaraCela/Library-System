@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/mocks" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/mock" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -42,13 +41,8 @@
     <orderEntry type="library" name="junit-platform-commons-1.10.1" level="project" />
     <orderEntry type="library" name="util" level="project" />
     <orderEntry type="library" name="google.code.maven.play.plugin.eamelink.mockito.all" level="application" />
-    <orderEntry type="library" name="powermock.tests.utils" level="application" />
-    <orderEntry type="library" name="junit" level="project" />
-    <orderEntry type="library" name="junit.jupiter.params" level="project" />
-    <orderEntry type="library" name="au.dius.pact.jvm.consumer.junit5" level="project" />
-    <orderEntry type="library" name="bluecatcode.junit.4.10.extended" level="project" />
-    <orderEntry type="library" name="bluecatcode.junit.4.10.extended1" level="project" />
-    <orderEntry type="library" name="au.dius.pact.jvm.provider.junit5" level="project" />
+    <orderEntry type="library" name="bluecatcode.mockito.1.10.19.extended" level="application" />
+    <orderEntry type="library" name="bluecatcode.mockito.1.10.19.extended1" level="application" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="2eeaa054-a14b-4b44-8189-636579792d3a" />
