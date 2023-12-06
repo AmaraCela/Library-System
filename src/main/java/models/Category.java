@@ -87,11 +87,9 @@ public class Category implements Serializable {
     public ArrayList<Book> getBooksOfCategory() {
         return booksOfCategory;
     }
-
+    public ObjectOutputStream outputStream;
     public void writeToBinaryFile(Book book)
     {
-
-        ObjectOutputStream outputStream;
         try(FileOutputStream output = new FileOutputStream(binaryFile,true);)
         {
             if(binaryFile.length()<=0)

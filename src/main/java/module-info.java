@@ -8,5 +8,5 @@ module com.example.finalproject {
     opens com.example.finalproject to javafx.fxml;
     exports com.example.finalproject;
     exports models;
-    exports mock;
+//    exports mockFiles;
 }

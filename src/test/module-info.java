@@ -5,10 +5,10 @@ module Library.System {
     requires mockito.all;
 
     opens modelsTest to org.junit.platform.commons;
-    opens java.io to mockito.all;
+//    opens java.io to mockito.all;
 
     // Add the following line if you want to export the package for testing purposes
     exports modelsTest;
-    exports mock;
-    opens mock to org.junit.platform.commons;
+    exports mockFiles;
+//    opens mockFiles to org.junit.platform.commons;
 }

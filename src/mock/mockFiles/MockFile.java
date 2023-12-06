@@ -1,4 +1,4 @@
-package mock;
+package mockFiles;
 
 import models.Book;
 
