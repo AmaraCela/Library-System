@@ -18,11 +18,13 @@ public class Bill {
     public static int billNo;
 
     private PrintWriter writer;
+    private PrintWriter revenueWriter;
     private Date dateOfTransaction;
-    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities, PrintWriter writer)
+    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities, PrintWriter writer, PrintWriter revenueWriter)
     {
         dateOfTransaction = new Date();
         this.writer = writer;
+        this.revenueWriter = revenueWriter;
         readRevenues();
         this.books = books;
         this.quantities = quantities;
@@ -67,16 +69,10 @@ public class Bill {
 
     public void writeRevenueToFile()
     {
-        File file = new File("revenues.txt");
+//        File file = new File("revenues.txt");
 
-        try(PrintWriter writer = new PrintWriter(file))
-        {
-            writer.println(revenues);
-        }
-        catch (FileNotFoundException ex)
-        {
-            System.out.println("File not found");
-        }
+        writer.println(revenues);
+
     }
 
     public static void readRevenues()

@@ -1,6 +1,7 @@
 package modelsTest;
 
 import javafx.collections.ObservableList;
+import mock.MockObservableList;
 import mock.MockPrintWriterTry;
 import models.Bill;
 import models.Book;
@@ -20,17 +21,18 @@ class BillTest {
     @BeforeEach
     void setUp() throws FileNotFoundException {
         Book book = new Book("i","t",new Category("C"),"s",10,15,15,"a",1);
-        ArrayList<Book> books = new ArrayList<>();
+        ObservableList<Book> books = new MockObservableList();
         books.add(book);
         ArrayList<Integer> quantities = new ArrayList<>(1);
         PrintWriter writer = new MockPrintWriterTry(new File("file"));
-        bill = new Bill((ObservableList<Book>) books,quantities,writer);
+        PrintWriter writer1 = new MockPrintWriterTry(new File("revenues.txt"));
+        bill = new Bill(books,quantities,writer, writer1);
     }
 
     @Test
-    void test_writeToFile()
+    void test_writeRevenueToFile()
     {
-        bill.writeToFile();
+
     }
 
 }

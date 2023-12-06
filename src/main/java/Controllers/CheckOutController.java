@@ -82,11 +82,14 @@ public class CheckOutController extends Controller //ok
             File billFile = new File("Bills\\bill"+Bill.billNo+".txt");
             File revenueFile = new File("revenues.txt");
             try(PrintWriter writer = new PrintWriter(billFile);){
-                bill = new Bill(this.checkOutView.getBooks(), quantities,writer);
-                Text text = new Text("The total is "+ bill.getTotal());
-                text.setFont(Font.font("Arial Rounded MT Bold",12));
-                text.setFill(Color.DARKBLUE);
-                this.checkOutView.getGridPane().add(text,4,4);
+                try(PrintWriter writer1=new PrintWriter(new File("revenues.txt"))){
+                    bill = new Bill(this.checkOutView.getBooks(), quantities,writer, writer1);
+                    Text text = new Text("The total is "+ bill.getTotal());
+                    text.setFont(Font.font("Arial Rounded MT Bold",12));
+                    text.setFill(Color.DARKBLUE);
+                    this.checkOutView.getGridPane().add(text,4,4);
+                }
+
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
