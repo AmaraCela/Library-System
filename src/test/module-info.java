@@ -8,4 +8,6 @@ module Library.System {
 
     // Add the following line if you want to export the package for testing purposes
     exports modelsTest;
+    exports mock;
+    opens mock to org.junit.platform.commons;
 }

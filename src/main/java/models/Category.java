@@ -9,7 +9,7 @@ public class Category implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 7618221196278240693L;
-    private final File binaryFile;
+    public File binaryFile;
     private String categoryName;
     private ArrayList<Book> booksOfCategory = new ArrayList<>();
 
@@ -18,15 +18,21 @@ public class Category implements Serializable {
 
 
         this.categoryName = categoryName;
+        setBinaryFile();
+    }
+    public Category(){
+        setBinaryFile();
+    }
+    public void setBinaryFile(){
         binaryFile = new File("books"+categoryName+".dat");
-
-
     }
 
-    public void updateCategory()
-    {
+    public File getBinaryFile(){
+        return binaryFile;
+    }
+    public void updateCategory() throws IOException {
         booksOfCategory.clear();
-        try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(binaryFile)))
+        try(ObjectInputStream inputStream = createObjectInputStream())
         {
             int count = -1000000000;
             do {
@@ -54,6 +60,10 @@ public class Category implements Serializable {
         {
             System.out.println("IOException in reading categories");
         }
+    }
+
+    public ObjectInputStream createObjectInputStream() throws IOException {
+        return new ObjectInputStream(new FileInputStream(getBinaryFile()));
     }
     public String getCategoryName() {
         return categoryName;
