@@ -543,7 +543,6 @@ public class RegisterStaffController extends Controller//ok
         ObjectOutputStream outputStream;
         try(FileOutputStream output = new FileOutputStream(binaryFile,false);)
         {
-
             outputStream = new ObjectOutputStream(output);
 
             for (int i=0 ;i< accounts.size();i++)
@@ -556,7 +555,7 @@ public class RegisterStaffController extends Controller//ok
         }
         catch (NotSerializableException e)
         {
-            System.out.println("Not seralizable");
+            System.out.println("Not serializable");
         }
         catch (FileNotFoundException e)
         {

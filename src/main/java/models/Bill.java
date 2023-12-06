@@ -15,11 +15,14 @@ public class Bill {
     private double total;
     private static double revenues;
 
-    private static int billNo;
+    public static int billNo;
+
+    private PrintWriter writer;
     private Date dateOfTransaction;
-    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities)
+    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities, PrintWriter writer)
     {
         dateOfTransaction = new Date();
+        this.writer = writer;
         readRevenues();
         this.books = books;
         this.quantities = quantities;
@@ -35,7 +38,6 @@ public class Bill {
             total += books.get(i).getSellingPrice()* quantities.get(i);
         }
         revenues +=total;
-        System.out.println("Revenue when adding a new bill:"+ revenues);
         writeRevenueToFile();
         return total;
     }
@@ -48,13 +50,10 @@ public class Bill {
 
     public void writeToFile()
     {
-        File folder = new File("Bills");
+//        File folder = new File("Bills");
 
-        System.out.println(folder.mkdir());
+//        File file = new File(folder+"\\bill"+billNo+".txt");
 
-        File file = new File(folder+"\\bill"+billNo+".txt");
-
-        try(PrintWriter writer = new PrintWriter(file)) {
             writer.println("Bill NO."+billNo);
             writer.println("ISBN\t\tTitle\t\tPrice\t\tQuantity");
             for(int i = 0;i<books.size();i++)
@@ -63,11 +62,7 @@ public class Bill {
             }
             writer.println("\nDate:"+dateOfTransaction.toString()+"\tTotal is:"+ total);
 
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println("File for bills not found");
-        }
+
     }
 
     public void writeRevenueToFile()

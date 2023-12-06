@@ -15,8 +15,6 @@ public class Category implements Serializable {
 
 
     public Category(String categoryName) {
-
-
         this.categoryName = categoryName;
         setBinaryFile();
     }
@@ -37,7 +35,6 @@ public class Category implements Serializable {
             int count = -1000000000;
             do {
                 booksOfCategory.add((Book) inputStream.readObject());
-                System.out.println("Category " + categoryName + "is updating");
                 count++;
 
             } while (count <= 999999999);
