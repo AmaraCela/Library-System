@@ -1,7 +1,6 @@
 package Controllers;
 
 import Views.CheckOutView;
-import Views.ManageBooksView;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -10,7 +9,8 @@ import models.*;
 
 import java.util.ArrayList;
 
-public class CheckOutController {
+public class CheckOutController extends Controller //ok
+{
 
     private final CheckOutView checkOutView;
 
@@ -40,16 +40,7 @@ public class CheckOutController {
         );
         this.checkOutView.getBackBt().setOnAction(e ->
         {
-            ManageBooksView manageBooksView ;
-            if (administrator instanceof Librarian) {
-                manageBooksView = new ManageBooksView(this.checkOutView.getStage(),1);
-            } else if (administrator instanceof Manager) {
-                manageBooksView = new ManageBooksView(this.checkOutView.getStage(),2);
-            } else {
-                manageBooksView = new ManageBooksView(this.checkOutView.getStage(),3);
-            }
-
-            new ManageBooksController(administrator, manageBooksView);
+           this.goBack(checkOutView,administrator);
         });
     }
 

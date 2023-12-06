@@ -8,12 +8,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import models.Administrator;
-import models.Librarian;
-import models.Manager;
-import models.Person;
+import models.*;
 
-public class LogInController {
+public class LogInController extends Controller {
 
     private final LogInView logInView;
     private Person person=null;

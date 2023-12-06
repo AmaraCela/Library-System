@@ -1,16 +1,14 @@
 package Controllers;
 
 import Views.AddToStockView;
-import Views.AdministratorView;
-import Views.ManagerView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import models.Administrator;
 import models.Book;
-import models.Manager;
 import models.Person;
+import models.Controller;
 
-public class AddToStockController {
+public class AddToStockController extends Controller//ok
+{
 
     private final AddToStockView addToStockView;
 
@@ -20,16 +18,7 @@ public class AddToStockController {
 
         this.addToStockView.getPageBt().setOnAction(e->
         {
-            if(person instanceof Administrator)
-            {
-                AdministratorView administratorView = new AdministratorView(this.addToStockView.getStage());
-                new AdministratorController(person,administratorView);
-            }
-            else if(person instanceof Manager)
-            {
-                ManagerView managerView = new ManagerView(this.addToStockView.getStage());
-                new ManagerController(person,managerView);
-            }
+            this.goBack(addToStockView,person);
         });
 
         this.addToStockView.getAddBt().setOnAction(e->

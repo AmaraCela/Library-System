@@ -2,8 +2,10 @@ package Controllers;
 
 import Views.*;
 import models.Person;
+import models.Controller;
 
-public class AdministratorController {
+public class AdministratorController extends Controller //ok
+{
     private final AdministratorView administratorView;
 
     public AdministratorController(Person administrator, AdministratorView administratorView)
@@ -12,7 +14,7 @@ public class AdministratorController {
 
         this.administratorView.getLogOutItem().setOnAction(e->
         {
-           goBack();
+           this.goBack(administratorView,administrator);
         });
 
         this.administratorView.getRegisterLibrarian().setOnAction(e->
@@ -82,9 +84,4 @@ public class AdministratorController {
 
     }
 
-    public LogInController goBack()
-    {
-        LogInView logInView=new LogInView(administratorView.getStage());
-        return new LogInController(logInView);
-    }
 }

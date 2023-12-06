@@ -3,7 +3,8 @@ package Controllers;
 import Views.*;
 import models.*;
 
-public class ManagerPermissionsController {
+public class ManagerPermissionsController extends Controller //ok
+{
 
     private final ManagerPermissionsView managerPermissionsView;
 
@@ -13,8 +14,7 @@ public class ManagerPermissionsController {
 
         this.managerPermissionsView.getAdministratorPageBt().setOnAction(e->
         {
-            AdministratorView administratorView = new AdministratorView(managerPermissionsView.getStage());
-            new AdministratorController(person,administratorView);
+            this.goBack(managerPermissionsView,person);
 
         });
 

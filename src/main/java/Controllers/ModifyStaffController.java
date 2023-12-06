@@ -1,18 +1,14 @@
 package Controllers;
 
 import Auxilaries.IllegalSalaryException;
-import Views.AdministratorView;
 import Views.ModifyStaffView;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import models.Person;
+import models.Controller;
 
 import java.util.InputMismatchException;
 
-public class ModifyStaffController {
+public class ModifyStaffController extends Controller //ok
+{
 
     private final ModifyStaffView modifyStaffView;
 
@@ -23,9 +19,8 @@ public class ModifyStaffController {
         this.modifyStaffView = modifyStaffView;
         this.modifyStaffView.getAdministratorPageBt().setOnAction(e->
         {
+            this.goBack(modifyStaffView,administrator);
 
-            AdministratorView administratorView = new AdministratorView(modifyStaffView.getStage());
-            new AdministratorController(administrator,administratorView);
         });
 
 

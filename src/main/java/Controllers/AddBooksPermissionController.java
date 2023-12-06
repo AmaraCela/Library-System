@@ -4,8 +4,10 @@ import Views.AddBooksPermissionView;
 import Views.ManagerPermissionsView;
 import models.Manager;
 import models.Person;
+import models.Controller;
 
-public class AddBooksPermissionController {
+public class AddBooksPermissionController extends Controller ///ok
+{
     private final AddBooksPermissionView addBooksPermissionView;
 
     public AddBooksPermissionController(Person person, AddBooksPermissionView addBooksPermissionView)
@@ -14,8 +16,7 @@ public class AddBooksPermissionController {
 
         this.addBooksPermissionView.getAdministratorPageBt().setOnAction(e->
         {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(addBooksPermissionView.getStage());
-            new ManagerPermissionsController(person,managerPermissionsView);
+            this.goBack(addBooksPermissionView,person);
         });
 
         this.addBooksPermissionView.getProceedBt().setOnAction(e->

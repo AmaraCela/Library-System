@@ -1,13 +1,13 @@
 package Controllers;
 
-import Views.AddCategoriesPermissionView;
 import Views.AddCopiesPermissionView;
-import Views.AdministratorView;
 import Views.ManagerPermissionsView;
 import models.Manager;
 import models.Person;
+import models.Controller;
 
-public class AddCopiesPermissionController {
+public class AddCopiesPermissionController extends Controller //ok
+{
 
     private final AddCopiesPermissionView addCopiesPermissionView;
 
@@ -17,8 +17,7 @@ public class AddCopiesPermissionController {
 
         this.addCopiesPermissionView.getAdministratorPageBt().setOnAction(e->
         {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(this.addCopiesPermissionView.getStage());
-            new ManagerPermissionsController(person,managerPermissionsView);
+           this.goBack(addCopiesPermissionView,person);
         });
 
         this.addCopiesPermissionView.getProceedBt().setOnAction(e->

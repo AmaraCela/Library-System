@@ -1,12 +1,13 @@
 package Controllers;
 
-import Views.AdministratorView;
 import Views.DeleteBooksPermissionView;
 import Views.ManagerPermissionsView;
 import models.Manager;
 import models.Person;
+import models.Controller;
 
-public class DeleteBooksPermissionController {
+public class DeleteBooksPermissionController extends Controller//ok
+{
 
     private final DeleteBooksPermissionView deleteBooksPermissionView;
     public DeleteBooksPermissionController(Person person, DeleteBooksPermissionView deleteBooksPermissionView)
@@ -15,8 +16,7 @@ public class DeleteBooksPermissionController {
 
         this.deleteBooksPermissionView.getAdministratorPageBt().setOnAction(e->
         {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(this.deleteBooksPermissionView.getStage());
-            new ManagerPermissionsController(person,managerPermissionsView);
+            this.goBack(deleteBooksPermissionView,person);
         });
 
         this.deleteBooksPermissionView.getProceedBt().setOnAction(e->

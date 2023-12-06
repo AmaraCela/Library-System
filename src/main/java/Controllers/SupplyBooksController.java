@@ -1,15 +1,17 @@
 package Controllers;
 
-import Views.AdministratorView;
-import Views.ManagerView;
 import Views.SupplyBooksView;
 import javafx.collections.FXCollections;
-import models.*;
+import models.Book;
+import models.Category;
+import models.Person;
+import models.Controller;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SupplyBooksController {
+public class SupplyBooksController extends Controller //ok
+{
     private final SupplyBooksView supplyBooksView;
     private ArrayList<Book> books;
 
@@ -23,16 +25,7 @@ public class SupplyBooksController {
         }
         this.supplyBooksView.getAdministratorPageBt().setOnAction(e->
         {
-            if(administrator instanceof Administrator)
-            {
-                AdministratorView administratorView = new AdministratorView(supplyBooksView.getStage());
-                new AdministratorController(administrator,administratorView);
-            }
-            else if(administrator instanceof Manager)
-            {
-                ManagerView managerView = new ManagerView(supplyBooksView.getStage());
-                new ManagerController(administrator,managerView);
-            }
+            this.goBack(supplyBooksView,administrator);
 
         });
 

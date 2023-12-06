@@ -1,15 +1,18 @@
 package Controllers;
 
-import Views.AdministratorView;
+import Auxilaries.HeaderlessObjectOutputStream;
+import Auxilaries.IllegalSalaryException;
 import Views.RegisterStaffView;
+import models.Librarian;
+import models.Manager;
+import models.Person;
+import models.Controller;
 
 import java.io.*;
 import java.util.ArrayList;
 
-import models.*;
-import Auxilaries.*;
-
-public class RegisterStaffController {
+public class RegisterStaffController extends Controller//ok
+{
 
     private static ArrayList<Person> accounts = new ArrayList<>();
 
@@ -180,8 +183,7 @@ public class RegisterStaffController {
 
         this.registerStaffView.getAdministratorPageBt().setOnAction(e->
         {
-            AdministratorView administratorView = new AdministratorView(this.registerStaffView.getStage());
-            AdministratorController administratorController = new AdministratorController(administrator,administratorView);
+           this.goBack(registerStaffView,administrator);
 
         });
     }

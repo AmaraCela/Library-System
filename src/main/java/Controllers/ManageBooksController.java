@@ -5,7 +5,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.*;
 
-public class ManageBooksController {
+public class ManageBooksController extends Controller //ok
+{
 
     private final ManageBooksView manageBooksView;
     public ManageBooksController(Person person, ManageBooksView manageBooksView)
@@ -103,8 +104,7 @@ public class ManageBooksController {
         });
         this.manageBooksView.getAdministratorPageBt().setOnAction(e->
         {
-            AdministratorView administratorView = new AdministratorView(this.manageBooksView.getStage());
-            new AdministratorController(person,administratorView);
+            this.goBack(manageBooksView,person);
         });
     }
 

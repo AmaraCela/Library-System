@@ -4,8 +4,9 @@ import Views.AdministratorView;
 import Views.PermissionsLibrarianView;
 import models.Librarian;
 import models.Person;
+import models.Controller;
 
-public class PermissionsLibrarianController
+public class PermissionsLibrarianController extends Controller //ok
 {
 
     private final PermissionsLibrarianView permissionsLibrarianView;
@@ -15,8 +16,7 @@ public class PermissionsLibrarianController
 
         this.permissionsLibrarianView.getAdministratorPageBt().setOnAction(e->
         {
-            AdministratorView administratorView = new AdministratorView(permissionsLibrarianView.getStage());
-            new AdministratorController(administrator,administratorView);
+            this.goBack(permissionsLibrarianView,administrator);
         });
         this.permissionsLibrarianView.getProceedBt().setOnAction(e->
         {

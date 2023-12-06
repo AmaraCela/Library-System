@@ -7,8 +7,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import models.Manager;
 import models.Person;
+import models.Controller;
 
-public class ManagerController {
+public class ManagerController extends Controller {
 
     private final ManagerView managerView;
 
