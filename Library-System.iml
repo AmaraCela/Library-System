@@ -40,6 +40,7 @@
     <orderEntry type="library" name="java1" level="project" />
     <orderEntry type="library" name="junit-platform-commons-1.10.1" level="project" />
     <orderEntry type="library" name="util" level="project" />
+    <orderEntry type="library" name="google.code.maven.play.plugin.eamelink.mockito.all" level="application" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="2eeaa054-a14b-4b44-8189-636579792d3a" />

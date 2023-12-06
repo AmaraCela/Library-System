@@ -2,6 +2,7 @@ module Library.System {
     requires org.junit.jupiter.api;
     requires com.example.finalproject;
     requires org.junit.jupiter.params;
+    requires mockito.all;
 
     opens modelsTest to org.junit.platform.commons;
 
