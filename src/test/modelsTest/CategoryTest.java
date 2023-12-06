@@ -4,6 +4,7 @@ import models.Book;
 import models.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mockito;
@@ -18,6 +19,15 @@ public class CategoryTest {
     void test_getCategoryName(String categoryName){
         Category category = new Category(categoryName);
         Assertions.assertEquals(category.getCategoryName(),categoryName);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "booksFiction.dat"
+    })
+    void test_updateCategory(String path){
+        MockFile mockFile = new MockFile(path);
+
     }
 
 }
