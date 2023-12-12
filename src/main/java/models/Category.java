@@ -10,14 +10,15 @@ public class Category implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 7618221196278240693L;
-    public File binaryFile;
+    public transient File binaryFile = new File("categories.dat");
     private String categoryName;
     private ArrayList<Book> booksOfCategory = new ArrayList<>();
+    public transient ObjectOutputStream outputStream;
 
 
     public Category(String binaryFileName, String categoryName) {
 
-        setBinaryFile(binaryFileName);
+       this.binaryFile = new File(binaryFileName);
         this.categoryName = categoryName;
 
     }
@@ -91,7 +92,7 @@ public class Category implements Serializable {
     public ArrayList<Book> getBooksOfCategory() {
         return booksOfCategory;
     }
-    public ObjectOutputStream outputStream;
+
     public void writeToBinaryFile(Book book)
     {
         try(FileOutputStream output = new FileOutputStream(binaryFile,true);)
@@ -106,6 +107,7 @@ public class Category implements Serializable {
             }
 
             outputStream.writeObject(book);
+
 
             outputStream.close();
         }
@@ -125,12 +127,8 @@ public class Category implements Serializable {
     public Book readBinaryFile() throws IOException {
         Book book = null;
         try(ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(getBinaryFile()))){
-            int count = -1000000;
-            do{
                 book = (Book) inputStream.readObject();
                 System.out.println(book);
-                count++;
-            }while(count<=999999999);
 
         } catch (NotSerializableException e)
         {
@@ -140,9 +138,11 @@ public class Category implements Serializable {
         {
             System.out.println("File not found in reading books");
         }
-        catch (IOException | ClassNotFoundException e)
-        {
+        catch (ClassNotFoundException e) {
+            System.out.println("Class not found in reading books");
+        } catch (IOException e) {
             System.out.println("IOException in reading books");
+            e.printStackTrace(); // Print the stack trace for debugging
         }
         return null;
     }

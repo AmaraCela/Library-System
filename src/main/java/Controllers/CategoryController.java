@@ -160,7 +160,7 @@ public class CategoryController extends Controller //ok
         }
         catch (NotSerializableException e)
         {
-            System.out.println("Not serialzable");
+            System.out.println("Not serializable category");
         }
         catch (FileNotFoundException e)
         {
