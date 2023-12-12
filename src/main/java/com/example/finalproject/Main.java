@@ -1,21 +1,22 @@
 package com.example.finalproject;
 
+import Controllers.CategoryController;
 import Controllers.LogInController;
+import Controllers.RegisterStaffController;
+import Views.LogInView;
+import Views.WelcomeView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import Views.*;
-import models.*;
-import Controllers.*;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
 
-        //new Administrator("Amara", "Cela", "acela@gmail.com", "29/12/2001", "acela21", "12345678", 3000, "067 71 71 711");
+//        new Administrator("Amara", "Cela", "acela@gmail.com", "29/12/2001", "acela21", "12345678", 3000, "067 71 71 711");
         RegisterStaffController.readFromFile();
         CategoryController.updateCategories();
         WelcomeView welcomeView = new WelcomeView();
