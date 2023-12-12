@@ -40,38 +40,38 @@ public class CategoryController extends Controller //ok
     {
         ObservableList selectedCategories = this.categoryView.getCategoryTableView().getSelectionModel().getSelectedItems();
         categories.removeAll(selectedCategories);
-        updateBinaryFile();
+        updateCategoryBinaryFile();
         this.categoryView.getCategoryTableView().getItems().clear();
         this.categoryView.getCategoryTableView().getItems().addAll(FXCollections.observableList(categories));
     }
 
-    public static void updateBinaryFile()
+
+
+    //writes all categories
+    public static void updateCategoryBinaryFile()
     {
         ObjectOutputStream outputStream;
         try(FileOutputStream output = new FileOutputStream(binaryFile,false);)
         {
-
             outputStream = new ObjectOutputStream(output);
 
             for (int i=0 ;i< categories.size();i++)
             {
                 outputStream.writeObject(categories.get(i));
             }
-
-
             outputStream.close();
         }
         catch (NotSerializableException e)
         {
-            System.out.println("Not seralizable");
+            System.out.println("Category not serializable");
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("File not found in writing books");
+            System.out.println("File not found in writing categories");
         }
         catch (IOException e)
         {
-            System.out.println("IOException in writing books");
+            System.out.println("IOException in writing categories");
 
         }
     }
@@ -79,8 +79,7 @@ public class CategoryController extends Controller //ok
     public static void addCategory(Category category)
     {
         categories.add(category);
-        writeToBinaryFile(category);
-
+        writeCategoryToBinaryFile(category);
     }
 
     public static boolean handleCategory(String name)
@@ -96,12 +95,14 @@ public class CategoryController extends Controller //ok
                 return false;
             }
         }
-        addCategory(new Category(name));
+        Category category = new Category(name);
+        addCategory(category);
         return true;
     }
 
 
     ///Must be included when opening the program
+    //reads all categories from category file
     public static void updateCategories()
     {
         categories.clear();
@@ -112,7 +113,7 @@ public class CategoryController extends Controller //ok
             {
                 Category category = (Category) inputStream.readObject();
                 categories.add(category);
-                category.updateCategory();
+                category.readBooks();
                 count++;
 
             }
@@ -139,7 +140,8 @@ public class CategoryController extends Controller //ok
         }
     }
 
-    public static void writeToBinaryFile(Category category)
+    //writes a newly added category to the category file
+    public static void writeCategoryToBinaryFile(Category category)
     {
 
         ObjectOutputStream outputStream;

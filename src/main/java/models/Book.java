@@ -22,6 +22,7 @@ public class Book implements Serializable {
     private String categoryName;
 
     private static double totalCost;
+    private String costFileName = "cost.txt";
 
     public Book(String ISBN, String title, Category category, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock) {
         this.ISBN = ISBN;
@@ -34,10 +35,28 @@ public class Book implements Serializable {
         this.stock = stock;
         this.category = category;
         this.categoryName = category.getCategoryName();
-//        category.addBookToCategory(this);
-        readFromFile();
+        category.addBookToCategory(this);
+        readFromFile(costFileName);
         totalCost+=this.purchasedPrice*this.stock;
-        writeToFile("cost.txt");
+        writeToFile(costFileName);
+    }
+
+    public Book(String ISBN, String title, Category category, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock, String costFileName) {
+        this.costFileName = costFileName;
+        this.ISBN = ISBN;
+        this.title = title;
+        this.supplier = supplier;
+        this.purchasedPrice = purchasedPrice;
+        this.originalPrice = originalPrice;
+        this.sellingPrice = sellingPrice;
+        this.author = author;
+        this.stock = stock;
+        this.category = category;
+        this.categoryName = category.getCategoryName();
+        category.addBookToCategory(this);
+        readFromFile(costFileName);
+        totalCost+=this.purchasedPrice*this.stock;
+        writeToFile(costFileName);
     }
 
     public String getISBN() {
@@ -149,9 +168,9 @@ public class Book implements Serializable {
         }
     }
 
-    public static void readFromFile()
+    public static void readFromFile(String filename)
     {
-        File file = new File("cost.txt");
+        File file = new File(filename);
         try (Scanner scanner = new Scanner(file))
         {
             totalCost = 0;
@@ -165,7 +184,19 @@ public class Book implements Serializable {
     }
 
     public static double getTotalCost() {
-        readFromFile();
+        readFromFile("cost.txt");
         return totalCost;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getCostFileName() {
+        return costFileName;
+    }
+
+    public void setCostFileName(String costFileName) {
+        this.costFileName = costFileName;
     }
 }

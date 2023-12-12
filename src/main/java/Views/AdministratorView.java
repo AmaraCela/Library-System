@@ -82,7 +82,7 @@ public class AdministratorView extends BorderPane {
         hBox.getChildren().add(menuBar);
         this.setTop(hBox);
 
-        Text incomesText = new Text("Welcome to the administrator page!\n\nStatistics:\nThe total incomes from the books sold are: "+Bill.getRevenues()+"\nThe total costs of the library are: "+(RegisterStaffController.getEmployeesCost()+ Book.getTotalCost()));
+        Text incomesText = new Text("Welcome to the administrator page!\n\nStatistics:\nThe total incomes from the books sold are: "+Bill.getRevenues("revenues.txt")+"\nThe total costs of the library are: "+(RegisterStaffController.getEmployeesCost()+ Book.getTotalCost()));
         System.out.println("Book controller.bookCost = " +Book.getTotalCost());
 
         incomesText.setFont(Font.font("Arial Rounded MT Bold", FontWeight.BOLD,20));

@@ -1,10 +1,8 @@
 package modelsTest;
-import mockFiles.MockObjectStreamHandler;
 import models.Book;
 import models.Category;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.internal.util.reflection.Whitebox;
 
 import java.io.IOException;
 
@@ -31,7 +29,7 @@ public class CategoryTest {
         Category category = new Category(fileName, categoryName);
         Book book = new Book("1111","book1",category,"supplier",1000.01,823,1200.7,"author1",2);
         System.out.println(category.getBinaryFile());
-        category.writeToBinaryFile(book);
+        category.writeBookToBinaryFile(book);
         assertEquals(book, category.readBinaryFile());
     }
 

@@ -7,9 +7,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import models.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class CheckOutController extends Controller //ok
@@ -79,20 +76,11 @@ public class CheckOutController extends Controller //ok
         Bill bill = null;
         if (validateCheckOut(this.checkOutView.getBooks(), quantities)) {
 
-            File billFile = new File("Bills\\bill"+Bill.billNo+".txt");
-            File revenueFile = new File("revenues.txt");
-            try(PrintWriter writer = new PrintWriter(billFile);){
-                try(PrintWriter writer1=new PrintWriter(new File("revenues.txt"))){
-                    bill = new Bill(this.checkOutView.getBooks(), quantities,writer, writer1);
-                    Text text = new Text("The total is "+ bill.getTotal());
-                    text.setFont(Font.font("Arial Rounded MT Bold",12));
-                    text.setFill(Color.DARKBLUE);
-                    this.checkOutView.getGridPane().add(text,4,4);
-                }
-
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            bill = new Bill(this.checkOutView.getBooks(), quantities);
+            Text text = new Text("The total is "+ bill.getTotal());
+            text.setFont(Font.font("Arial Rounded MT Bold",12));
+            text.setFill(Color.DARKBLUE);
+            this.checkOutView.getGridPane().add(text,4,4);
 
             if(administrator instanceof Librarian)
             {

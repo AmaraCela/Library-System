@@ -17,21 +17,36 @@ public class Bill {
 
     public static int billNo;
 
-    private PrintWriter writer;
-    private PrintWriter revenueWriter;
+    private String billFileName;
+    private String revenueFileName = "revenues.txt";
     private Date dateOfTransaction;
-    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities, PrintWriter writer, PrintWriter revenueWriter)
+    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities)
     {
+
         dateOfTransaction = new Date();
-        this.writer = writer;
-        this.revenueWriter = revenueWriter;
-        readRevenues();
+        readRevenues(revenueFileName);
+        this.books = books;
+        this.quantities = quantities;
+        billNo++;
+        this.billFileName = "Bills\\bill"+billNo+".txt";
+        total=CalculateTotal();
+        writeBillToFile();
+    }
+
+    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities, String billFileName, String revenueFileName)
+    {
+        this.billFileName = billFileName;
+        this.revenueFileName = revenueFileName;
+        dateOfTransaction = new Date();
+        readRevenues(revenueFileName);
         this.books = books;
         this.quantities = quantities;
         billNo++;
         total=CalculateTotal();
-        writeToFile();
+        writeBillToFile();
     }
+
+
 
     public double CalculateTotal()
     {
@@ -44,26 +59,33 @@ public class Bill {
         return total;
     }
 
-    public static double getRevenues() {
+    public static double getRevenues(String revenueFileName) {
 
-        readRevenues();
+        readRevenues(revenueFileName);
         return revenues;
     }
 
-    public void writeToFile()
+    public void writeBillToFile()
     {
 //        File folder = new File("Bills");
 
 //        File file = new File(folder+"\\bill"+billNo+".txt");
 
-            writer.println("Bill NO."+billNo);
-            writer.println("ISBN\t\tTitle\t\tPrice\t\tQuantity");
-            for(int i = 0;i<books.size();i++)
+            try(PrintWriter writer = new PrintWriter(new File(billFileName)))
             {
-                writer.println(books.get(i).getISBN()+"\t\t"+books.get(i).getTitle()+"\t\t"+books.get(i).getSellingPrice()+"\t\t"+quantities.get(i));
-            }
-            writer.println("\nDate:"+dateOfTransaction.toString()+"\tTotal is:"+ total);
+                writer.println("Bill NO."+billNo);
+                writer.println("ISBN\t\tTitle\t\tPrice\t\tQuantity");
+                for(int i = 0;i<books.size();i++)
+                {
+                    writer.println(books.get(i).getISBN()+"\t\t"+books.get(i).getTitle()+"\t\t"+books.get(i).getSellingPrice()+"\t\t"+quantities.get(i));
+                }
+                writer.println("\nDate:"+dateOfTransaction.toString()+"\tTotal is:"+ total);
 
+            }
+            catch (FileNotFoundException ex)
+            {
+                System.out.println("Bill file not found");
+            }
 
     }
 
@@ -71,13 +93,22 @@ public class Bill {
     {
 //        File file = new File("revenues.txt");
 
-        writer.println(revenues);
+        try(PrintWriter writer = new PrintWriter(revenueFileName))
+        {
+
+            writer.println(revenues);
+        }
+        catch (FileNotFoundException ex)
+        {
+            System.out.println("Revenue file not found");
+        }
+
 
     }
 
-    public static void readRevenues()
+    public static void readRevenues(String revenueFileName)
     {
-        File file = new File("revenues.txt");
+        File file = new File(revenueFileName);
         revenues = 0;
         try (Scanner reader = new Scanner(file)){
 
