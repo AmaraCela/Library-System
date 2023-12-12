@@ -23,15 +23,10 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
         booksOfCategoryBinaryFile = new File(this.categoryName+"Books.dat");
     }
-    public void setBinaryFile(String binaryFileName){
-//        this.binaryFile = new File("books"+categoryName+".dat");
-//        this.binaryFile = new File(binaryFileName);
-//        this.binaryFile = binaryFile;
-    }
 
 
     //reads the books of the category
-    public void readBooks() throws IOException {
+    public ArrayList<Book> readBooks() {
         booksOfCategory.clear();
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(booksOfCategoryBinaryFile)) )
         {
@@ -60,6 +55,7 @@ public class Category implements Serializable {
         {
             System.out.println("IOException in reading categories");
         }
+        return this.booksOfCategory;
     }
 
     public String getCategoryName() {
@@ -107,10 +103,6 @@ public class Category implements Serializable {
         catch (NotSerializableException e)
         {
             System.out.println("Book not serializable");
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println("File not found in writing books");
         }
         catch (IOException e) {
             System.out.println("IOException in writing books");
@@ -188,15 +180,15 @@ public class Category implements Serializable {
     }
 
 
-    public void setBooksOfCategory(ArrayList<Book> booksOfCategory) {
-        this.booksOfCategory = booksOfCategory;
-    }
+//    public void setBooksOfCategory(ArrayList<Book> booksOfCategory) {
+//        this.booksOfCategory = booksOfCategory;
+//    }
 
     public File getBooksOfCategoryBinaryFile() {
         return booksOfCategoryBinaryFile;
     }
 
-    public void setBooksOfCategoryBinaryFile(File booksOfCategoryBinaryFile) {
-        this.booksOfCategoryBinaryFile = booksOfCategoryBinaryFile;
-    }
+//    public void setBooksOfCategoryBinaryFile(File booksOfCategoryBinaryFile) {
+//        this.booksOfCategoryBinaryFile = booksOfCategoryBinaryFile;
+//    }
 }
