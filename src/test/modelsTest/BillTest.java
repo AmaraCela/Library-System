@@ -2,7 +2,7 @@ package modelsTest;
 
 import javafx.collections.ObservableList;
 import mock.MockObservableList;
-import mock.MockPrintWriterTry;
+//import mock.MockPrintWriterTry;
 import models.Bill;
 import models.Book;
 import models.Category;
@@ -24,9 +24,9 @@ class BillTest {
         ObservableList<Book> books = new MockObservableList();
         books.add(book);
         ArrayList<Integer> quantities = new ArrayList<>(1);
-        PrintWriter writer = new MockPrintWriterTry(new File("file"));
-        PrintWriter writer1 = new MockPrintWriterTry(new File("revenues.txt"));
-        bill = new Bill(books,quantities,writer, writer1);
+//        PrintWriter writer = new MockPrintWriterTry(new File("file"));
+//        PrintWriter writer1 = new MockPrintWriterTry(new File("revenues.txt"));
+//        bill = new Bill(books,quantities,writer, writer1);
     }
 
     @Test

@@ -44,6 +44,7 @@
     <orderEntry type="library" name="google.code.maven.play.plugin.eamelink.mockito.all" level="application" />
     <orderEntry type="library" name="bluecatcode.mockito.1.10.19.extended" level="application" />
     <orderEntry type="library" name="bluecatcode.mockito.1.10.19.extended1" level="application" />
+    <orderEntry type="library" name="mockrunner.core" level="application" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="2eeaa054-a14b-4b44-8189-636579792d3a" />

@@ -27,7 +27,7 @@ public class CategoryTest {
     @CsvSource({
             "Fiction"
     })
-    void test_updateCategory(String categoryName) throws IOException {
+    void test_writeToBinaryFile(String categoryName) throws IOException {
         Category category = new Category(categoryName);
         Book book = new Book("1111","book1",category,"supplier",1000.01,823,1200.7,"author1",2);
         MockObjectStreamHandler mockObjectStreamHandler = new MockObjectStreamHandler();

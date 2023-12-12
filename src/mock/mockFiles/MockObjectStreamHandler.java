@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockObjectStreamHandler extends ObjectOutputStream implements ObjectStreamHandler {
+public class MockObjectStreamHandler extends ObjectOutputStream implements ObjectStreamHandler{
      List<Book> books = new ArrayList<>();
      int currentIndex = 0;
 

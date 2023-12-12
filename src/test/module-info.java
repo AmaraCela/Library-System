@@ -3,6 +3,7 @@ module Library.System {
     requires com.example.finalproject;
     requires org.junit.jupiter.params;
     requires mockito.all;
+    requires javafx.base;
 
     opens modelsTest to org.junit.platform.commons;
 //    opens java.io to mockito.all;
