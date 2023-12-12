@@ -27,8 +27,6 @@ c
 3src/main/java/Controllers/AddToStockController.java,1\5\15f5841b4112cd54eaf8dbe5fe1bb30226fea3c8
 B
 Library-System.iml,4\4\4435dcf501b2bb0395898c21cee4ba26994737c9
-8
-cost.txt,9\5\9582d73028cfe9fc13281bd5293b4e38ded8922c
 N
 src/main/java/models/Book.java,8\3\83e38b5f11d9df8e52dbea0cce94681e95a7c194
 Q

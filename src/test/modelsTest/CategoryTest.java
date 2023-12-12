@@ -7,9 +7,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.internal.util.reflection.Whitebox;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class CategoryTest {
 
@@ -25,16 +25,14 @@ public class CategoryTest {
 
     @ParameterizedTest
     @CsvSource({
-            "Fiction"
+            "Fiction, TestFiles/booksFiction.dat"
     })
-    void test_writeToBinaryFile(String categoryName) throws IOException {
-        Category category = new Category(categoryName);
+    void test_writeToBinaryFile(String categoryName, String fileName) throws IOException {
+        Category category = new Category(fileName, categoryName);
         Book book = new Book("1111","book1",category,"supplier",1000.01,823,1200.7,"author1",2);
-        MockObjectStreamHandler mockObjectStreamHandler = new MockObjectStreamHandler();
-        Whitebox.setInternalState(category,"outputStream",mockObjectStreamHandler);
+        System.out.println(category.getBinaryFile());
         category.writeToBinaryFile(book);
-        List<Book> booksWritten = mockObjectStreamHandler.getBooks();
-        assertEquals(0, booksWritten.size());
+        assertEquals(book, category.readBinaryFile());
     }
 
 }

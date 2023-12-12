@@ -4,6 +4,7 @@ import Auxilaries.HeaderlessObjectOutputStream;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.io.Serializable;
 
 public class Category implements Serializable {
 
@@ -14,17 +15,20 @@ public class Category implements Serializable {
     private ArrayList<Book> booksOfCategory = new ArrayList<>();
 
 
-    public Category(String categoryName) {
+    public Category(String binaryFileName, String categoryName) {
 
-
+        setBinaryFile(binaryFileName);
         this.categoryName = categoryName;
-        setBinaryFile();
+
     }
-    public Category(){
-        setBinaryFile();
+    public Category(String categoryName){
+//        setBinaryFile(binaryFileName);
+        this.categoryName = categoryName;
     }
-    public void setBinaryFile(){
-        binaryFile = new File("books"+categoryName+".dat");
+    public void setBinaryFile(String binaryFileName){
+//        this.binaryFile = new File("books"+categoryName+".dat");
+        this.binaryFile = new File(binaryFileName);
+//        this.binaryFile = binaryFile;
     }
 
     public File getBinaryFile(){
@@ -113,13 +117,34 @@ public class Category implements Serializable {
         {
             System.out.println("File not found in writing books");
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             System.out.println("IOException in writing books");
-
         }
+    }
 
+    public Book readBinaryFile() throws IOException {
+        Book book = null;
+        try(ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(getBinaryFile()))){
+            int count = -1000000;
+            do{
+                book = (Book) inputStream.readObject();
+                System.out.println(book);
+                count++;
+            }while(count<=999999999);
 
+        } catch (NotSerializableException e)
+        {
+            System.out.println("Not seralizable");
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("File not found in reading books");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            System.out.println("IOException in reading books");
+        }
+        return null;
     }
 
     public void updateBinaryFile()

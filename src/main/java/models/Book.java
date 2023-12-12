@@ -3,6 +3,7 @@ package models;
 import java.io.*;
 import java.util.Date;
 import java.util.Scanner;
+import java.io.Serializable;
 
 public class Book implements Serializable {
     @Serial
@@ -33,7 +34,7 @@ public class Book implements Serializable {
         this.stock = stock;
         this.category = category;
         this.categoryName = category.getCategoryName();
-        category.addBookToCategory(this);
+//        category.addBookToCategory(this);
         readFromFile();
         totalCost+=this.purchasedPrice*this.stock;
         writeToFile("cost.txt");
