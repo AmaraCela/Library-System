@@ -7,20 +7,18 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 import models.Book;
 
 import java.util.ArrayList;
 
 public class AddToStockView extends BorderPane {
-    private final Stage stage;
+    private Stage stage;
     private final TableView<Book> bookTableView = new TableView<>();
     private final TableColumn<Book,String> isbnColumn = new TableColumn<>("ISBN");
     private final TableColumn<Book,String> titleColumn = new TableColumn<>("Title");

@@ -7,6 +7,8 @@ import models.Book;
 import models.Person;
 import models.Controller;
 
+import java.util.ArrayList;
+
 public class AddToStockController extends Controller//ok
 {
 
@@ -34,39 +36,41 @@ public class AddToStockController extends Controller//ok
 
             else
             {
-                int stock;
-                try {
-                    stock = Integer.parseInt(this.addToStockView.getCopiesTf().getText());
-                    if(!validateStock(selectedBooks,stock))
-                    {
-                        this.addToStockView.getUnSuccessfulLabel().setVisible(true);
-                        this.addToStockView.getCopiesTf().clear();
-
-                    }
-                    else
-                    {
-
-                        this.addToStockView.getBookTableView().getItems().clear();
-                        this.addToStockView.getBooks().clear();
-                        for (int i = 0; i< CategoryController.getCategories().size(); i++)
-                        {
-                            this.addToStockView.getBooks().addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
-
-
-                        }
-                        this.addToStockView.getBookTableView().getItems().addAll(FXCollections.observableList(this.addToStockView.getBooks()));
-                    }
-                }
-                catch (NumberFormatException ex)
-                {
-                    this.addToStockView.getUnSuccessfulLabel().setVisible(true);
-                    this.addToStockView.getCopiesTf().clear();
-                }
+                returnBookToDisplay(selectedBooks);
 
             }
 
         });
 
+    }
+
+    public ArrayList<Book> returnBookToDisplay(ObservableList <Book> selectedBooks){
+        int stock;
+        try {
+            stock = Integer.parseInt(this.addToStockView.getCopiesTf().getText());
+            if(!validateStock(selectedBooks,stock))
+            {
+                this.addToStockView.getUnSuccessfulLabel().setVisible(true);
+                this.addToStockView.getCopiesTf().clear();
+            }
+            else
+            {
+
+                this.addToStockView.getBookTableView().getItems().clear();
+                this.addToStockView.getBooks().clear();
+                for (int i = 0; i< CategoryController.getCategories().size(); i++)
+                {
+                    this.addToStockView.getBooks().addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
+                }
+                this.addToStockView.getBookTableView().getItems().addAll(FXCollections.observableList(this.addToStockView.getBooks()));
+            }
+        }
+        catch (NumberFormatException ex)
+        {
+            this.addToStockView.getUnSuccessfulLabel().setVisible(true);
+            this.addToStockView.getCopiesTf().clear();
+        }
+        return this.addToStockView.getBooks();
     }
 
     public boolean validateStock(ObservableList<Book> books,int stock)

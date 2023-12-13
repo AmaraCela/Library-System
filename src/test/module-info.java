@@ -4,8 +4,10 @@ module Library.System {
     requires org.junit.jupiter.params;
     requires mockito.all;
     requires javafx.base;
+    requires javafx.graphics;
 
     opens modelsTest to org.junit.platform.commons;
+    opens controllerTest to org.junit.platform.commons;
 //    opens java.io to mockito.all;
 
     // Add the following line if you want to export the package for testing purposes
