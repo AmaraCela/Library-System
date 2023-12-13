@@ -5,13 +5,13 @@ import models.Category;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CategoryTest {
 
@@ -31,16 +31,6 @@ public class CategoryTest {
         File file1 = new File("TestFiles//cost.txt");
         file1.delete();
     }
-
-//    @ParameterizedTest
-//    @CsvSource({
-//            "Fiction",
-//            "Drama"
-//    })
-//    void test_getCategoryName(String categoryName){
-//        category.setCategoryName(categoryName);
-//        assertEquals(category.getCategoryName(),categoryName);
-//    }
 
     @Test
     void test_addBookToCategory()
@@ -67,6 +57,7 @@ public class CategoryTest {
     }
 
 
+
     @Test
     void test_writeBookToBinaryFile()
     {
@@ -76,5 +67,12 @@ public class CategoryTest {
         assertEquals(books.get(0), category.readBooks().get(0));
     }
 
-
+    @Test
+    void test_updateBinaryFile(){
+        Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
+        List<Book> books = List.of(book1,book2);
+        category.updateBinaryFile();
+        assertEquals(books, category.readBooks());
+    }
 }

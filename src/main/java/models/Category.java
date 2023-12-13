@@ -12,18 +12,22 @@ public class Category implements Serializable {
     private static final long serialVersionUID = 7618221196278240693L;
     private File booksOfCategoryBinaryFile;
     private String categoryName;
-    private ArrayList<Book> booksOfCategory = new ArrayList<>();
+    private ArrayList<Book> booksOfCategory;
 
 
     public Category(String categoryName, String booksOfCategoryBinaryFileName) {
        this.categoryName = categoryName;
        this.booksOfCategoryBinaryFile = new File(booksOfCategoryBinaryFileName);
+       this.booksOfCategory = new ArrayList<>();
     }
     public Category(String categoryName){
         this.categoryName = categoryName;
-        booksOfCategoryBinaryFile = new File(this.categoryName+"Books.dat");
+        this.booksOfCategoryBinaryFile = new File(this.categoryName+"Books.data");
     }
 
+//    public Category(String categoryName){
+//        this.categoryName = categoryName;
+//    }
 
     //reads the books of the category
     public ArrayList<Book> readBooks() {
@@ -109,29 +113,6 @@ public class Category implements Serializable {
         }
     }
 
-    //read books from binary file
-//    public Book readBinaryFile() throws IOException {
-//        Book book = null;
-//        try(ObjectInputStream inputStream =new ObjectInputStream(new FileInputStream(booksOfCategoryBinaryFile))){
-//                book = (Book) inputStream.readObject();
-//                System.out.println(book);
-//
-//        } catch (NotSerializableException e)
-//        {
-//            System.out.println("Book not serializable");
-//        }
-//        catch (FileNotFoundException e)
-//        {
-//            System.out.println("File not found in reading books");
-//        }
-//        catch (ClassNotFoundException e) {
-//            System.out.println("Class not found in reading books");
-//        } catch (IOException e) {
-//            System.out.println("IOException in reading books");
-//            e.printStackTrace(); // Print the stack trace for debugging
-//        }
-//        return null;
-//    }
 
 
     //updates the books of this category binary file
@@ -195,8 +176,4 @@ public class Category implements Serializable {
     public File getBooksOfCategoryBinaryFile() {
         return booksOfCategoryBinaryFile;
     }
-
-//    public void setBooksOfCategoryBinaryFile(File booksOfCategoryBinaryFile) {
-//        this.booksOfCategoryBinaryFile = booksOfCategoryBinaryFile;
-//    }
 }
