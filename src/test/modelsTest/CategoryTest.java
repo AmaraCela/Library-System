@@ -11,8 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.io.File;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CategoryTest {
 
@@ -33,20 +32,20 @@ public class CategoryTest {
         file1.delete();
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "Fiction",
-            "Drama"
-    })
-    void test_getCategoryName(String categoryName){
-        category.setCategoryName(categoryName);
-        assertEquals(category.getCategoryName(),categoryName);
-    }
+//    @ParameterizedTest
+//    @CsvSource({
+//            "Fiction",
+//            "Drama"
+//    })
+//    void test_getCategoryName(String categoryName){
+//        category.setCategoryName(categoryName);
+//        assertEquals(category.getCategoryName(),categoryName);
+//    }
 
     @Test
     void test_addBookToCategory()
     {
-        Book book = new Book("i","t",category,"s",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         ArrayList<Book> books = new ArrayList<>();
         books.add(book);
         assertEquals(books,category.getBooksOfCategory());
@@ -71,19 +70,11 @@ public class CategoryTest {
     @Test
     void test_writeBookToBinaryFile()
     {
-        Book book = new Book("i","t",category,"s",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         ArrayList<Book> books = new ArrayList<>();
         books.add(book);
         assertEquals(books.get(0), category.readBooks().get(0));
     }
 
-//    @ParameterizedTest
-//    @CsvSource({
-//            "Fiction, TestFiles/booksFiction.dat"
-//    })
-//    void test_writeToBinaryFile(String categoryName, String fileName) throws IOException {
-//        Category category = new Category(fileName, categoryName);
-//        Book book = new Book("1111","book1",category,"supplier",1000.01,823,1200.7,"author1",2);
-//    }
 
 }

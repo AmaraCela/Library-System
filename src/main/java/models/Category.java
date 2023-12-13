@@ -184,6 +184,14 @@ public class Category implements Serializable {
 //        this.booksOfCategory = booksOfCategory;
 //    }
 
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Category){
+            return this.categoryName.equals((((Category)obj).getCategoryName()));
+        }
+        return false;
+    }
+
     public File getBooksOfCategoryBinaryFile() {
         return booksOfCategoryBinaryFile;
     }

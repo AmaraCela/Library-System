@@ -199,4 +199,20 @@ public class Book implements Serializable {
     public void setCostFileName(String costFileName) {
         this.costFileName = costFileName;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        Book book = (Book) obj;
+        return (
+                this.ISBN.equals(book.getISBN())
+                && this.title.equals(book.getTitle())
+                && this.category.equals(book.getCategory())
+                && this.supplier.equals(book.getSupplier())
+                && this.purchasedPrice == book.getPurchasedPrice()
+                && this.originalPrice == book.getOriginalPrice()
+                && this.sellingPrice == book.getSellingPrice()
+                && this.stock == book.getStock()
+                && this.author.equals(book.getAuthor())
+                );
+    }
 }
