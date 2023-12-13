@@ -165,31 +165,29 @@ public class Book implements Serializable {
         catch (FileNotFoundException ex)
         {
             System.out.println("Relative path to file not found");
+
         }
     }
 
-    public static void readFromFile(String filename)
+    public static double readFromFile(String filename)
     {
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file))
         {
             totalCost = 0;
             totalCost+=scanner.nextDouble();
+
         }
         catch (FileNotFoundException ex)
         {
             System.out.println("Relative path not found");
         }
-
+        return totalCost;
     }
 
     public static double getTotalCost() {
         readFromFile("cost.txt");
         return totalCost;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
     }
 
     public String getCostFileName() {

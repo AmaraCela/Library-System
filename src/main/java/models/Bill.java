@@ -7,10 +7,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Bill {
-    private ObservableList<Book> books;
+    private List<Book> books;
     private ArrayList<Integer> quantities;
     private double total;
     private static double revenues;
@@ -71,21 +72,21 @@ public class Bill {
 
 //        File file = new File(folder+"\\bill"+billNo+".txt");
 
-            try(PrintWriter writer = new PrintWriter(new File(billFileName)))
+        try(PrintWriter writer = new PrintWriter(new File(billFileName)))
+        {
+            writer.println("Bill NO."+billNo);
+            writer.println("ISBN\t\tTitle\t\tPrice\t\tQuantity");
+            for(int i = 0;i<books.size();i++)
             {
-                writer.println("Bill NO."+billNo);
-                writer.println("ISBN\t\tTitle\t\tPrice\t\tQuantity");
-                for(int i = 0;i<books.size();i++)
-                {
-                    writer.println(books.get(i).getISBN()+"\t\t"+books.get(i).getTitle()+"\t\t"+books.get(i).getSellingPrice()+"\t\t"+quantities.get(i));
-                }
-                writer.println("\nDate:"+dateOfTransaction.toString()+"\tTotal is:"+ total);
+                writer.println(books.get(i).getISBN()+"\t\t"+books.get(i).getTitle()+"\t\t"+books.get(i).getSellingPrice()+"\t\t"+quantities.get(i));
+            }
+            writer.println("\nDate:"+dateOfTransaction.toString()+"\tTotal is:"+ total);
 
-            }
-            catch (FileNotFoundException ex)
-            {
-                System.out.println("Bill file not found");
-            }
+        }
+        catch (FileNotFoundException ex)
+        {
+            System.out.println("Bill file not found");
+        }
 
     }
 

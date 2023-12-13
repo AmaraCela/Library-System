@@ -3,19 +3,19 @@ package modelsTest;
 import models.Book;
 import models.Category;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.PrintWriter;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class BookTest {
     Book book;
     @BeforeEach
     void setUp()
     {
-        Category category = new Category("Fiction");
-        book = new Book("1","t1",category,"s1",10,15,15,"a1",10);
+        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
+        book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
     }
 
     @ParameterizedTest
@@ -133,11 +133,57 @@ public class BookTest {
     @CsvSource({
             "1,9",
             "10,0",
-            "11,-1"
+            "11,-1",
+            "-1,11"
     })
     void test_decreaseStock(int d, int r)
     {
         book.decreaseStock(d);
         assertEquals(book.getStock(),r);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1,11",
+            "-1,9"
+    })
+    void test_increaseStock(int a, int b)
+    {
+        book.increaseStock(a);
+        assertEquals(book.getStock(),b);
+    }
+
+    @Test
+    void test_getCategoryName()
+    {
+        assertEquals("Fiction",book.getCategoryName());
+    }
+
+    @Test
+    void test_writeToFile()
+    {
+        Book.writeToFile("TestFiles/cost.txt");
+        assertEquals(100,Book.readFromFile("TestFiles/cost.txt"));
+
+//        assertThrows(FileNotFoundException.class,()->Book.writeToFile("TestFilessss/cost.txt"));
+    }
+
+//    @Test
+//    void test_getTotalCost()
+//    {
+//        assertEquals(100,Book.getTotalCost());
+//    }
+
+
+    @ParameterizedTest
+    @CsvSource({
+            "TestFiles//cost.txt",
+            "TestFilessss//cost.txt"
+    })
+    void test_getCostFileName(String name)
+    {
+        book.setCostFileName(name);
+        assertEquals(name, book.getCostFileName());
+    }
+
 }
