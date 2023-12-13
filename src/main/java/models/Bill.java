@@ -30,11 +30,10 @@ public class Bill {
         this.quantities = quantities;
         billNo++;
         this.billFileName = "Bills\\bill"+billNo+".txt";
-        total=CalculateTotal();
         writeBillToFile();
     }
 
-    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities, String billFileName, String revenueFileName)
+    public Bill(List <Book> books, ArrayList <Integer> quantities, String billFileName, String revenueFileName)
     {
         this.billFileName = billFileName;
         this.revenueFileName = revenueFileName;
@@ -43,7 +42,6 @@ public class Bill {
         this.books = books;
         this.quantities = quantities;
         billNo++;
-        total=CalculateTotal();
         writeBillToFile();
     }
 
@@ -55,7 +53,7 @@ public class Bill {
         {
             total += books.get(i).getSellingPrice()* quantities.get(i);
         }
-        revenues +=total;
+        revenues+=total;
         writeRevenueToFile();
         return total;
     }
@@ -68,10 +66,6 @@ public class Bill {
 
     public void writeBillToFile()
     {
-//        File folder = new File("Bills");
-
-//        File file = new File(folder+"\\bill"+billNo+".txt");
-
         try(PrintWriter writer = new PrintWriter(new File(billFileName)))
         {
             writer.println("Bill NO."+billNo);
@@ -92,11 +86,9 @@ public class Bill {
 
     public void writeRevenueToFile()
     {
-//        File file = new File("revenues.txt");
 
         try(PrintWriter writer = new PrintWriter(revenueFileName))
         {
-
             writer.println(revenues);
         }
         catch (FileNotFoundException ex)
@@ -107,7 +99,7 @@ public class Bill {
 
     }
 
-    public static void readRevenues(String revenueFileName)
+    public static double readRevenues(String revenueFileName)
     {
         File file = new File(revenueFileName);
         revenues = 0;
@@ -119,9 +111,11 @@ public class Bill {
         {
             System.out.println("File not found");
         }
+        return revenues;
     }
 
     public double getTotal() {
-        return total;
+
+        return CalculateTotal();
     }
 }
