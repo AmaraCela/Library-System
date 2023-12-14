@@ -3,35 +3,37 @@ package Controllers;
 import Views.AddToStockView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.layout.BorderPane;
 import models.Book;
-import models.Person;
 import models.Controller;
+import models.Person;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddToStockController extends Controller//ok
 {
 
-    private final AddToStockView addToStockView;
+    private BorderPane addToStockView;
 
-    public AddToStockController(Person person, AddToStockView addToStockView)
+    public AddToStockController(Person person, BorderPane addToStockView)
     {
         this.addToStockView = addToStockView;
 
-        this.addToStockView.getPageBt().setOnAction(e->
+        ((AddToStockView) this.addToStockView).getPageBt().setOnAction(e->
         {
             this.goBack(addToStockView,person);
         });
 
-        this.addToStockView.getAddBt().setOnAction(e->
+        ((AddToStockView) this.addToStockView).getAddBt().setOnAction(e->
         {
-            this.addToStockView.getLabel2().setVisible(false);
-            this.addToStockView.getUnSuccessfulLabel().setVisible(false);
-            ObservableList <Book> selectedBooks = this.addToStockView.getBookTableView().getSelectionModel().getSelectedItems();
+            ((AddToStockView) this.addToStockView).getLabel2().setVisible(false);
+            ((AddToStockView) this.addToStockView).getUnSuccessfulLabel().setVisible(false);
+            ObservableList <Book> selectedBooks = ((AddToStockView) this.addToStockView).getBookTableView().getSelectionModel().getSelectedItems();
 
             if(selectedBooks.size()==0)
             {
-               this.addToStockView.getLabel2().setVisible(true);
+               ((AddToStockView) this.addToStockView).getLabel2().setVisible(true);
             }
 
             else
@@ -44,36 +46,49 @@ public class AddToStockController extends Controller//ok
 
     }
 
+    public AddToStockController(){
+
+    }
+
     public ArrayList<Book> returnBookToDisplay(ObservableList <Book> selectedBooks){
         int stock;
         try {
-            stock = Integer.parseInt(this.addToStockView.getCopiesTf().getText());
+            stock = Integer.parseInt(((AddToStockView) this.addToStockView).getCopiesTf().getText());
             if(!validateStock(selectedBooks,stock))
             {
-                this.addToStockView.getUnSuccessfulLabel().setVisible(true);
-                this.addToStockView.getCopiesTf().clear();
+                ((AddToStockView) this.addToStockView).getUnSuccessfulLabel().setVisible(true);
+                ((AddToStockView) this.addToStockView).getCopiesTf().clear();
             }
             else
             {
 
-                this.addToStockView.getBookTableView().getItems().clear();
-                this.addToStockView.getBooks().clear();
-                for (int i = 0; i< CategoryController.getCategories().size(); i++)
-                {
-                    this.addToStockView.getBooks().addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
-                }
-                this.addToStockView.getBookTableView().getItems().addAll(FXCollections.observableList(this.addToStockView.getBooks()));
+                ((AddToStockView) this.addToStockView).getBookTableView().getItems().clear();
+                ((AddToStockView) this.addToStockView).getBooks().clear();
+
+
+                ((AddToStockView) this.addToStockView).getBooks().addAll(addToBookList());
+
+                ((AddToStockView) this.addToStockView).getBookTableView().getItems().addAll(FXCollections.observableList(((AddToStockView) this.addToStockView).getBooks()));
             }
         }
         catch (NumberFormatException ex)
         {
-            this.addToStockView.getUnSuccessfulLabel().setVisible(true);
-            this.addToStockView.getCopiesTf().clear();
+            ((AddToStockView) this.addToStockView).getUnSuccessfulLabel().setVisible(true);
+            ((AddToStockView) this.addToStockView).getCopiesTf().clear();
         }
-        return this.addToStockView.getBooks();
+        return ((AddToStockView) this.addToStockView).getBooks();
     }
 
-    public boolean validateStock(ObservableList<Book> books,int stock)
+    public ArrayList<Book> addToBookList(){
+        ArrayList<Book> books = new ArrayList<>();
+        for (int i = 0; i< CategoryController.getCategories().size(); i++)
+        {
+            books.addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
+        }
+        return books;
+    }
+
+    public boolean validateStock(List<Book> books, int stock)
     {
         if(stock<=0)
         {

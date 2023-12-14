@@ -6,11 +6,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import models.Category;
-import models.Person;
 import models.Controller;
+import models.Person;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryController extends Controller //ok
 {
@@ -34,6 +35,9 @@ public class CategoryController extends Controller //ok
         });
 
         this.categoryView.getDeleteBt().setOnAction(this::DeleteCategory);
+    }
+    public CategoryController(){
+
     }
 
     public void DeleteCategory(ActionEvent event)
@@ -221,6 +225,11 @@ public class CategoryController extends Controller //ok
         }
 
         return this.categoryView.getCategoryTableView().getItems();
+    }
+//    List<Category> categoryList = new ArrayList<>();
+    public List<Category> addCategories(Category category){
+        categories.add(category);
+        return categories;
     }
 
 }
