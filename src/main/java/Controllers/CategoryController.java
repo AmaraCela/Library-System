@@ -232,6 +232,7 @@ public class CategoryController extends Controller //ok
     }
 //    List<Category> categoryList = new ArrayList<>();
     public List<Category> addCategories(Category category){
+        categories.clear();
         categories.add(category);
         return categories;
     }
