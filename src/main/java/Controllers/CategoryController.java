@@ -39,6 +39,8 @@ public class CategoryController extends Controller //ok
         {
             ObservableList<Category> selectedCategories = this.categoryView.getCategoryTableView().getSelectionModel().getSelectedItems();
             DeleteCategory(selectedCategories);
+            this.categoryView.getCategoryTableView().getItems().clear();
+            this.categoryView.getCategoryTableView().getItems().addAll(FXCollections.observableList(categories));
         });
     }
     public CategoryController(File binaryFile){
@@ -49,8 +51,7 @@ public class CategoryController extends Controller //ok
     {
         categories.removeAll(selectedCategories);
         updateCategoryBinaryFile();
-        this.categoryView.getCategoryTableView().getItems().clear();
-        this.categoryView.getCategoryTableView().getItems().addAll(FXCollections.observableList(categories));
+
     }
 
 
@@ -72,10 +73,6 @@ public class CategoryController extends Controller //ok
         catch (NotSerializableException e)
         {
             System.out.println("Category not serializable");
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println("File not found in writing categories");
         }
         catch (IOException e)
         {
@@ -103,8 +100,7 @@ public class CategoryController extends Controller //ok
                 return false;
             }
         }
-        Category category = new Category(name);
-        addCategory(category);
+
         return true;
     }
 
@@ -117,16 +113,10 @@ public class CategoryController extends Controller //ok
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(binaryFile)))
         {
             int count = -1000000000;
-            do
-            {
-                Category category = (Category) inputStream.readObject();
-                categories.add(category);
-                category.readBooks();
-                count++;
-
-            }
-            while (count<=999999999);
-
+            Category category = (Category) inputStream.readObject();
+            categories.add(category);
+            category.readBooks();
+            count++;
         }
         catch (EOFException e)
         {
@@ -135,12 +125,6 @@ public class CategoryController extends Controller //ok
         catch (ClassNotFoundException e)
         {
             System.out.println("Class not found in reading categories");
-        }
-
-        catch (FileNotFoundException e)
-        {
-            System.out.println("File not found in reading categories");
-
         }
         catch (IOException e)
         {
@@ -186,6 +170,7 @@ public class CategoryController extends Controller //ok
     }
 
     public static ArrayList<Category> getCategories() {
+
         return categories;
     }
 
@@ -197,7 +182,6 @@ public class CategoryController extends Controller //ok
             str.add(categories.get(i).getCategoryName());
 
         }
-
         return str;
     }
     public static Category getCategory(String categoryName)
@@ -222,6 +206,8 @@ public class CategoryController extends Controller //ok
             this.categoryView.getSuccessfulLabel().setVisible(true);
             this.categoryView.getCategoryTableView().getItems().clear();
             this.categoryView.getCategoryTableView().getItems().addAll(FXCollections.observableList(categories));
+            Category category = new Category(categoryName);
+            addCategory(category);
         }
         else
         {

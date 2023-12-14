@@ -12,13 +12,12 @@ public class Category implements Serializable {
     private static final long serialVersionUID = 7618221196278240693L;
     private File booksOfCategoryBinaryFile;
     private String categoryName;
-    private ArrayList<Book> booksOfCategory;
+    private ArrayList<Book> booksOfCategory = new ArrayList<>();
 
 
     public Category(String categoryName, String booksOfCategoryBinaryFileName) {
        this.categoryName = categoryName;
        this.booksOfCategoryBinaryFile = new File(booksOfCategoryBinaryFileName);
-       this.booksOfCategory = new ArrayList<>();
     }
     public Category(String categoryName){
         this.categoryName = categoryName;

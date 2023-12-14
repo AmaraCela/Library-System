@@ -2,10 +2,11 @@ package Controllers;
 
 import Views.DeleteStaffView;
 import javafx.collections.ObservableList;
-import models.Person;
 import models.Controller;
+import models.Person;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DeleteStaffController extends Controller //ok
 {
@@ -21,8 +22,8 @@ public class DeleteStaffController extends Controller //ok
 
         this.deleteStaffView.getDeleteBt().setOnAction(e->
         {
-            delete();
-
+            ObservableList<Person> selectedAccounts = this.deleteStaffView.getTableView().getSelectionModel().getSelectedItems();
+            delete(selectedAccounts);
             RegisterStaffController.updateBinaryFile();
             updateTable();
 
@@ -31,9 +32,8 @@ public class DeleteStaffController extends Controller //ok
 
     }
 
-    public ArrayList<Person> delete()
+    public ArrayList<Person> delete(List<Person> selectedAccounts)
     {
-        ObservableList<Person> selectedAccounts = this.deleteStaffView.getTableView().getSelectionModel().getSelectedItems();
         RegisterStaffController.getAccounts().removeAll(selectedAccounts);
         return RegisterStaffController.getAccounts();
     }
