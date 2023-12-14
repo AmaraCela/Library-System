@@ -10,6 +10,7 @@ module com.example.finalproject {
     exports models;
     exports Views;
     exports Controllers;
+    exports Auxilaries;
 //    opens Views to Library.System;
 
 //    exports mock.mockFiles;

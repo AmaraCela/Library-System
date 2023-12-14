@@ -1,3 +1,8 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package Controllers;
 
 import Views.DeleteStaffView;
@@ -8,48 +13,35 @@ import models.Person;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeleteStaffController extends Controller //ok
-{
-
+public class DeleteStaffController extends Controller {
     private final DeleteStaffView deleteStaffView;
-    public DeleteStaffController(Person administrator, DeleteStaffView viewStaffView)
-    {
+
+    public DeleteStaffController(Person administrator, DeleteStaffView viewStaffView) {
         this.deleteStaffView = viewStaffView;
-        this.deleteStaffView.getAdministratorPageBt().setOnAction(e->
-        {
-            this.goBack(deleteStaffView,administrator);
+        this.deleteStaffView.getAdministratorPageBt().setOnAction((e) -> {
+            this.goBack(this.deleteStaffView, administrator);
         });
-
-        this.deleteStaffView.getDeleteBt().setOnAction(e->
-        {
+        this.deleteStaffView.getDeleteBt().setOnAction((e) -> {
             ObservableList<Person> selectedAccounts = this.deleteStaffView.getTableView().getSelectionModel().getSelectedItems();
-            delete(selectedAccounts);
+            this.delete(selectedAccounts);
             RegisterStaffController.updateBinaryFile();
-            updateTable();
-
+            this.updateTable();
         });
-
-
     }
 
-    public ArrayList<Person> delete(List<Person> selectedAccounts)
-    {
+    public ArrayList<Person> delete(List<Person> selectedAccounts) {
         RegisterStaffController.getAccounts().removeAll(selectedAccounts);
         return RegisterStaffController.getAccounts();
     }
 
-    public ObservableList<Person> updateTable()
-    {
+    public ObservableList<Person> updateTable() {
         this.deleteStaffView.getTableView().getItems().clear();
-        if(this.deleteStaffView.getChoice()==1)
-        {
+        if (this.deleteStaffView.getChoice() == 1) {
             this.deleteStaffView.getTableView().getItems().addAll(RegisterStaffController.getLibrarians());
-        }else
-        {
+        } else {
             this.deleteStaffView.getTableView().getItems().addAll(RegisterStaffController.getManagers());
-
         }
+
         return this.deleteStaffView.getTableView().getItems();
     }
-
 }
