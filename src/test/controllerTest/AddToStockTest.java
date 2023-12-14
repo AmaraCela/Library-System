@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.List;
 
 public class AddToStockTest {
@@ -35,7 +36,7 @@ public class AddToStockTest {
         Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         List<Book> books = List.of(book1,book2);
-        CategoryController categoryController = new CategoryController();
+        CategoryController categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         Assertions.assertEquals(books, addToStockController.addToBookList());
     }
