@@ -21,6 +21,8 @@ public class CategoryController extends Controller //ok
 
     public CategoryController(Person administrator, AddCategoryView addCategoryView)
     {
+
+        CategoryController.binaryFile =  new File("categories.dat");
         this.categoryView = addCategoryView;
         this.categoryView.getAddBt().setOnAction(e->
         {
