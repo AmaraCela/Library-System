@@ -4,7 +4,6 @@ import Auxilaries.HeaderlessObjectOutputStream;
 import Views.AddCategoryView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import models.Category;
 import models.Controller;
 import models.Person;
@@ -34,15 +33,18 @@ public class CategoryController extends Controller //ok
 
         });
 
-        this.categoryView.getDeleteBt().setOnAction(this::DeleteCategory);
+        this.categoryView.getDeleteBt().setOnAction(e->
+        {
+            ObservableList<Category> selectedCategories = this.categoryView.getCategoryTableView().getSelectionModel().getSelectedItems();
+            DeleteCategory(selectedCategories);
+        });
     }
-    public CategoryController(){
-
+    public CategoryController(File binaryFile){
+        CategoryController.binaryFile = binaryFile;
     }
 
-    public void DeleteCategory(ActionEvent event)
+    public void DeleteCategory(List<Category> selectedCategories)
     {
-        ObservableList selectedCategories = this.categoryView.getCategoryTableView().getSelectionModel().getSelectedItems();
         categories.removeAll(selectedCategories);
         updateCategoryBinaryFile();
         this.categoryView.getCategoryTableView().getItems().clear();
