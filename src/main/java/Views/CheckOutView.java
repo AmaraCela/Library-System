@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import models.Book;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CheckOutView extends BorderPane {
 
@@ -105,7 +106,7 @@ public class CheckOutView extends BorderPane {
         return proceedBt;
     }
 
-    public ObservableList<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 

@@ -1,7 +1,5 @@
 package models;
 
-import javafx.collections.ObservableList;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -21,7 +19,7 @@ public class Bill {
     private String billFileName;
     private String revenueFileName = "revenues.txt";
     private Date dateOfTransaction;
-    public Bill(ObservableList <Book> books, ArrayList <Integer> quantities)
+    public Bill(List <Book> books, ArrayList <Integer> quantities)
     {
 
         dateOfTransaction = new Date();

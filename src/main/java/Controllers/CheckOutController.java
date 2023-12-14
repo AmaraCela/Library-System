@@ -1,18 +1,18 @@
 package Controllers;
 
 import Views.CheckOutView;
-import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import models.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CheckOutController extends Controller //ok
 {
 
-    private final CheckOutView checkOutView;
+    private CheckOutView checkOutView;
 
     public CheckOutController(Person administrator, CheckOutView checkOutView) {
         this.checkOutView = checkOutView;
@@ -35,7 +35,7 @@ public class CheckOutController extends Controller //ok
 
         this.checkOutView.getProceedBt().setOnAction(e ->
         {
-            checkOut(administrator);
+//            checkOut(administrator);
         }
         );
         this.checkOutView.getBackBt().setOnAction(e ->
@@ -44,7 +44,9 @@ public class CheckOutController extends Controller //ok
         });
     }
 
-    public boolean validateCheckOut(ObservableList<Book> book, ArrayList<Integer> quantity) {
+    public CheckOutController(){}
+
+    public boolean validateCheckOut(List<Book> book, ArrayList<Integer> quantity) {
 
         for (int i = 0; i < book.size(); i++) {
 
@@ -59,7 +61,7 @@ public class CheckOutController extends Controller //ok
         return true;
     }
 
-    public void checkOut(Person administrator)
+    public void checkOut(Person administrator, Category category)
     {
 
         this.checkOutView.getErrorLabel().setVisible(false);
@@ -67,11 +69,11 @@ public class CheckOutController extends Controller //ok
 
         ArrayList<Integer> quantities = getQuantities();
 
-        checkOutAction(quantities,administrator);
+        checkOutAction(quantities,administrator, category);
     }
 
 
-    public Bill checkOutAction(ArrayList<Integer> quantities, Person administrator)
+    public Bill checkOutAction(ArrayList<Integer> quantities, Person administrator, Category category)
     {
         Bill bill = null;
         if (validateCheckOut(this.checkOutView.getBooks(), quantities)) {
@@ -88,7 +90,7 @@ public class CheckOutController extends Controller //ok
 
             }
 
-            decreaseStockOfItems(quantities);
+            decreaseStockOfItems(quantities, category);
         }
         else
         {
@@ -110,18 +112,27 @@ public class CheckOutController extends Controller //ok
         return administrator;
     }
 
-    public ObservableList<Book> decreaseStockOfItems(ArrayList<Integer> quantities)
+    public List<Book> decreaseStockOfItems(ArrayList<Integer> quantities, Category category)
     {
-        for (int i=0;i<this.checkOutView.getBooks().size();i++)
+//        for (int i=0;i<this.checkOutView.getBooks().size();i++)
+//
+        List<Book> books = category.readBooks();
+        for (int i=0;i<books.size();i++)
         {
-            this.checkOutView.getBooks().get(i).getCategory().getBookOfCategory(this.checkOutView.getBooks().get(i).getISBN()).decreaseStock(quantities.get(i));
-            this.checkOutView.getBooks().get(i).getCategory().updateBinaryFile();
-
+//            this.checkOutView.getBooks().get(i).getCategory().getBookOfCategory(this.checkOutView.getBooks().get(i).getISBN()).decreaseStock(quantities.get(i));
+//            this.checkOutView.getBooks().get(i).getCategory().updateBinaryFile();
+//            books.get(i).getCategory().getBookOfCategory(books.get(i).getISBN()).decreaseStock(quantities.get(i));
+            books.get(i).decreaseStock(quantities.get(i));
+            category.updateBooksOfCategory(i,books.get(i));
+//            (books.get(i).getCategory()).updateBinaryFile();
         }
+        category.updateBinaryFile();
 
-        return this.checkOutView.getBooks();
-
+//        return this.checkOutView.getBooks();
+        return category.readBooks();
     }
+
+
     public ArrayList<Integer> getQuantities()
     {
         ArrayList<Integer> quantities = new ArrayList<>();
