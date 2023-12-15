@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeleteStaffController extends Controller {
-    private final DeleteStaffView deleteStaffView;
+    private DeleteStaffView deleteStaffView;
 
     public DeleteStaffController(Person administrator, DeleteStaffView viewStaffView) {
         this.deleteStaffView = viewStaffView;
@@ -28,6 +28,8 @@ public class DeleteStaffController extends Controller {
             this.updateTable();
         });
     }
+
+    public DeleteStaffController(){}
 
     public ArrayList<Person> delete(List<Person> selectedAccounts) {
         RegisterStaffController.getAccounts().removeAll(selectedAccounts);

@@ -5,6 +5,9 @@ module Library.System {
     requires mockito.all;
     requires javafx.base;
     requires javafx.graphics;
+    requires testfx.core;
+    requires testfx.junit5;
+    requires javafx.controls;
 
     opens modelsTest to org.junit.platform.commons;
     opens controllerTest to org.junit.platform.commons;

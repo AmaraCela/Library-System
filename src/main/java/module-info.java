@@ -3,6 +3,10 @@ module com.example.finalproject {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.junit.jupiter.api;
+    requires testfx.core;
+    requires testfx.junit5;
+    requires javafx.base;
+
 
 
     opens com.example.finalproject to javafx.fxml;

@@ -4,6 +4,7 @@ import Controllers.RegisterStaffController;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Person implements Serializable {
 
@@ -128,19 +129,19 @@ public abstract class Person implements Serializable {
     public boolean equals(Object obj)
     {
         Person person = (Person) obj;
-        if(this.name == ((Person) obj).getName())
+        if(Objects.equals(this.name, ((Person) obj).getName()))
         {
-            if(this.surname == ((Person) obj).getSurname())
+            if(Objects.equals(this.surname, ((Person) obj).getSurname()))
             {
-                if(this.email == ((Person) obj).getEmail())
+                if(Objects.equals(this.email, ((Person) obj).getEmail()))
                 {
-                    if(this.birthday==((Person) obj).getBirthday())
+                    if(Objects.equals(this.birthday, ((Person) obj).getBirthday()))
                     {
-                        if(this.phoneNo==((Person) obj).getPhoneNo())
+                        if(Objects.equals(this.phoneNo, ((Person) obj).getPhoneNo()))
                         {
-                            if (this.username==((Person) obj).getUsername())
+                            if (Objects.equals(this.username, ((Person) obj).getUsername()))
                             {
-                                if (this.password==((Person) obj).getPassword())
+                                if (Objects.equals(this.password, ((Person) obj).getPassword()))
                                 {
                                     return true;
                                 }

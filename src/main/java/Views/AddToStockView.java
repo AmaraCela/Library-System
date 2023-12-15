@@ -131,4 +131,8 @@ public class AddToStockView extends BorderPane {
     public Label getLabel2() {
         return label2;
     }
+
+    public static class ClickPane extends BorderPane{
+
+    }
 }

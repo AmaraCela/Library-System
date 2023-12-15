@@ -210,6 +210,7 @@ public class RegisterStaffController extends Controller//ok
 
     public static void readFromFile()
     {
+        accounts.clear();
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(binaryFile))){
 
             Object person;
