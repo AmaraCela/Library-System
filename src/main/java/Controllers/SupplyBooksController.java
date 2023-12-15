@@ -13,7 +13,7 @@ import java.util.Objects;
 public class SupplyBooksController extends Controller //ok
 {
     private SupplyBooksView supplyBooksView;
-    private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Book> books;
 
     public SupplyBooksController(Person administrator, SupplyBooksView supplyBooksView)
     {
@@ -181,7 +181,7 @@ public class SupplyBooksController extends Controller //ok
     }
 
     public SupplyBooksController(){
-        new ArrayList<>();
+        books = new ArrayList<>();
     }
     public ArrayList<Book> addBooks(){
         for (int i = 0;i<CategoryController.getCategories().size();i++)
