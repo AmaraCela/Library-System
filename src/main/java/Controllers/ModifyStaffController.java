@@ -41,7 +41,6 @@ public class ModifyStaffController extends Controller //ok
                 this.modifyStaffView.getUsernameErrorLabel().setVisible(true);
                 if(this.modifyStaffView.getChoice()==1)
                 {
-
                     this.modifyStaffView.getTableView().getItems().clear();
                     this.modifyStaffView.getTableView().getItems().addAll(RegisterStaffController.getLibrarians());
                 }

@@ -2,6 +2,7 @@ package controllerTest;
 
 import Auxilaries.IllegalSalaryException;
 import Controllers.RegisterStaffController;
+import models.Administrator;
 import models.Librarian;
 import models.Manager;
 import models.Person;
@@ -11,7 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,6 +33,7 @@ public class RegisterStaffControllerTest {
         file.delete();
         file = new File("TestFiles//usernames.txt");
         file.delete();
+        RegisterStaffController.readFromFile();
     }
 
     //equivalence class testing
@@ -44,7 +47,7 @@ public class RegisterStaffControllerTest {
     void test_validateUsernameAlreadyPresent()
     {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
-        RegisterStaffController.AddPersonAccount(person);
+//        RegisterStaffController.AddPersonAccount(person);
         assertFalse(RegisterStaffController.validateUsername("u"));
     }
 
@@ -52,7 +55,7 @@ public class RegisterStaffControllerTest {
     void test_validateUsernameNotPresent()
     {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
-        RegisterStaffController.AddPersonAccount(person);
+//        RegisterStaffController.AddPersonAccount(person);
         assertTrue(RegisterStaffController.validateUsername("amara"));
     }
 
@@ -60,7 +63,7 @@ public class RegisterStaffControllerTest {
     void test_validateUsernameNull()
     {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
-        RegisterStaffController.AddPersonAccount(person);
+//        RegisterStaffController.AddPersonAccount(person);
         assertFalse(RegisterStaffController.validateUsername(null));
     }
 
@@ -247,6 +250,7 @@ public class RegisterStaffControllerTest {
     void test_getLibrarians()
     {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        person = new Manager("n","s","e","b","u","p",1,"pno");
         assertEquals(List.of(person),RegisterStaffController.getLibrarians());
     }
 
@@ -254,17 +258,73 @@ public class RegisterStaffControllerTest {
     void test_getManagers()
     {
         Person person = new Manager("n","s","e","b","u","p",1,"pno");
+        person = new Librarian("n","s","e","b","u","p",1,"pno");
         assertEquals(List.of(person),RegisterStaffController.getManagers());
     }
 
     @Test
-    void test_writeToBinaryFile()
+    void test_writeToBinaryFileNoExceptions()
     {
         Person person = new Manager("n","s","e","b","u","p",1,"pno");
-//        RegisterStaffController.writeToBinaryFile(person);
         RegisterStaffController.readFromFile();
         assertEquals(List.of(person),RegisterStaffController.getAccounts());
     }
 
+    @Test
+    void test_writeToBinaryFileFileNotFound()
+    {
+        registerStaffController = new RegisterStaffController(new File("TestFilessss//personnel.dat"),new File("TestFiles//usernames.txt"),1);
+        new Manager("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.readFromFile();
+        assertEquals(new ArrayList<>(),RegisterStaffController.getAccounts());
+    }
+
+    @Test
+    void test_writeToTextFile()
+    {
+        new Librarian("n","s","e","b","u","p",1,"pno");
+        new Manager("n","s","e","b","u","p",1,"pno");
+        new Administrator("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.writeToTextFile();
+    }
+
+    @Test
+    void test_writeToTextFileNotFound()
+    {
+        registerStaffController = new RegisterStaffController(new File("TestFiles//personnel.dat"), new File("TestFilesss//usernames.txt"),1);
+        new Librarian("n","s","e","b","u","p",1,"pno");
+    }
+
+    @Test
+    void test_updateBinaryFileEmpty()
+    {
+        RegisterStaffController.updateBinaryFile();
+        assertEquals(new ArrayList<Person>(),RegisterStaffController.getAccounts());
+
+    }
+
+    @Test
+    void test_updateBinaryFile()
+    {
+        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.updateBinaryFile();
+        assertEquals(List.of(person),RegisterStaffController.getAccounts());
+    }
+
+    @Test
+    void test_updateBinaryFileNotFound()
+    {
+        registerStaffController = new RegisterStaffController(new File("TestFilesss//personnel.dat"), new File("TestFiles//usernames.txt"),1);
+        RegisterStaffController.updateBinaryFile();
+    }
+
+    @Test
+    void test_getEmployeesCost()
+    {
+        assertEquals(0, RegisterStaffController.getEmployeesCost());
+
+        new Librarian("n","s","e","b","u","p",100,"pno");
+        assertEquals(100.0, RegisterStaffController.getEmployeesCost(),0.1);
+    }
 
 }
