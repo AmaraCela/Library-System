@@ -19,10 +19,6 @@ public class SupplyBooksController extends Controller //ok
     {
         books= new ArrayList<>();
         this.supplyBooksView = supplyBooksView;
-//        for (int i = 0;i<CategoryController.getCategories().size();i++)
-//        {
-//            books.addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
-//        }
         addBooks();
         this.supplyBooksView.getAdministratorPageBt().setOnAction(e->
         {

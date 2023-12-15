@@ -33,16 +33,10 @@ public class Category implements Serializable {
         booksOfCategory.clear();
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(booksOfCategoryBinaryFile)) )
         {
-//            int count = -1000000000;
-//            do {
             while(true){
                 Book book = (Book)inputStream.readObject();
-//                booksOfCategory.add((Book) inputStream.readObject());
                 booksOfCategory.add(book);
                 System.out.println();
-//                count++;
-
-//            } while (count <= 999999999);
         }}
         catch (EOFException e)
         {
@@ -179,12 +173,13 @@ public class Category implements Serializable {
     public File getBooksOfCategoryBinaryFile() {
         return booksOfCategoryBinaryFile;
     }
-    public void updateBooksOfCategory(int index, Book book){
+    public ArrayList<Book> updateBooksOfCategory(int index, Book book){
         for(int i=0; i<booksOfCategory.size(); i++){
             if(index == i){
                 booksOfCategory.set(i,book);
             }
         }
+        return booksOfCategory;
     }
 
 }
