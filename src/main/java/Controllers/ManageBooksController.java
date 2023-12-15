@@ -1,9 +1,14 @@
 package Controllers;
 
-import Views.*;
+import Views.CheckOutView;
+import Views.LibrarianView;
+import Views.ManageBooksView;
+import Views.ManagerView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.*;
+
+import java.util.List;
 
 public class ManageBooksController extends Controller //ok
 {
@@ -67,7 +72,7 @@ public class ManageBooksController extends Controller //ok
         this.manageBooksView.getDeleteBt().setOnAction(e->
         {
 
-            ObservableList<Book> selectedBooks = this.manageBooksView.getTableView().getSelectionModel().getSelectedItems();
+            List<Book> selectedBooks = this.manageBooksView.getTableView().getSelectionModel().getSelectedItems();
 
             for (int i=0;i<selectedBooks.size();i++)
             {
@@ -107,5 +112,14 @@ public class ManageBooksController extends Controller //ok
             this.goBack(manageBooksView,person);
         });
     }
+
+//    public List<Book> removeBooks(List<Book> selectedBooks, Category category){
+//        for (int i=0;i<selectedBooks.size();i++)
+//        {
+//            selectedBooks.get(i).getCategory().getBooksOfCategory().remove(selectedBooks.get(i));
+//            selectedBooks.get(i).getCategory().updateBinaryFile();
+//        }
+//        return category.readBooks();
+//    }
 
 }
