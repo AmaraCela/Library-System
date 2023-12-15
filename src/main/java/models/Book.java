@@ -22,9 +22,10 @@ public class Book implements Serializable {
     private String categoryName;
 
     private static double totalCost;
-    private String costFileName = "cost.txt";
+    private static String costFileName = "cost.txt";
 
     public Book(String ISBN, String title, Category category, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock) {
+        Book.costFileName = "cost.txt";
         this.ISBN = ISBN;
         this.title = title;
         this.supplier = supplier;
@@ -42,7 +43,7 @@ public class Book implements Serializable {
     }
 
     public Book(String ISBN, String title, Category category, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock, String costFileName) {
-        this.costFileName = costFileName;
+        Book.costFileName = costFileName;
         this.ISBN = ISBN;
         this.title = title;
         this.supplier = supplier;
@@ -171,10 +172,11 @@ public class Book implements Serializable {
 
     public static double readFromFile(String filename)
     {
+        totalCost = 0;
         File file = new File(filename);
         try (Scanner scanner = new Scanner(file))
         {
-            totalCost = 0;
+
             totalCost+=scanner.nextDouble();
 
         }
@@ -186,7 +188,7 @@ public class Book implements Serializable {
     }
 
     public static double getTotalCost() {
-        readFromFile("cost.txt");
+        readFromFile(costFileName);
         return totalCost;
     }
 
@@ -203,14 +205,14 @@ public class Book implements Serializable {
         Book book = (Book) obj;
         return (
                 this.ISBN.equals(book.getISBN())
-                && this.title.equals(book.getTitle())
-                && this.category.equals(book.getCategory())
-                && this.supplier.equals(book.getSupplier())
-                && this.purchasedPrice == book.getPurchasedPrice()
-                && this.originalPrice == book.getOriginalPrice()
-                && this.sellingPrice == book.getSellingPrice()
-                && this.stock == book.getStock()
-                && this.author.equals(book.getAuthor())
-                );
+                        && this.title.equals(book.getTitle())
+                        && this.category.equals(book.getCategory())
+                        && this.supplier.equals(book.getSupplier())
+                        && this.purchasedPrice == book.getPurchasedPrice()
+                        && this.originalPrice == book.getOriginalPrice()
+                        && this.sellingPrice == book.getSellingPrice()
+                        && this.stock == book.getStock()
+                        && this.author.equals(book.getAuthor())
+        );
     }
 }

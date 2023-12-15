@@ -3,9 +3,11 @@ package modelsTest;
 import models.Bill;
 import models.Book;
 import models.Category;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,6 +28,16 @@ class BillTest {
 
     }
 
+    @AfterEach
+    void tearDown()
+    {
+        File file = new File("TestFiles//revenues.txt");
+        file.delete();
+        file = new File("TestFiles//bill.txt");
+        file.delete();
+        Bill.readRevenues("TestFiles//revenues.txt");
+    }
+
     @Test
     void test_calculateTotal()
     {
@@ -44,8 +56,16 @@ class BillTest {
     @Test
     void test_writeRevenueToFile()
     {
+        bill.CalculateTotal();
         bill.writeRevenueToFile();
         assertEquals(15.0,Bill.readRevenues("TestFiles//revenues.txt"),0.1);
+    }
+
+    @Test
+    void test_writeRevenueToFileNotFound()
+    {
+        bill = new Bill(null,null,"TestFilesssss//bill.txt","TestFilessss//revenues.txt");
+        bill.writeRevenueToFile();
     }
 
     @Test

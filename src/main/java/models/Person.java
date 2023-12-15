@@ -154,5 +154,10 @@ public abstract class Person implements Serializable {
         }
         return false;
     }
+
+    public static void setEmployeeCost(double cost)
+    {
+        Person.employeeCost = cost;
+    }
 }
 

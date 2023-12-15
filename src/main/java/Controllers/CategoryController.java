@@ -198,11 +198,12 @@ public class CategoryController extends Controller //ok
         String categoryName = this.categoryView.getCategoryTf().getText();
         if(handleCategory(categoryName))
         {
+            Category category = new Category(categoryName);
+            addCategory(category);
             this.categoryView.getSuccessfulLabel().setVisible(true);
             this.categoryView.getCategoryTableView().getItems().clear();
             this.categoryView.getCategoryTableView().getItems().addAll(FXCollections.observableList(categories));
-            Category category = new Category(categoryName);
-            addCategory(category);
+
         }
         else
         {
@@ -211,7 +212,7 @@ public class CategoryController extends Controller //ok
 
         return this.categoryView.getCategoryTableView().getItems();
     }
-//    List<Category> categoryList = new ArrayList<>();
+    //    List<Category> categoryList = new ArrayList<>();
     public List<Category> addCategories(Category category){
         categories.clear();
         categories.add(category);

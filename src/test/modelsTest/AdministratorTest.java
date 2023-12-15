@@ -2,6 +2,7 @@ package modelsTest;
 
 import models.Administrator;
 import models.Person;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,14 +11,19 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AdministratorTest {
-    
+
     Person administrator;
     @BeforeEach
     void setUp()
     {
         administrator = new Administrator("n","s","e","b","u","p",100,"pno");
     }
-    
+
+    @AfterEach
+    void tearDown()
+    {
+        Person.setEmployeeCost(0);
+    }
     @ParameterizedTest
     @CsvSource({
             "n",
@@ -107,7 +113,7 @@ public class AdministratorTest {
         administrator.setPhoneNo(pno);
         assertEquals(pno, administrator.getPhoneNo());
     }
-    
+
     @Test
     void test_personnelData()
     {
@@ -119,5 +125,5 @@ public class AdministratorTest {
     {
         assertEquals(Person.getEmployeeCost(),100.0);
     }
-    
+
 }
