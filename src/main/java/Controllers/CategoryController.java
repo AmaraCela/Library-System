@@ -70,10 +70,6 @@ public class CategoryController extends Controller //ok
             }
             outputStream.close();
         }
-        catch (NotSerializableException e)
-        {
-            System.out.println("Category not serializable");
-        }
         catch (IOException e)
         {
             System.out.println("IOException in writing categories");
@@ -112,11 +108,14 @@ public class CategoryController extends Controller //ok
         categories.clear();
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(binaryFile)))
         {
-            int count = -1000000000;
-            Category category = (Category) inputStream.readObject();
-            categories.add(category);
-            category.readBooks();
-            count++;
+            int count = 0;
+            while (count<100000000)
+            {
+                Category category = (Category) inputStream.readObject();
+                categories.add(category);
+                category.readBooks();
+                count++;
+            }
         }
         catch (EOFException e)
         {
@@ -151,10 +150,6 @@ public class CategoryController extends Controller //ok
             outputStream.writeObject(category);
 
             outputStream.close();
-        }
-        catch (NotSerializableException e)
-        {
-            System.out.println("Not serializable category");
         }
         catch (FileNotFoundException e)
         {

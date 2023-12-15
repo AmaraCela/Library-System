@@ -19,6 +19,7 @@ public class CategoryControllerTest {
     {
         File file = new File("TestFiles//fiction.dat");
         file.delete();
+        CategoryController.updateCategories();
     }
 
     @Test
@@ -78,13 +79,27 @@ public class CategoryControllerTest {
     }
 
 
+
     @Test
     void test_writeCategoryToBinaryFile()
     {
         Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
+        new CategoryController(new File("TestFiles//fiction.dat"));
         CategoryController.writeCategoryToBinaryFile(category);
         CategoryController.updateCategories();
-        assertEquals(List.of(category),CategoryController.getCategories());
+        Category category1 = new Category("Science","TestFiles//scienceBooks.dat");
+        CategoryController.writeCategoryToBinaryFile(category1);
+        CategoryController.updateCategories();
+        assertEquals(List.of(category, category1),CategoryController.getCategories());
+
+    }
+
+    @Test
+    void test_writeCategoryToBinaryFileNotFound()
+    {
+        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
+        new CategoryController(new File("TestFilessss//fiction.dat"));
+        CategoryController.writeCategoryToBinaryFile(category);
     }
 
     //equivalence class testing
@@ -123,4 +138,20 @@ public class CategoryControllerTest {
         assertEquals(new Category("Fiction","TestFiles//fictionBooks.dat"),CategoryController.getCategory("Fiction"));
     }
 
+    @Test
+    void test_updateCategoriesEmptyFile()
+    {
+        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
+        CategoryController.updateCategories();
+        assertEquals(new ArrayList<Category>(),CategoryController.getCategories());
+    }
+
+    @Test
+    void test_updateCategories()
+    {
+        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
+        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
+        categoryController.addCategories(category);
+        assertEquals(List.of(category),CategoryController.getCategories());
+    }
 }
