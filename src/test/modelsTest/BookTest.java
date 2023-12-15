@@ -2,12 +2,16 @@ package modelsTest;
 
 import models.Book;
 import models.Category;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.io.File;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BookTest {
     Book book;
@@ -18,6 +22,16 @@ public class BookTest {
         book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
     }
 
+    @AfterEach
+    void tearDown()
+    {
+        File file = new File("TestFiles//fictionBooks.dat");
+        file.delete();
+        file = new File("TestFiles//cost.txt");
+        file.delete();
+        Book.readFromFile("TestFiles//cost.txt");
+
+    }
     @ParameterizedTest
     @CsvSource({
             "1",
@@ -168,6 +182,12 @@ public class BookTest {
 //        assertThrows(FileNotFoundException.class,()->Book.writeToFile("TestFilessss/cost.txt"));
     }
 
+    @Test
+    void writeToEmptyFile()
+    {
+        Book.writeToFile("TestFilesss/cost.txt");
+    }
+
 //    @Test
 //    void test_getTotalCost()
 //    {
@@ -185,5 +205,30 @@ public class BookTest {
         book.setCostFileName(name);
         assertEquals(name, book.getCostFileName());
     }
+
+    @Test
+    void test_getTotalCost()
+    {
+        assertEquals(100.0, Book.getTotalCost(),0.1);
+        new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+        assertEquals(200.0,Book.getTotalCost(),0.1);
+
+    }
+
+
+    @Test
+    void test_equals()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+        assertEquals(book,book1);
+    }
+
+    @Test
+    void test_equalsFalse()
+    {
+        Book book1 = new Book("11","t11",new Category("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
 
 }
