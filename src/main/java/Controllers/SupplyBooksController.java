@@ -12,17 +12,18 @@ import java.util.Objects;
 
 public class SupplyBooksController extends Controller //ok
 {
-    private final SupplyBooksView supplyBooksView;
-    private ArrayList<Book> books;
+    private SupplyBooksView supplyBooksView;
+    private ArrayList<Book> books = new ArrayList<>();
 
     public SupplyBooksController(Person administrator, SupplyBooksView supplyBooksView)
     {
         books= new ArrayList<>();
         this.supplyBooksView = supplyBooksView;
-        for (int i = 0;i<CategoryController.getCategories().size();i++)
-        {
-            books.addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
-        }
+//        for (int i = 0;i<CategoryController.getCategories().size();i++)
+//        {
+//            books.addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
+//        }
+        addBooks();
         this.supplyBooksView.getAdministratorPageBt().setOnAction(e->
         {
             this.goBack(supplyBooksView,administrator);
@@ -179,6 +180,16 @@ public class SupplyBooksController extends Controller //ok
 
     }
 
+    public SupplyBooksController(){
+        new ArrayList<>();
+    }
+    public ArrayList<Book> addBooks(){
+        for (int i = 0;i<CategoryController.getCategories().size();i++)
+        {
+            books.addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
+        }
+        return books;
+    }
     public boolean validateISBN (String ISBN)
     {
         if(ISBN.length() == 0)
@@ -278,10 +289,10 @@ public class SupplyBooksController extends Controller //ok
         return true;
     }
 
-    public void supply(String ISBN, String title, String categoryName, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock)
-    {
+    public ArrayList<Book> supply(String ISBN, String title, String categoryName, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock) {
         Book book = new Book(ISBN,title, Objects.requireNonNull(CategoryController.getCategory(categoryName)),supplier,purchasedPrice,originalPrice,sellingPrice,author,stock);
         books.add(book);
+        return books;
     }
 
 }

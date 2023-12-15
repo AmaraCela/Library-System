@@ -1,0 +1,5 @@
+Bill NO.4
+ISBN		Title		Price		Quantity
+i		t		15.0		1
+
+Date:Fri Dec 15 15:25:03 CET 2023	Total is:0.0
