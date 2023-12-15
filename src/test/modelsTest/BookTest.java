@@ -224,9 +224,70 @@ public class BookTest {
     }
 
     @Test
-    void test_equalsFalse()
+    void test_equalsFalseISBN()
     {
         Book book1 = new Book("11","t11",new Category("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_equalsFalseTitle()
+    {
+        Book book1 = new Book("1","t11",new Category("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+    @Test
+    void test_equalsFalseCategory()
+    {
+        Book book1 = new Book("1","t1",new Category("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_equalsFalseSupplier()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_equalsFalsePurchasedPrice()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s1",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+    @Test
+    void test_equalsFalseOriginalPrice()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s1",10,150,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_equalsFalseSellingPrice()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,150,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_equalsFalseAuthor()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a11",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_equalsFalseStock()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",100,"TestFiles//cost1.txt");
+        assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_equalsFalseCostFileName()
+    {
+        Book book1 = new Book("1","t1",new Category("Fiction","TestFiles//fictionBooks.dat"),"s11",10,15,15,"a1",10,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
