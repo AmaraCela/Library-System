@@ -14,19 +14,19 @@ public class CheckOutControllerTest {
 
     static Category category;
     static List<Book> books;
-    CheckOutController checkOutController;
+    static CheckOutController checkOutController;
     ArrayList<Integer> quantity;
     static Person admin;
-    static Bill bill;
     @BeforeAll
     static void setUp(){
-        category = new Category("Fantasy", "TestFiles//FantasyBooks.dat");
         admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
-}
+        checkOutController = new CheckOutController();
+
+    }
 
     @BeforeEach
     void setUpComponents(){
-        checkOutController = new CheckOutController();
+        category = new Category("Fantasy", "TestFiles//FantasyBooks.dat");
         Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
         Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
         books = List.of(book1,book2);
