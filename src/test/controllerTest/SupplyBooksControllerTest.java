@@ -14,36 +14,34 @@ import java.util.List;
 public class SupplyBooksControllerTest {
 
     CategoryController category;
-    static SupplyBooksController supplyBooksController;
+    SupplyBooksController supplyBooksController;
     Category category1;
     Category category2;
     Book book1;
     Book book2;
 
-    @BeforeAll
-    static void setUp(){
-        supplyBooksController = new SupplyBooksController();
-    }
     @BeforeEach
-    void setUpComponents(){
-        category1 = new Category("Fiction","TestFiles//FictionBooks.dat");
+    void setUpComponents() {
+        supplyBooksController = new SupplyBooksController();
+        category1 = new Category("Fiction", "TestFiles//FictionBooks.dat");
         category2 = new Category("Drama", "TestFiles//DramaBooks.dat");
-        book1 = new Book("1111","Book1",category1,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
-        book2 = new Book("2222","Book2",category2,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
+        book1 = new Book("1111", "Book1", category1, "supplier", 10, 15, 15, "a", 3, "TestFiles//cost.txt");
+        book2 = new Book("2222", "Book2", category2, "supplier", 10, 15, 15, "a", 4, "TestFiles//cost.txt");
         category = new CategoryController(new File("TestFiles//categoryController.dat"));
         category.addCategories(category1);
         category.addCategories(category2);
     }
 
     @AfterEach
-    void dropDown(){
+    void dropDown() {
         category1.getBooksOfCategoryBinaryFile().delete();
         category2.getBooksOfCategoryBinaryFile().delete();
         category.getBinaryFile().delete();
     }
+
     @Test
-    void test_addBooks(){
-        Assertions.assertEquals(List.of(book1,book2), supplyBooksController.addBooks());
+    void test_addBooks() {
+        Assertions.assertEquals(List.of(book1, book2), supplyBooksController.addBooks());
     }
 
     @ParameterizedTest
@@ -51,10 +49,11 @@ public class SupplyBooksControllerTest {
             "1142",
             "2444"
     })
-    void test_validateValidISBN(String ISBN){
+    void test_validateValidISBN(String ISBN) {
         supplyBooksController.addBooks();
         Assertions.assertTrue(supplyBooksController.validateISBN(ISBN));
     }
+
 
     @ParameterizedTest
     @CsvSource({
@@ -62,7 +61,7 @@ public class SupplyBooksControllerTest {
             "2222",
             "''"
     })
-    void test_validateInvalidISBN(String ISBN){
+    void test_validateInvalidISBN(String ISBN) {
         supplyBooksController.addBooks();
         Assertions.assertFalse(supplyBooksController.validateISBN(ISBN));
     }
@@ -72,17 +71,18 @@ public class SupplyBooksControllerTest {
             "input1i",
             "input2input2input2"
     })
-    void test_validateValidTitleAndSupplier(String input){
+    void test_validateValidTitleAndSupplier(String input) {
         supplyBooksController.addBooks();
         Assertions.assertTrue(supplyBooksController.validateTitle(input));
         Assertions.assertTrue(supplyBooksController.validateSupplier(input));
     }
+
     @ParameterizedTest
     @CsvSource({
             "Book1Book1habgoowurito3bfyrks93nfosmfu2900",
             "''"
     })
-    void test_validateInvalidTitleAndSupplier(String input){
+    void test_validateInvalidTitleAndSupplier(String input) {
         supplyBooksController.addBooks();
         Assertions.assertFalse(supplyBooksController.validateTitle(input));
         Assertions.assertFalse(supplyBooksController.validateSupplier(input));
@@ -94,7 +94,7 @@ public class SupplyBooksControllerTest {
             "16.33",
             "0"
     })
-    void test_validateValidPrices(double price){
+    void test_validateValidPrices(double price) {
         Assertions.assertTrue(supplyBooksController.validatePurchasePrice(price));
         Assertions.assertTrue(supplyBooksController.validateOriginalPrice(price));
         Assertions.assertTrue(supplyBooksController.validateSellingPrice(price));
@@ -105,7 +105,7 @@ public class SupplyBooksControllerTest {
             "-1",
             "-21.1"
     })
-    void test_validateInvalidPrices(double price){
+    void test_validateInvalidPrices(double price) {
         Assertions.assertFalse(supplyBooksController.validatePurchasePrice(price));
         Assertions.assertFalse(supplyBooksController.validateOriginalPrice(price));
         Assertions.assertFalse(supplyBooksController.validateSellingPrice(price));
@@ -117,16 +117,17 @@ public class SupplyBooksControllerTest {
             "12",
             "21"
     })
-    void test_validateValidStock(int stock){
+    void test_validateValidStock(int stock) {
         Assertions.assertTrue(supplyBooksController.validateStock(stock));
     }
+
     @ParameterizedTest
     @CsvSource({
             "0",
             "-1",
             "-2"
     })
-    void test_validateInvalidStock(int stock){
+    void test_validateInvalidStock(int stock) {
         Assertions.assertFalse(supplyBooksController.validateStock(stock));
     }
 
@@ -136,12 +137,12 @@ public class SupplyBooksControllerTest {
             "author",
             "a"
     })
-    void test_validateValidAuthor(String author){
+    void test_validateValidAuthor(String author) {
         Assertions.assertTrue(supplyBooksController.validateAuthor(author));
     }
 
     @Test
-    void test_validateInvalidAuthor(){
+    void test_validateInvalidAuthor() {
         Assertions.assertFalse(supplyBooksController.validateAuthor(""));
     }
 
@@ -151,18 +152,17 @@ public class SupplyBooksControllerTest {
             "Drama",
             "Romance"
     })
-    void test_validateValidCategory(String categoryName){
+    void test_validateValidCategory(String categoryName) {
         supplyBooksController.addBooks();
         Assertions.assertTrue(supplyBooksController.validateCategory(categoryName));
     }
 
     @Test
-    void test_validateInvalidCategory(){
+    void test_validateInvalidCategory() {
         supplyBooksController.addBooks();
         Assertions.assertFalse(supplyBooksController.validateCategory(""));
         Assertions.assertFalse(supplyBooksController.validateCategory(null));
     }
-
     @Test
     void test_supply(){
         supplyBooksController.addBooks();

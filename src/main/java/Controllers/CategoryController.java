@@ -44,6 +44,7 @@ public class CategoryController extends Controller //ok
         });
     }
     public CategoryController(File binaryFile){
+        categories = new ArrayList<>();
         CategoryController.binaryFile = binaryFile;
     }
 
