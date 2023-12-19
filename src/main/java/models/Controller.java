@@ -4,15 +4,17 @@ import Controllers.*;
 import Views.*;
 import javafx.scene.layout.BorderPane;
 
+import java.util.Objects;
+
 public abstract class Controller {
     public Controller goBack(BorderPane currentView, Person person)
     {
-        if(currentView instanceof AdministratorView)
+        if(Objects.requireNonNull(currentView) instanceof AdministratorView)
         {
             LogInView logInView=new LogInView(((AdministratorView) currentView).getStage());
             return new LogInController(logInView);
         }
-        else if(currentView instanceof CheckOutView)
+        else if(Objects.requireNonNull(currentView) instanceof CheckOutView)
         {
             ManageBooksView manageBooksView ;
             if (person instanceof Librarian) {
@@ -25,17 +27,17 @@ public abstract class Controller {
 
             return new ManageBooksController(person, manageBooksView);
         }
-        else if(currentView instanceof DeleteStaffView)
+        else if(Objects.requireNonNull(currentView) instanceof DeleteStaffView)
         {
             AdministratorView administratorView = new AdministratorView(((DeleteStaffView)currentView).getStage());
             return new AdministratorController(person,administratorView);
         }
-        else if(currentView instanceof IncomesView)
+        else if(Objects.requireNonNull(currentView) instanceof IncomesView)
         {
             ManagerView managerView = new ManagerView(((IncomesView)currentView).getStage());
             return new ManagerController(person,managerView);
         }
-        else if(currentView instanceof ManageBooksView)
+        else if(Objects.requireNonNull(currentView) instanceof ManageBooksView)
         {
             if (person instanceof Administrator)
             {
@@ -53,7 +55,7 @@ public abstract class Controller {
                 return new LibrarianController(person,librarianView);
             }
         }
-        else if(currentView instanceof ModifyStaffView)
+        else if(Objects.requireNonNull(currentView) instanceof ModifyStaffView)
         {
             AdministratorView administratorView = new AdministratorView(((ModifyStaffView)currentView).getStage());
             return new AdministratorController(person,administratorView);
