@@ -188,6 +188,8 @@ public class Book implements Serializable {
 
     @Override
     public boolean equals(Object obj){
+        if(obj instanceof Book)
+        {
         Book book = (Book) obj;
         return (
                 this.ISBN.equals(book.getISBN())
@@ -199,6 +201,7 @@ public class Book implements Serializable {
                         && this.sellingPrice == book.getSellingPrice()
                         && this.stock == book.getStock()
                         && this.author.equals(book.getAuthor())
-        );
+        );}
+        return false;
     }
 }

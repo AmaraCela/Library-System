@@ -128,33 +128,27 @@ public abstract class Person implements Serializable {
     @Override
     public boolean equals(Object obj)
     {
-        Person person = (Person) obj;
-        if(Objects.equals(this.name, ((Person) obj).getName()))
-        {
-            if(Objects.equals(this.surname, ((Person) obj).getSurname()))
-            {
-                if(Objects.equals(this.email, ((Person) obj).getEmail()))
-                {
-                    if(Objects.equals(this.birthday, ((Person) obj).getBirthday()))
-                    {
-                        if(Objects.equals(this.phoneNo, ((Person) obj).getPhoneNo()))
-                        {
-                            if (Objects.equals(this.username, ((Person) obj).getUsername()))
-                            {
-                                if (Objects.equals(this.password, ((Person) obj).getPassword()))
-                                {
-                                    if (Objects.equals(this.salary,((Person) obj).getSalary()))
-                                    {
-                                        return true;
-                                    }
+        if(obj instanceof Person) {
+            if (Objects.equals(this.name, ((Person) obj).getName())) {
+                if (Objects.equals(this.surname, ((Person) obj).getSurname())) {
+                    if (Objects.equals(this.email, ((Person) obj).getEmail())) {
+                        if (Objects.equals(this.birthday, ((Person) obj).getBirthday())) {
+                            if (Objects.equals(this.phoneNo, ((Person) obj).getPhoneNo())) {
+                                if (Objects.equals(this.username, ((Person) obj).getUsername())) {
+                                    if (Objects.equals(this.password, ((Person) obj).getPassword())) {
+                                        if (Objects.equals(this.salary, ((Person) obj).getSalary())) {
+                                            return true;
+                                        }
 
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
 
+            }
+            return false;
         }
         return false;
     }
