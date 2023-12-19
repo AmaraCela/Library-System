@@ -1,9 +1,7 @@
 package models;
 
 import java.io.*;
-import java.util.Date;
 import java.util.Scanner;
-import java.io.Serializable;
 
 public class Book implements Serializable {
     @Serial
@@ -12,8 +10,6 @@ public class Book implements Serializable {
     private String title;
     private Category category;
     private String supplier;
-
-    private Date purchasedDate;
     private double purchasedPrice;
     private double originalPrice;
     private double sellingPrice;
@@ -36,7 +32,6 @@ public class Book implements Serializable {
         this.stock = stock;
         this.category = category;
         this.categoryName = category.getCategoryName();
-        category.addBookToCategory(this);
         readFromFile(costFileName);
         totalCost+=this.purchasedPrice*this.stock;
         writeToFile(costFileName);
@@ -54,7 +49,6 @@ public class Book implements Serializable {
         this.stock = stock;
         this.category = category;
         this.categoryName = category.getCategoryName();
-        category.addBookToCategory(this);
         readFromFile(costFileName);
         totalCost+=this.purchasedPrice*this.stock;
         writeToFile(costFileName);
@@ -92,13 +86,6 @@ public class Book implements Serializable {
         this.supplier = supplier;
     }
 
-    public Date getPurchasedDate() {
-        return purchasedDate;
-    }
-
-    public void setPurchasedDate(Date purchasedDate) {
-        this.purchasedDate = purchasedDate;
-    }
 
     public double getPurchasedPrice() {
         return purchasedPrice;
@@ -169,7 +156,6 @@ public class Book implements Serializable {
 
         }
     }
-
     public static double readFromFile(String filename)
     {
         totalCost = 0;

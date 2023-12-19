@@ -27,6 +27,8 @@ public class SupplyBooksControllerTest {
         category2 = new Category("Drama", "TestFiles//DramaBooks.dat");
         book1 = new Book("1111", "Book1", category1, "supplier", 10, 15, 15, "a", 3, "TestFiles//cost.txt");
         book2 = new Book("2222", "Book2", category2, "supplier", 10, 15, 15, "a", 4, "TestFiles//cost.txt");
+        category1.addBookToCategory(book1);
+        category2.addBookToCategory(book2);
         category = new CategoryController(new File("TestFiles//categoryController.dat"));
         category.addCategories(category1);
         category.addCategories(category2);
@@ -167,6 +169,7 @@ public class SupplyBooksControllerTest {
     void test_supply(){
         supplyBooksController.addBooks();
         Book book3 = new Book("3333","Book3",category2,"s",100.32,213.3,123.1,"a",1);
+        category2.addBookToCategory(book3);
         Assertions.assertEquals(List.of(book1,book2,book3),supplyBooksController.supply("3333","Book3",category2.getCategoryName(),"s",100.32,213.3,123.1,"a",1));
     }
 }

@@ -10,9 +10,9 @@ public class Category implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 7618221196278240693L;
-    private File booksOfCategoryBinaryFile;
+    private final File booksOfCategoryBinaryFile;
     private String categoryName;
-    private ArrayList<Book> booksOfCategory = new ArrayList<>();
+    private final ArrayList<Book> booksOfCategory = new ArrayList<>();
 
 
     public Category(String categoryName, String booksOfCategoryBinaryFileName) {
@@ -24,20 +24,22 @@ public class Category implements Serializable {
         this.booksOfCategoryBinaryFile = new File(this.categoryName+"Books.data");
     }
 
-//    public Category(String categoryName){
-//        this.categoryName = categoryName;
-//    }
-
     //reads the books of the category
     public ArrayList<Book> readBooks() {
         booksOfCategory.clear();
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(booksOfCategoryBinaryFile)) )
         {
-            while(true){
+            int count = -1000000000;
+            do {
+//            while(true){
                 Book book = (Book)inputStream.readObject();
+//                booksOfCategory.add((Book) inputStream.readObject());
                 booksOfCategory.add(book);
-                System.out.println();
-        }}
+                count++;
+
+            } while (count <= 999999999);
+//        }
+    }
         catch (EOFException e)
         {
             System.out.println("End of file exception in reading categories");
@@ -45,12 +47,6 @@ public class Category implements Serializable {
         catch (ClassNotFoundException e)
         {
             System.out.println("Class not found in reading categories");
-        }
-
-        catch (FileNotFoundException e)
-        {
-            System.out.println("File not found in reading categories");
-
         }
         catch (IOException e)
         {
@@ -66,6 +62,7 @@ public class Category implements Serializable {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
 
     public void addBookToCategory(Book book)
     {
@@ -101,10 +98,6 @@ public class Category implements Serializable {
             outputStream.writeObject(book);
             outputStream.close();
         }
-        catch (NotSerializableException e)
-        {
-            System.out.println("Book not serializable");
-        }
         catch (IOException e) {
             System.out.println("IOException in writing books");
         }
@@ -129,14 +122,6 @@ public class Category implements Serializable {
 
             outputStream.close();
         }
-        catch (NotSerializableException e)
-        {
-            System.out.println("Not serializable");
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println("File not found in writing books");
-        }
         catch (IOException e)
         {
             System.out.println("IOException in writing books");
@@ -158,10 +143,6 @@ public class Category implements Serializable {
     }
 
 
-//    public void setBooksOfCategory(ArrayList<Book> booksOfCategory) {
-//        this.booksOfCategory = booksOfCategory;
-//    }
-
     @Override
     public boolean equals(Object obj){
         if(obj instanceof Category){
@@ -173,13 +154,12 @@ public class Category implements Serializable {
     public File getBooksOfCategoryBinaryFile() {
         return booksOfCategoryBinaryFile;
     }
-    public ArrayList<Book> updateBooksOfCategory(int index, Book book){
+    public void updateBooksOfCategory(int index, Book book){
         for(int i=0; i<booksOfCategory.size(); i++){
             if(index == i){
                 booksOfCategory.set(i,book);
             }
         }
-        return booksOfCategory;
     }
 
 }

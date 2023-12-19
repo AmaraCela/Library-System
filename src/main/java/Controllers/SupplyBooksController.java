@@ -287,6 +287,7 @@ public class SupplyBooksController extends Controller //ok
 
     public ArrayList<Book> supply(String ISBN, String title, String categoryName, String supplier,  double purchasedPrice, double originalPrice, double sellingPrice, String author, int stock) {
         Book book = new Book(ISBN,title, Objects.requireNonNull(CategoryController.getCategory(categoryName)),supplier,purchasedPrice,originalPrice,sellingPrice,author,stock);
+        Objects.requireNonNull(CategoryController.getCategory(categoryName)).addBookToCategory(book);
         books.add(book);
         return books;
     }
