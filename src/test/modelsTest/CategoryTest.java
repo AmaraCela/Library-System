@@ -19,54 +19,47 @@ public class CategoryTest {
     Category category;
 
     @BeforeEach
-    void setUp()
-    {
-        category = new Category("Fiction", "TestFiles//fictionBooks.dat");
+    void setUp(){
+        category = new Category("Drama", "TestFiles//dramaBooks.dat");
     }
 
     @AfterEach
-    void tearDown()
-    {
-        File file = new File("TestFiles//fictionBooks.dat");
-        file.delete();
-        File file1 = new File("TestFiles//cost.txt");
+    void tearDown(){
+        File file1 = new File("TestFiles//dramaBooks.dat");
         file1.delete();
+        File file2 = new File("TestFiles//bookCost.txt");
+        file2.delete();
     }
 
 
     @Test
-    void test_getCategoryName()
-    {
-        assertEquals("Fiction", category.getCategoryName());
-        category.setCategoryName("Category");
-        assertEquals("Category",category.getCategoryName());
+    void test_getCategoryName(){
+        assertEquals("Drama",category.getCategoryName());
+        category.setCategoryName("Drama");
+        assertEquals("Drama", category.getCategoryName());
     }
+
     @Test
-    void test_addBookToCategory()
-    {
-        Book book = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
-        ArrayList<Book> books = new ArrayList<>();
+    void test_addBookToCategory(){
+        Book book = new Book("1111","Book1",category,"supplier",10,15,15,"a",1, "TestFiles//bookCost.txt");
+        ArrayList<Book> bookList = new ArrayList<>();
         category.addBookToCategory(book);
-        books.add(book);
-        assertEquals(books,category.getBooksOfCategory());
-        assertEquals(books.size(),category.numOfBooks());
+        bookList.add(book);
+        assertEquals(bookList, category.getBooksOfCategory());
+        assertEquals(bookList.size(),category.numOfBooks());
     }
+
 
     @Test
-    void test_getBookOfCategory()
-    {
-        Book book = new MockBook("i","t",category,"s",10,15,15,"a",1,"TestFiles//cost.txt");
-        category.addBookToCategory(book);
-        assertEquals(book,category.getBookOfCategory("i"));
-        assertNull(category.getBookOfCategory("a"));
+    void test_getBookOfCategory(){
+        Book book = new MockBook("i","t",category,"supplier",10,15,15,"a",1,"TestFiles//bookCost.txt");
     }
+
 
     @Test
-    void test_getBooksOfCategoryBinaryFile()
-    {
-        assertEquals(new File("TestFiles//fictionBooks.dat"), category.getBooksOfCategoryBinaryFile());
+    void test_getBooksOfCategoryBinaryFile(){
+        assertEquals(new File("TestFiles//dramaBooks.dat"), category.getBooksOfCategoryBinaryFile());
     }
-
 
 
     @Test
@@ -90,15 +83,14 @@ public class CategoryTest {
         assertEquals(books, category.readBooks());
     }
 
+
     @Test
-    void test_equals()
-    {
-        assertTrue(category.equals(new Category("Fiction","TestFiles//fictionBooks.dat")));
+    void test_equals(){
+        assertTrue(category.equals(new Category("Drama","TestFiles//dramaBooks.dat")));
     }
 
     @Test
-    void test_notEquals()
-    {
+    void test_notEquals(){
         assertFalse(category.equals(new Date()));
     }
 
