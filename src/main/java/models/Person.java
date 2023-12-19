@@ -143,7 +143,11 @@ public abstract class Person implements Serializable {
                             {
                                 if (Objects.equals(this.password, ((Person) obj).getPassword()))
                                 {
-                                    return true;
+                                    if (Objects.equals(this.salary,((Person) obj).getSalary()))
+                                    {
+                                        return true;
+                                    }
+
                                 }
                             }
                         }

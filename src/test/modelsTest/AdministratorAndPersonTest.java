@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class AdministratorTest {
+public class AdministratorAndPersonTest {
 
     Person administrator;
     @BeforeEach
@@ -125,5 +125,59 @@ public class AdministratorTest {
     {
         assertEquals(Person.getEmployeeCost(),100.0);
     }
+
+    @Test
+    void test_equals()
+    {
+        assertTrue(administrator.equals(new Administrator("n","s","e","b","u","p",100,"pno")));
+
+    }
+
+    @Test
+    void test_differentName()
+    {
+        assertFalse(administrator.equals(new Administrator("n1","s","e","b","u","p",100,"pno")));
+    }
+
+    @Test
+    void test_differentSurname()
+    {
+        assertFalse(administrator.equals(new Administrator("n","s1","e","b","u","p",100,"pno")));
+    }
+
+    @Test
+    void test_differentEmail()
+    {
+        assertFalse(administrator.equals(new Administrator("n","s","e1","b","u","p",100,"pno")));
+    }
+
+    @Test
+    void test_differentBirthday()
+    {
+        assertFalse(administrator.equals(new Administrator("n","s","e","b1","u","p",100,"pno")));
+    }
+
+    @Test
+    void test_differentUsername()
+    {
+        assertFalse(administrator.equals(new Administrator("n","s","e","b","u1","p",100,"pno")));
+    }
+
+    @Test
+    void test_differentPassword()
+    {
+        assertFalse(administrator.equals(new Administrator("n","s","e","b","u","p1",100,"pno")));
+    }
+    @Test
+    void test_differentSalary()
+    {
+        assertFalse(administrator.equals(new Administrator("n","s","e","b","u","p",101,"pno")));
+    }
+    @Test
+    void test_differentPhoneNo()
+    {
+        assertFalse(administrator.equals(new Administrator("n","s","e","b","u","p",100,"pno1")));
+    }
+
 
 }

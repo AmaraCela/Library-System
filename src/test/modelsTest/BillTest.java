@@ -1,5 +1,6 @@
 package modelsTest;
 
+import mockFiles.MockBook;
 import models.Bill;
 import models.Book;
 import models.Category;
@@ -18,7 +19,7 @@ class BillTest {
 
     @BeforeEach
     void setUp() {
-        Book book = new Book("i","t",new Category("C","TestFiles//fictionBooks.dat"),"s",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book = new MockBook("i","t",new Category("C","TestFiles//fictionBooks.dat"),"s",10,15,15,"a",1,"TestFiles//cost.txt");
         ArrayList<Book> books = new ArrayList<>();
         books.add(book);
         ArrayList<Integer> quantities = new ArrayList<>();
