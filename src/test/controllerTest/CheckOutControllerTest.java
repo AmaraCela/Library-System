@@ -20,6 +20,7 @@ public class CheckOutControllerTest {
     @BeforeAll
     static void setUp(){
         admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
+//        admin = new MockManager();
         checkOutController = new CheckOutController();
 
     }

@@ -1,6 +1,5 @@
 package modelsTest;
 
-import mockFiles.MockManager;
 import models.Manager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +12,7 @@ public class ManagerTest {
     Manager manager;
     @BeforeEach
     void setUp(){
-        manager = new MockManager("John","Doe","jdoe21@epoka.edu.al","22/02/2002","johndoe","john1234",345.5,"0678765432");
+        manager = new Manager("John","Doe","jdoe21@epoka.edu.al","22/02/2002","johndoe","john1234",345.5,"0678765432");
     }
     @Test
     void test_isDeleteBooksTrue(){

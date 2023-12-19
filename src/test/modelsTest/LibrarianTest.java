@@ -1,6 +1,5 @@
 package modelsTest;
 
-import mockFiles.MockLibrarian;
 import models.Librarian;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +12,7 @@ public class LibrarianTest {
     Librarian librarian;
     @BeforeEach
     void setUp(){
-        librarian = new MockLibrarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
+        librarian = new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
     }
 
     @ParameterizedTest
