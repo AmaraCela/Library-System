@@ -1,6 +1,5 @@
 package modelsTest;
 
-import mockFiles.MockBook;
 import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
@@ -206,7 +205,7 @@ public class BookTest {
     void test_getTotalCost()
     {
         assertEquals(100.0, Book.getTotalCost(),0.1);
-        new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+        new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
         assertEquals(200.0,Book.getTotalCost(),0.1);
 
     }
@@ -215,75 +214,75 @@ public class BookTest {
     @Test
     void test_equals()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
         assertEquals(book,book1);
     }
 
     @Test
     void test_equalsFalseISBN()
     {
-        Book book1 = new MockBook("11","t11",new MockCategory("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("11","t11",new MockCategory("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
     @Test
     void test_equalsFalseTitle()
     {
-        Book book1 = new MockBook("1","t11",new MockCategory("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t11",new MockCategory("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
     @Test
     void test_equalsFalseCategory()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fictionn","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
     @Test
     void test_equalsFalseSupplier()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s11",100,150,150,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
     @Test
     void test_equalsFalsePurchasedPrice()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",100,150,150,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",100,150,150,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
     @Test
     void test_equalsFalseOriginalPrice()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,150,150,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,150,150,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
     @Test
     void test_equalsFalseSellingPrice()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,150,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,150,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
     @Test
     void test_equalsFalseAuthor()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a11",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a11",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
     @Test
     void test_equalsFalseStock()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",100,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s1",10,15,15,"a1",100,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 
     @Test
     void test_equalsFalseCostFileName()
     {
-        Book book1 = new MockBook("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s11",10,15,15,"a1",10,"TestFiles//cost1.txt");
+        Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s11",10,15,15,"a1",10,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
     }
 

@@ -1,6 +1,7 @@
 package controllerTest;
 
 import Controllers.CategoryController;
+import mockFiles.MockCategory;
 import models.Category;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +20,7 @@ public class CategoryControllerTest {
     @BeforeEach
     void setUp()
     {
-        category = new Category("Fiction","TestFiles//fictionBooks.dat");
+        category = new MockCategory("Fiction","TestFiles//fictionBooks.dat");
         categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
     }
 

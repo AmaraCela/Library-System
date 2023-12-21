@@ -55,4 +55,11 @@ public class MockCategory extends Category {
         return null;
     }
 
+    @Override
+    public String getCategoryName()
+    {
+        return super.getCategoryName();
+    }
+
+
 }

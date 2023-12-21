@@ -17,11 +17,11 @@ public class CheckoutControllerIntegrationTest {
     static List<Book> books;
     static CheckOutController checkOutController;
     ArrayList<Integer> quantity;
-    static Person admin;
+    static Person librarian;
 
     @BeforeAll
     static void setUp(){
-        admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
+        librarian =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
     }
 
     @BeforeEach
@@ -44,6 +44,7 @@ public class CheckoutControllerIntegrationTest {
         file1.delete();
         File file2 = new File("TestFiles//revenues.txt");
         file2.delete();
+
         File file3 = new File("TestFiles//cost.txt");
         file3.delete();
     }
@@ -52,7 +53,10 @@ public class CheckoutControllerIntegrationTest {
         quantity.add(2);
         quantity.add(3);
         Bill bill = new Bill(books,quantity,"TestFiles//bill.txt","TestFiles//revenues.txt");
-        Assertions.assertEquals(admin,checkOutController.librarianCheckOut(admin,bill,quantity));
+        Assertions.assertEquals(5,((Librarian)checkOutController.librarianCheckOut(librarian,bill,quantity)).getNumOfBooksSold());
+        Assertions.assertEquals(2,((Librarian)checkOutController.librarianCheckOut(librarian,bill,quantity)).getNumberOfBills());
+        Assertions.assertEquals(450,((Librarian)checkOutController.librarianCheckOut(librarian,bill,quantity)).getPersonalRevenue(),0.1);
+
     }
 
     @ParameterizedTest

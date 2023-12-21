@@ -1,7 +1,7 @@
 package controllerTest;
 
 import Controllers.DeleteStaffController;
-import models.Librarian;
+import mockFiles.MockLibrarian;
 import models.Person;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ public class DeleteStaffControllerTest {
     @Test
     void test_delete()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         List<Person> list = List.of(person);
         assertEquals(new ArrayList<Person>(),deleteStaffController.delete(list));
     }

@@ -2,6 +2,7 @@ package controllerTest;
 
 import Controllers.AddToStockController;
 import Controllers.CategoryController;
+import mockFiles.MockBook;
 import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
@@ -18,10 +19,11 @@ public class AddToStockTest {
     static Category category;
     static List<Book> books;
     @BeforeAll
+
     static void setUp(){
         category = new MockCategory("Fiction", "TestFiles//DramaBooks.dat");
-        Book book1 = new  Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
-        Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book1 = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book2 = new MockBook("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         category.addBookToCategory(book1);
         category.addBookToCategory(book2);
         books = List.of(book1,book2);
