@@ -18,7 +18,6 @@ public class CheckOutController extends Controller //ok
     public CheckOutController(Person administrator, CheckOutView checkOutView, List<Book> selectedBooks) {
         this.books = selectedBooks;
         this.checkOutView = checkOutView;
-
         if(this.checkOutView.getBooks().size()==0)
         {
             this.checkOutView.getMustSelectLabel().setVisible(true);

@@ -2,6 +2,7 @@ package controllerTest;
 
 import Controllers.AddToStockController;
 import Controllers.CategoryController;
+import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
 import org.junit.jupiter.api.Assertions;
@@ -21,7 +22,7 @@ public class AddToStockTest {
     static List<Book> books;
     @BeforeAll
     static void setUp(){
-        category = new Category("Fiction", "TestFiles//DramaBooks.dat");
+        category = new MockCategory("Fiction", "TestFiles//DramaBooks.dat");
         Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         category.addBookToCategory(book1);
