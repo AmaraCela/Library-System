@@ -15,7 +15,7 @@ public class MockLibrarian extends Librarian {
 //        personalRevenue+=total;
     }
     @Override
-    public void setNumberOfBills(){
+    public void setNumberOfBills(int num){
 //        numberOfBills++;
     }
     public void setNumOfBooksSold(int numOfBooksSold) {

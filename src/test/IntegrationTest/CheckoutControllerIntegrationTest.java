@@ -20,7 +20,7 @@ public class CheckoutControllerIntegrationTest {
     @BeforeAll
     static void setUp(){
         admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
-        checkOutController = new CheckOutController();
+
 
     }
 
@@ -31,6 +31,7 @@ public class CheckoutControllerIntegrationTest {
         Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
         books = List.of(book1,book2);
         quantity = new ArrayList<>();
+        checkOutController = new CheckOutController(books);
     }
 
     @AfterEach
@@ -77,6 +78,6 @@ public class CheckoutControllerIntegrationTest {
     void test_decreaseStockOfItems(int value1, int value2){
         quantity.add(value1);
         quantity.add(value2);
-        Assertions.assertSame(category.readBooks(),checkOutController.decreaseStockOfItems(quantity, category));
+        Assertions.assertSame(category.readBooks(),checkOutController.decreaseStockOfItems(quantity));
     }
 }
