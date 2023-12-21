@@ -12,6 +12,7 @@ module Library.System {
     opens modelsTest to org.junit.platform.commons;
     opens controllerTest to org.junit.platform.commons;
     opens mockFiles to com.example.finalproject;
+    opens IntegrationTest to org.junit.platform.commons;
 //    opens java.io to mockito.all;
 
     // Add the following line if you want to export the package for testing purposes
