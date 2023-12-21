@@ -1,6 +1,8 @@
 package controllerTest;
 
 import Controllers.CheckOutController;
+import mockFiles.MockBook;
+import mockFiles.MockCategory;
 import models.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,9 +28,9 @@ public class CheckOutControllerTest {
 
     @BeforeEach
     void setUpComponents(){
-        category = new Category("Fantasy", "TestFiles//FantasyBooks.dat");
-        Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
-        Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
+        category = new MockCategory("Fantasy", "TestFiles//FantasyBooks.dat");
+        Book book1 = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
+        Book book2 = new MockBook("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
         books = List.of(book1,book2);
         quantity = new ArrayList<>();
     }

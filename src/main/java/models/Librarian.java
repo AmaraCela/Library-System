@@ -11,7 +11,6 @@ public class Librarian extends Person{
     public Librarian(String name, String surname, String email, String birthday, String username, String password, double salary, String phoneNo)  {
         super(name, surname, email, birthday, username, password, salary,phoneNo);
 
-
     }
 
     public void setPersonalRevenue(double total)

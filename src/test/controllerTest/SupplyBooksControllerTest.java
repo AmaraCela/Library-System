@@ -2,9 +2,14 @@ package controllerTest;
 
 import Controllers.CategoryController;
 import Controllers.SupplyBooksController;
+import mockFiles.MockBook;
+import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -23,10 +28,10 @@ public class SupplyBooksControllerTest {
     @BeforeEach
     void setUpComponents() {
         supplyBooksController = new SupplyBooksController();
-        category1 = new Category("Fiction", "TestFiles//FictionBooks.dat");
-        category2 = new Category("Drama", "TestFiles//DramaBooks.dat");
-        book1 = new Book("1111", "Book1", category1, "supplier", 10, 15, 15, "a", 3, "TestFiles//cost.txt");
-        book2 = new Book("2222", "Book2", category2, "supplier", 10, 15, 15, "a", 4, "TestFiles//cost.txt");
+        category1 = new MockCategory("Fiction", "TestFiles//FictionBooks.dat");
+        category2 = new MockCategory("Drama", "TestFiles//DramaBooks.dat");
+        book1 = new MockBook("1111", "Book1", category1, "supplier", 10, 15, 15, "a", 3, "TestFiles//cost.txt");
+        book2 = new MockBook("2222", "Book2", category2, "supplier", 10, 15, 15, "a", 4, "TestFiles//cost.txt");
         category1.addBookToCategory(book1);
         category2.addBookToCategory(book2);
         category = new CategoryController(new File("TestFiles//categoryController.dat"));

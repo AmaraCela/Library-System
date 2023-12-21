@@ -303,8 +303,6 @@ w
 G.idea/sonarlint/issuestore/7/9/79d1874381aabc8143133a717a2f2e6114747aa6,d\8\d893b885e6d4ef4480c800690e18e62bc1b167ce
 Å
 Q.idea/sonarlint/securityhotspotstore/a/9/a98e9a70de56ca4beee5431a15ffbbf47cd53e31,f\b\fb6c301faaf002edd19d2fab694df8559f378b63
-w
-G.idea/sonarlint/issuestore/c/2/c22912513e96fc23549f48573115be049d41e616,d\b\dbe9231c131dda9747827dc45800e5e1116717ba
 Å
 Q.idea/sonarlint/securityhotspotstore/c/7/c7b66764ad842d4b60441891f82a0ac92d5dffe6,f\8\f81df636ea9e7116deff1c6e359f60315db0060a
 Å
@@ -323,8 +321,6 @@ w
 G.idea/sonarlint/issuestore/1/f/1f295811adc8c5c4962f1e40669db49d6c45a582,2\a\2a273c0cf6b6bbbdf8185b67606ebfae6362b274
 w
 G.idea/sonarlint/issuestore/e/8/e854b4aecf0155c02f155a2c7f86d68e9697cb9b,4\9\49ada164ef051d9a4b45d52293dbe6cb65e33158
-Å
-Q.idea/sonarlint/securityhotspotstore/c/2/c22912513e96fc23549f48573115be049d41e616,f\8\f8bfb2d7bf2edcbf459959675ba1a1c465658b67
 w
 G.idea/sonarlint/issuestore/7/1/71813eae13a2ffaf4f3375f60339171418a0e8ef,d\2\d27e6346e95f3de8ba75a8b1c7d45e4be09ee6b9
 w
@@ -663,10 +659,6 @@ w
 G.idea/sonarlint/issuestore/0/1/0192c6cb91668283f11ee0351cdee2b7daedf865,5\9\5917007702451718b3b855bd9a0dfbb3254410bc
 Å
 Q.idea/sonarlint/securityhotspotstore/c/9/c9dd13b98ad5ec470aacfc58512de6f512cfa8c4,e\c\ec84739f4ed03d1bc36bb343e2e7310315c33c27
-=
-usernames.txt,1\a\1a072594ec51167b90b32f64b39f6d1be122f60f
-=
-employees.dat,e\8\e854b4aecf0155c02f155a2c7f86d68e9697cb9b
 N
 src/main/java/models/Bill.java,3\d\3d8401987044d9fd443ce676e2678146f62abc92
 T
@@ -705,10 +697,6 @@ Q
 !src/main/java/models/Manager.java,8\e\8ec422d9900c1377f3fcd92e9d30178302078cf2
 d
 4src/main/java/Controllers/SupplyBooksController.java,c\2\c247153000f067c89b8bd306f13354416820cc46
-8
-cost.txt,9\5\9582d73028cfe9fc13281bd5293b4e38ded8922c
-<
-revenues.txt,d\1\d1e45df4efb24bdb4fdab12a8f1b02a7b6aa2b7b
 N
 src/main/java/models/Book.java,8\3\83e38b5f11d9df8e52dbea0cce94681e95a7c194
 Y
