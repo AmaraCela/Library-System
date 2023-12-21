@@ -13,8 +13,10 @@ public class CheckOutController extends Controller //ok
 {
 
     private CheckOutView checkOutView;
+    List<Book> books;
 
-    public CheckOutController(Person administrator, CheckOutView checkOutView) {
+    public CheckOutController(Person administrator, CheckOutView checkOutView, List<Book> selectedBooks) {
+        this.books = selectedBooks;
         this.checkOutView = checkOutView;
 
         if(this.checkOutView.getBooks().size()==0)
@@ -34,17 +36,24 @@ public class CheckOutController extends Controller //ok
 
 
         this.checkOutView.getProceedBt().setOnAction(e ->
-        {
-//            checkOut(administrator);
-        }
+                {
+                    this.checkOutView.getErrorLabel().setVisible(false);
+                    this.checkOutView.getMustSelectLabel().setVisible(false);
+
+                    ArrayList<Integer> quantities = getQuantities();
+
+                    checkOutAction(quantities,administrator);
+                }
         );
         this.checkOutView.getBackBt().setOnAction(e ->
         {
-           this.goBack(checkOutView,administrator);
+            this.goBack(checkOutView,administrator);
         });
     }
 
-    public CheckOutController(){}
+    public CheckOutController(List<Book> selectedBooks){
+        this.books = selectedBooks;
+    }
 
     public boolean validateCheckOut(List<Book> book, ArrayList<Integer> quantity) {
 
@@ -60,25 +69,12 @@ public class CheckOutController extends Controller //ok
         }
         return true;
     }
-
-    public void checkOut(Person administrator, Category category)
-    {
-
-        this.checkOutView.getErrorLabel().setVisible(false);
-        this.checkOutView.getMustSelectLabel().setVisible(false);
-
-        ArrayList<Integer> quantities = getQuantities();
-
-        checkOutAction(quantities,administrator, category);
-    }
-
-
-    public Bill checkOutAction(ArrayList<Integer> quantities, Person administrator, Category category)
+    public Bill checkOutAction(ArrayList<Integer> quantities, Person administrator)
     {
         Bill bill = null;
-        if (validateCheckOut(this.checkOutView.getBooks(), quantities)) {
+        if (validateCheckOut(books, quantities)) {
 
-            bill = new Bill(this.checkOutView.getBooks(), quantities);
+            bill = new Bill(books, quantities);
             Text text = new Text("The total is "+ bill.CalculateTotal());
             text.setFont(Font.font("Arial Rounded MT Bold",12));
             text.setFill(Color.DARKBLUE);
@@ -86,11 +82,11 @@ public class CheckOutController extends Controller //ok
 
             if(administrator instanceof Librarian)
             {
-               librarianCheckOut(administrator,bill,quantities);
+                librarianCheckOut(administrator,bill,quantities);
 
             }
 
-            decreaseStockOfItems(quantities, category);
+            decreaseStockOfItems(quantities);
         }
         else
         {
@@ -99,37 +95,37 @@ public class CheckOutController extends Controller //ok
         return bill;
     }
 
-    public Person librarianCheckOut(Person administrator, Bill bill, ArrayList<Integer> quantities)
+    public Person librarianCheckOut(Person librarian, Bill bill, ArrayList<Integer> quantities)
     {
-        ((Librarian) administrator).setNumberOfBills();
-        ((Librarian) administrator).setPersonalRevenue(bill.CalculateTotal());
+        ((Librarian) librarian).setNumberOfBills(1);
+        ((Librarian) librarian).setPersonalRevenue(bill.CalculateTotal());
         int num = 0;
         for (int i =0;i< quantities.size();i++)
         {
             num+= quantities.get(i);
         }
-        ((Librarian) administrator).setNumOfBooksSold(num);
-        return administrator;
+        ((Librarian) librarian).setNumOfBooksSold(num);
+        return librarian;
     }
 
-    public List<Book> decreaseStockOfItems(ArrayList<Integer> quantities, Category category)
+    public List<Book> decreaseStockOfItems(ArrayList<Integer> quantities)
     {
-//        for (int i=0;i<this.checkOutView.getBooks().size();i++)
-//
-        List<Book> books = category.readBooks();
-        for (int i=0;i<books.size();i++)
-        {
+        for (int i=0;i<books.size();i++) {
+//            List<Book> books = category.readBooks();
+//            for (int j = 0; j < books.size(); j++) {
 //            this.checkOutView.getBooks().get(i).getCategory().getBookOfCategory(this.checkOutView.getBooks().get(i).getISBN()).decreaseStock(quantities.get(i));
 //            this.checkOutView.getBooks().get(i).getCategory().updateBinaryFile();
 //            books.get(i).getCategory().getBookOfCategory(books.get(i).getISBN()).decreaseStock(quantities.get(i));
             books.get(i).decreaseStock(quantities.get(i));
-            category.updateBooksOfCategory(i,books.get(i));
+            books.get(i).getCategory().updateBooksOfCategory(i, books.get(i));
+            books.get(i).getCategory().updateBinaryFile();
 //            (books.get(i).getCategory()).updateBinaryFile();
+//            }
+//            category.updateBinaryFile();
         }
-        category.updateBinaryFile();
 
 //        return this.checkOutView.getBooks();
-        return category.readBooks();
+        return books;
     }
 
 

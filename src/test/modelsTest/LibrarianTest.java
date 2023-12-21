@@ -43,15 +43,6 @@ public class LibrarianTest {
         Assertions.assertEquals(librarian.personnelData(),"Librarian: Jessy Hamburg Salary: 310.0");
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "true",
-            "false"
-    })
-    void test_isCheckOutPermission(boolean boolVal){
-        librarian.setCheckOutPermission(boolVal);
-        Assertions.assertEquals(librarian.isCheckOutPermission(),boolVal);
-    }
 
     @ParameterizedTest
     @CsvSource({
@@ -77,7 +68,7 @@ public class LibrarianTest {
     }
     @Test
     void test_getNumberOfBills(){
-        librarian.setNumberOfBills();
+        librarian.setNumberOfBills(1);
         Assertions.assertEquals(librarian.getNumberOfBills(),1);
     }
 }

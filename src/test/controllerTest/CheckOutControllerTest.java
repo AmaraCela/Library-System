@@ -1,8 +1,12 @@
 package controllerTest;
 
 import Controllers.CheckOutController;
+import mockFiles.MockBill;
 import models.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -12,25 +16,31 @@ import java.util.List;
 public class CheckOutControllerTest {
 
 
-    static Category category;
-    static List<Book> books;
-    static CheckOutController checkOutController;
+    Category category;
+    List<Book> books;
+    CheckOutController checkOutController;
     ArrayList<Integer> quantity;
-    static Person admin;
-    @BeforeAll
-    static void setUp(){
-        admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
-        checkOutController = new CheckOutController();
-
-    }
+    Person admin;
+//    @BeforeAll
+//    static void setUp(){
+//
+//        ArrayList<Book> list = new ArrayList<>();
+//        list.add(new Book("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt"));
+//
+//
+//    }
 
     @BeforeEach
     void setUpComponents(){
+        admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
         category = new Category("Fantasy", "TestFiles//FantasyBooks.dat");
         Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
         Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
+        category.addBookToCategory(book1);
+        category.addBookToCategory(book2);
         books = List.of(book1,book2);
         quantity = new ArrayList<>();
+        checkOutController = new CheckOutController(books);
     }
 
     @AfterEach
@@ -65,7 +75,7 @@ public class CheckOutControllerTest {
     void test_librarianCheckOut(){
         quantity.add(2);
         quantity.add(3);
-        Bill bill = new Bill(books,quantity);
+        Bill bill = new MockBill(10);
         Assertions.assertEquals(admin,checkOutController.librarianCheckOut(admin,bill,quantity));
     }
 
@@ -77,6 +87,6 @@ public class CheckOutControllerTest {
     void test_decreaseStockOfItems(int value1, int value2){
         quantity.add(value1);
         quantity.add(value2);
-        Assertions.assertSame(category.readBooks(),checkOutController.decreaseStockOfItems(quantity, category));
+        Assertions.assertEquals(category.getBooksOfCategory(),checkOutController.decreaseStockOfItems(quantity));
     }
 }

@@ -92,9 +92,9 @@ public class ManageBooksController extends Controller //ok
         this.manageBooksView.getCheckOutBt().setOnAction(e->
         {
             ObservableList<Book> selectedBooks = this.manageBooksView.getTableView().getSelectionModel().getSelectedItems();
-            CheckOutView checkOutView = new CheckOutView(this.manageBooksView.getStage(),selectedBooks);
+            CheckOutView checkOutView = new CheckOutView(this.manageBooksView.getStage(), selectedBooks);
 
-            new CheckOutController(person,checkOutView);
+            new CheckOutController(person,checkOutView,selectedBooks);
         });
 
         this.manageBooksView.getLibrarianPageBt().setOnAction(e->

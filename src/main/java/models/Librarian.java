@@ -14,6 +14,8 @@ public class Librarian extends Person{
 
     }
 
+
+    //mock checkoutcontroller
     public void setPersonalRevenue(double total)
     {
         personalRevenue+=total;
@@ -24,14 +26,16 @@ public class Librarian extends Person{
 
         return personalRevenue;
     }
+
     @Override
     public String personnelData() {
         return "Librarian: "+ super.getName()+" "+ super.getSurname()+" Salary: "+ super.getSalary();
     }
 
-    public void setNumberOfBills()
+    //mock
+    public void setNumberOfBills(int num)
     {
-        numberOfBills++;
+        numberOfBills+=num;
     }
 
     public int getNumberOfBills()
@@ -43,7 +47,7 @@ public class Librarian extends Person{
         return numOfBooksSold;
     }
 
-
+    //mock
     public void setNumOfBooksSold(int numOfBooksSold) {
         this.numOfBooksSold += numOfBooksSold;
     }

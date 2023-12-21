@@ -127,11 +127,15 @@ public class Book implements Serializable {
         this.stock = stock;
     }
 
+
+    //mock checkoutController
     public void decreaseStock(int quantity)
     {
         this.stock -=quantity;
     }
 
+
+    //mock addToStockController
     public void increaseStock(int quantity)
     {
         this.stock += quantity;
@@ -190,18 +194,18 @@ public class Book implements Serializable {
     public boolean equals(Object obj){
         if(obj instanceof Book)
         {
-        Book book = (Book) obj;
-        return (
-                this.ISBN.equals(book.getISBN())
-                        && this.title.equals(book.getTitle())
-                        && this.category.equals(book.getCategory())
-                        && this.supplier.equals(book.getSupplier())
-                        && this.purchasedPrice == book.getPurchasedPrice()
-                        && this.originalPrice == book.getOriginalPrice()
-                        && this.sellingPrice == book.getSellingPrice()
-                        && this.stock == book.getStock()
-                        && this.author.equals(book.getAuthor())
-        );}
+            Book book = (Book) obj;
+            return (
+                    this.ISBN.equals(book.getISBN())
+                            && this.title.equals(book.getTitle())
+                            && this.category.equals(book.getCategory())
+                            && this.supplier.equals(book.getSupplier())
+                            && this.purchasedPrice == book.getPurchasedPrice()
+                            && this.originalPrice == book.getOriginalPrice()
+                            && this.sellingPrice == book.getSellingPrice()
+                            && this.stock == book.getStock()
+                            && this.author.equals(book.getAuthor())
+            );}
         return false;
     }
 }

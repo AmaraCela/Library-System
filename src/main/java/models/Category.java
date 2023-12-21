@@ -16,8 +16,8 @@ public class Category implements Serializable {
 
 
     public Category(String categoryName, String booksOfCategoryBinaryFileName) {
-       this.categoryName = categoryName;
-       this.booksOfCategoryBinaryFile = new File(booksOfCategoryBinaryFileName);
+        this.categoryName = categoryName;
+        this.booksOfCategoryBinaryFile = new File(booksOfCategoryBinaryFileName);
     }
     public Category(String categoryName){
         this.categoryName = categoryName;
@@ -25,6 +25,8 @@ public class Category implements Serializable {
     }
 
     //reads the books of the category
+
+    //mock checkoutController
     public ArrayList<Book> readBooks() {
         booksOfCategory.clear();
         try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(booksOfCategoryBinaryFile)) )
@@ -39,7 +41,7 @@ public class Category implements Serializable {
 
             } while (count <= 999999999);
 //        }
-    }
+        }
         catch (EOFException e)
         {
             System.out.println("End of file exception in reading categories");
@@ -64,6 +66,8 @@ public class Category implements Serializable {
     }
 
 
+
+    //mock suuplyBooksController
     public void addBookToCategory(Book book)
     {
         booksOfCategory.add(book);
@@ -75,6 +79,7 @@ public class Category implements Serializable {
         return booksOfCategory.size();
     }
 
+    //mock
     public ArrayList<Book> getBooksOfCategory() {
         return booksOfCategory;
     }
@@ -106,6 +111,8 @@ public class Category implements Serializable {
 
 
     //updates the books of this category binary file
+
+    //mock
     public void updateBinaryFile()
     {
         ObjectOutputStream outputStream;

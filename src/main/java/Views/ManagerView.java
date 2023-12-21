@@ -4,7 +4,6 @@ import Controllers.CategoryController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -16,9 +15,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import models.Book;
-import models.Manager;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class ManagerView extends BorderPane {
@@ -126,13 +123,11 @@ public class ManagerView extends BorderPane {
 
     public void notifyLackOfStock( GridPane gridPane)
     {
-
         ArrayList <Book> books = new ArrayList<>();
         for(int i=0;i< CategoryController.getCategories().size();i++)
         {
             books.addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
         }
-
 
         int j = 1;
         for (int i = 0;i<books.size();i++)

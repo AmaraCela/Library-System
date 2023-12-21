@@ -45,6 +45,8 @@ public class Bill {
 
 
 
+
+    //for mock
     public double CalculateTotal()
     {
         for (int i =0;i< books.size();i++)
@@ -64,20 +66,18 @@ public class Bill {
 
     public void writeBillToFile()
     {
-        try(PrintWriter writer = new PrintWriter(new File(billFileName)))
-        {
-            writer.println("Bill NO."+billNo);
-            writer.println("ISBN\t\tTitle\t\tPrice\t\tQuantity");
-            for(int i = 0;i<books.size();i++)
-            {
-                writer.println(books.get(i).getISBN()+"\t\t"+books.get(i).getTitle()+"\t\t"+books.get(i).getSellingPrice()+"\t\t"+quantities.get(i));
-            }
-            writer.println("\nDate:"+dateOfTransaction.toString()+"\tTotal is:"+ total);
+        if(books!=null) {
+            try (PrintWriter writer = new PrintWriter(new File(billFileName))) {
+                writer.println("Bill NO." + billNo);
+                writer.println("ISBN\t\tTitle\t\tPrice\t\tQuantity");
+                for (int i = 0; i < books.size(); i++) {
+                    writer.println(books.get(i).getISBN() + "\t\t" + books.get(i).getTitle() + "\t\t" + books.get(i).getSellingPrice() + "\t\t" + quantities.get(i));
+                }
+                writer.println("\nDate:" + dateOfTransaction.toString() + "\tTotal is:" + total);
 
-        }
-        catch (FileNotFoundException ex)
-        {
-            System.out.println("Bill file not found");
+            } catch (FileNotFoundException ex) {
+                System.out.println("Bill file not found");
+            }
         }
 
     }
