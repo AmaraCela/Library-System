@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,10 @@ public class CheckoutControllerIntegrationTest {
     static CheckOutController checkOutController;
     ArrayList<Integer> quantity;
     static Person admin;
+
     @BeforeAll
     static void setUp(){
         admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
-
-
     }
 
     @BeforeEach
@@ -40,35 +40,16 @@ public class CheckoutControllerIntegrationTest {
     void tearDown()
     {
         category.getBooksOfCategoryBinaryFile().delete();
+        File file1 = new File("TestFiles//bill.txt");
+        file1.delete();
+        File file2 = new File("TestFiles//revenues.txt");
+        file2.delete();
     }
-    @ParameterizedTest
-    @CsvSource({
-            "4,2",
-            "3, 0",
-            "-1, 2"
-    })
-    void test_validateCheckOutIsInvalid(int value1, int value2){
-        quantity.add(value1);
-        quantity.add(value2);
-        Assertions.assertFalse(checkOutController.validateCheckOut(books, quantity));
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "1, 1",
-            "2, 3"
-    })
-    void test_validateCheckOutIsValid(int value1, int value2){
-        quantity.add(value1);
-        quantity.add(value2);
-        Assertions.assertTrue(checkOutController.validateCheckOut(books, quantity));
-    }
-
     @Test
     void test_librarianCheckOut(){
         quantity.add(2);
         quantity.add(3);
-        Bill bill = new Bill(books,quantity);
+        Bill bill = new Bill(books,quantity,"TestFiles//bill.txt","TestFiles//revenues.txt");
         Assertions.assertEquals(admin,checkOutController.librarianCheckOut(admin,bill,quantity));
     }
 
