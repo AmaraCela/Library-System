@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AdministratorAndPersonTest {
@@ -177,6 +179,11 @@ public class AdministratorAndPersonTest {
     void test_differentPhoneNo()
     {
         assertFalse(administrator.equals(new Administrator("n","s","e","b","u","p",100,"pno1")));
+    }
+    @Test
+    void test_notPerson()
+    {
+        assertFalse(administrator.equals(new Date()));
     }
 
 

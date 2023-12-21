@@ -3,6 +3,7 @@ package controllerTest;
 import Controllers.CategoryController;
 import models.Category;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -13,6 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CategoryControllerTest {
     CategoryController categoryController;
+
+    Category category;
+    @BeforeEach
+    void setUp()
+    {
+        category = new Category("Fiction","TestFiles//fictionBooks.dat");
+        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
+    }
 
     @AfterEach
     void tearDown()
@@ -25,8 +34,6 @@ public class CategoryControllerTest {
     @Test
     void test_DeleteCategory()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         categoryController.DeleteCategory(List.of(category));
         assertEquals(new ArrayList<Category>(), CategoryController.getCategories());
@@ -35,8 +42,7 @@ public class CategoryControllerTest {
     @Test
     void test_updateCategoryBinaryFile()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
+
         categoryController.addCategories(category);
         CategoryController.updateCategoryBinaryFile();
         CategoryController.updateCategories();
@@ -47,7 +53,6 @@ public class CategoryControllerTest {
     @Test
     void test_addCategory()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
         CategoryController.addCategory(category);
         assertEquals(List.of(category), CategoryController.getCategories());
     }
@@ -63,8 +68,6 @@ public class CategoryControllerTest {
     @Test
     void test_handleCategoryWithPresentCategoryEntered()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         assertFalse(CategoryController.handleCategory("Fiction"));
     }
@@ -72,8 +75,6 @@ public class CategoryControllerTest {
     @Test
     void test_handleCategoryWithNewCategoryEntered()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         assertTrue(CategoryController.handleCategory("Science"));
     }
@@ -83,8 +84,6 @@ public class CategoryControllerTest {
     @Test
     void test_writeCategoryToBinaryFile()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        new CategoryController(new File("TestFiles//fiction.dat"));
         CategoryController.writeCategoryToBinaryFile(category);
         CategoryController.updateCategories();
         Category category1 = new Category("Science","TestFiles//scienceBooks.dat");
@@ -97,8 +96,6 @@ public class CategoryControllerTest {
     @Test
     void test_writeCategoryToBinaryFileNotFound()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        new CategoryController(new File("TestFilessss//fiction.dat"));
         CategoryController.writeCategoryToBinaryFile(category);
     }
 
@@ -112,8 +109,6 @@ public class CategoryControllerTest {
     @Test
     void test_getCategoryNamesWhenCategories()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         assertEquals(List.of("Fiction"), CategoryController.getCategoryNames());
     }
@@ -123,8 +118,6 @@ public class CategoryControllerTest {
     @Test
     void test_getCategoryWhenCategoryNotPresent()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         assertNull(CategoryController.getCategory("Science"));
     }
@@ -132,8 +125,6 @@ public class CategoryControllerTest {
     @Test
     void test_getCategoryWhenPresent()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         assertEquals(new Category("Fiction","TestFiles//fictionBooks.dat"),CategoryController.getCategory("Fiction"));
     }
@@ -141,7 +132,6 @@ public class CategoryControllerTest {
     @Test
     void test_updateCategoriesEmptyFile()
     {
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         CategoryController.updateCategories();
         assertEquals(new ArrayList<Category>(),CategoryController.getCategories());
     }
@@ -149,8 +139,6 @@ public class CategoryControllerTest {
     @Test
     void test_updateCategories()
     {
-        Category category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
         categoryController.addCategories(category);
         assertEquals(List.of(category),CategoryController.getCategories());
     }

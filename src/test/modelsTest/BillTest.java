@@ -1,9 +1,9 @@
 package modelsTest;
 
 import mockFiles.MockBook;
+import mockFiles.MockCategory;
 import models.Bill;
 import models.Book;
-import models.Category;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,14 +19,12 @@ class BillTest {
 
     @BeforeEach
     void setUp() {
-        Book book = new MockBook("i","t",new Category("C","TestFiles//fictionBooks.dat"),"s",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book = new MockBook("i","t",new MockCategory("C","TestFiles//fictionBooks.dat"),"s",10,15,15,"a",1,"TestFiles//cost.txt");
         ArrayList<Book> books = new ArrayList<>();
         books.add(book);
         ArrayList<Integer> quantities = new ArrayList<>();
         quantities.add(1);
         bill = new Bill(books,quantities,"TestFiles//bill.txt","TestFiles//revenues.txt");
-
-
     }
 
     @AfterEach
@@ -36,6 +34,8 @@ class BillTest {
         file.delete();
         file = new File("TestFiles//bill.txt");
         file.delete();
+        file = new File("TestFiles//cost.txt");
+        file.delete();
         Bill.readRevenues("TestFiles//revenues.txt");
     }
 
@@ -43,15 +43,7 @@ class BillTest {
     void test_calculateTotal()
     {
         assertEquals(15.0,bill.CalculateTotal(),0.1);
-
     }
-
-    @Test
-    void test_getTotal()
-    {
-        assertEquals(15.0,bill.getTotal(),0.1);
-    }
-
 
 
     @Test

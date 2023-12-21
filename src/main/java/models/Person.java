@@ -35,21 +35,13 @@ public abstract class Person implements Serializable {
 
     public Person(String name, String surname, String email, String birthday, String username, String password, double salary, String phoneNo) {
         this.name = name;
-        //this.nameProperty = new SimpleStringProperty(name);
         this.surname = surname;
-        //this.surnameProperty = new SimpleStringProperty(surname);
         this.email = email;
-        // this.emailProperty = new SimpleStringProperty(email);
         this.birthday = birthday;
-        // this.birthdayProperty = new SimpleStringProperty(birthday);
         this.username = username;
-        // this.usernameProperty = new SimpleStringProperty(username);
         this.password = password;
-        // this.passwordProperty = new SimpleStringProperty(password);
         this.salary = salary;
-        // this.salaryProperty = new SimpleDoubleProperty(salary);
         this.phoneNo = phoneNo;
-        //this.phoneNoProperty = new SimpleStringProperty(phoneNo);
         RegisterStaffController.AddPersonAccount(this);
         employeeCost+=salary;
     }

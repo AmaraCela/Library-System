@@ -79,7 +79,7 @@ public class CheckOutController extends Controller //ok
         if (validateCheckOut(this.checkOutView.getBooks(), quantities)) {
 
             bill = new Bill(this.checkOutView.getBooks(), quantities);
-            Text text = new Text("The total is "+ bill.getTotal());
+            Text text = new Text("The total is "+ bill.CalculateTotal());
             text.setFont(Font.font("Arial Rounded MT Bold",12));
             text.setFill(Color.DARKBLUE);
             this.checkOutView.getGridPane().add(text,4,4);
@@ -102,7 +102,7 @@ public class CheckOutController extends Controller //ok
     public Person librarianCheckOut(Person administrator, Bill bill, ArrayList<Integer> quantities)
     {
         ((Librarian) administrator).setNumberOfBills();
-        ((Librarian) administrator).setPersonalRevenue(bill.getTotal());
+        ((Librarian) administrator).setPersonalRevenue(bill.CalculateTotal());
         int num = 0;
         for (int i =0;i< quantities.size();i++)
         {

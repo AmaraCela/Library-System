@@ -112,8 +112,4 @@ public class Bill {
         return revenues;
     }
 
-    public double getTotal() {
-
-        return CalculateTotal();
-    }
 }

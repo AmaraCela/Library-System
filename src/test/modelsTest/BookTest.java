@@ -10,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.File;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -32,9 +33,7 @@ public class BookTest {
         file.delete();
         file = new File("TestFiles//cost1.txt");
         file.delete();
-
         Book.readFromFile("TestFiles//cost.txt");
-
     }
     @ParameterizedTest
     @CsvSource({
@@ -181,8 +180,6 @@ public class BookTest {
     {
         Book.writeToFile("TestFiles/cost.txt");
         assertEquals(100,Book.readFromFile("TestFiles/cost.txt"));
-
-//        assertThrows(FileNotFoundException.class,()->Book.writeToFile("TestFilessss/cost.txt"));
     }
 
     @Test
@@ -287,5 +284,11 @@ public class BookTest {
     {
         Book book1 = new Book("1","t1",new MockCategory("Fiction","TestFiles//fictionBooks.dat"),"s11",10,15,15,"a1",10,"TestFiles//cost1.txt");
         assertNotEquals(book1,book);
+    }
+
+    @Test
+    void test_notBook()
+    {
+        assertNotEquals(book,new Date());
     }
 }

@@ -47,15 +47,12 @@ public class RegisterStaffControllerTest {
     void test_validateUsernameAlreadyPresent()
     {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
-//        RegisterStaffController.AddPersonAccount(person);
         assertFalse(RegisterStaffController.validateUsername("u"));
     }
-
     @Test
     void test_validateUsernameNotPresent()
     {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
-//        RegisterStaffController.AddPersonAccount(person);
         assertTrue(RegisterStaffController.validateUsername("amara"));
     }
 
@@ -63,7 +60,6 @@ public class RegisterStaffControllerTest {
     void test_validateUsernameNull()
     {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
-//        RegisterStaffController.AddPersonAccount(person);
         assertFalse(RegisterStaffController.validateUsername(null));
     }
 
