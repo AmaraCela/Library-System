@@ -7,24 +7,29 @@ import java.util.ArrayList;
 
 public class MockCategory extends Category {
 
-    ArrayList<Book>books = new ArrayList<>();
-    public MockCategory(String categoryName, String booksOfCategoryBinaryFileName) {
-        super(categoryName, booksOfCategoryBinaryFileName);
+    ArrayList<Book>bookList = new ArrayList<>();
+
+    public MockCategory(String categoryName, String booksOfCategoryBinaryFile){
+        super(categoryName, booksOfCategoryBinaryFile);
+    }
+    public MockCategory(String categoryName){
+        super(categoryName);
     }
 
     @Override
     public void addBookToCategory(Book book){
-        books.add(book);
+        bookList.add(book);
     }
+
 
     @Override
     public ArrayList<Book> readBooks(){
-        return books;
+        return bookList;
     }
 
     @Override
     public ArrayList<Book> getBooksOfCategory(){
-        return books;
+        return bookList;
     }
 
     @Override
@@ -40,11 +45,11 @@ public class MockCategory extends Category {
     @Override
     public Book getBookOfCategory(String ISBN)
     {
-        for (int i = 0;i<books.size();i++)
+        for (int i = 0;i<bookList.size();i++)
         {
-            if(books.get(i).getISBN().equals(ISBN))
+            if(bookList.get(i).getISBN().equals(ISBN))
             {
-                return books.get(i);
+                return bookList.get(i);
             }
         }
         return null;

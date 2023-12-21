@@ -3,7 +3,11 @@ package controllerTest;
 import Controllers.CheckOutController;
 import mockFiles.MockBook;
 import mockFiles.MockCategory;
-import models.*;
+import mockFiles.MockLibrarian;
+import models.Bill;
+import models.Book;
+import models.Category;
+import models.Person;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,7 +25,7 @@ public class CheckOutControllerTest {
     static Person admin;
     @BeforeAll
     static void setUp(){
-        admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
+        admin =new MockLibrarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
         checkOutController = new CheckOutController();
 
     }

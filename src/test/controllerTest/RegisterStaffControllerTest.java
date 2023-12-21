@@ -2,6 +2,7 @@ package controllerTest;
 
 import Auxilaries.IllegalSalaryException;
 import Controllers.RegisterStaffController;
+import mockFiles.MockLibrarian;
 import models.Administrator;
 import models.Librarian;
 import models.Manager;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,20 +47,20 @@ public class RegisterStaffControllerTest {
     @Test
     void test_validateUsernameAlreadyPresent()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertFalse(RegisterStaffController.validateUsername("u"));
     }
     @Test
     void test_validateUsernameNotPresent()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertTrue(RegisterStaffController.validateUsername("amara"));
     }
 
     @Test
     void test_validateUsernameNull()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertFalse(RegisterStaffController.validateUsername(null));
     }
 
@@ -214,7 +215,7 @@ public class RegisterStaffControllerTest {
     @Test
     void test_addPersonAccount()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertEquals(List.of(person),RegisterStaffController.getAccounts());
     }
 
@@ -222,7 +223,7 @@ public class RegisterStaffControllerTest {
     @Test
     void test_isAccountTrue()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertEquals(person,RegisterStaffController.isAccount("u","p"));
 
     }
@@ -230,7 +231,7 @@ public class RegisterStaffControllerTest {
     @Test
     void test_isAccountFalseUsername()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertNull(RegisterStaffController.isAccount("a","p"));
 
     }
@@ -238,14 +239,14 @@ public class RegisterStaffControllerTest {
     @Test
     void test_isAccountFalsePassword()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertNull(RegisterStaffController.isAccount("u","a"));
     }
 
     @Test
     void test_getLibrarians()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         person = new Manager("n","s","e","b","u","p",1,"pno");
         assertEquals(List.of(person),RegisterStaffController.getLibrarians());
     }
@@ -254,7 +255,7 @@ public class RegisterStaffControllerTest {
     void test_getManagers()
     {
         Person person = new Manager("n","s","e","b","u","p",1,"pno");
-        person = new Librarian("n","s","e","b","u","p",1,"pno");
+        person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertEquals(List.of(person),RegisterStaffController.getManagers());
     }
 
@@ -278,7 +279,7 @@ public class RegisterStaffControllerTest {
     @Test
     void test_writeToTextFile()
     {
-        new Librarian("n","s","e","b","u","p",1,"pno");
+        new MockLibrarian("n","s","e","b","u","p",1,"pno");
         new Manager("n","s","e","b","u","p",1,"pno");
         new Administrator("n","s","e","b","u","p",1,"pno");
         RegisterStaffController.writeToTextFile();
@@ -288,7 +289,7 @@ public class RegisterStaffControllerTest {
     void test_writeToTextFileNotFound()
     {
         registerStaffController = new RegisterStaffController(new File("TestFiles//personnel.dat"), new File("TestFilesss//usernames.txt"),1);
-        new Librarian("n","s","e","b","u","p",1,"pno");
+        new MockLibrarian("n","s","e","b","u","p",1,"pno");
     }
 
     @Test
@@ -302,7 +303,7 @@ public class RegisterStaffControllerTest {
     @Test
     void test_updateBinaryFile()
     {
-        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         RegisterStaffController.updateBinaryFile();
         assertEquals(List.of(person),RegisterStaffController.getAccounts());
     }
