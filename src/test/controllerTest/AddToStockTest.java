@@ -5,10 +5,7 @@ import Controllers.CategoryController;
 import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -33,6 +30,13 @@ public class AddToStockTest {
     void setUpController(){
         addToStockController = new AddToStockController();
     }
+    @AfterEach
+    void tearDown()
+    {
+        File file = new File("TestFiles//cost.txt");
+        file.delete();
+    }
+
     @Test
     void test_returnBookToDisplay(){
 
