@@ -2,7 +2,13 @@ package controllerTest;
 
 import Controllers.CheckOutController;
 import mockFiles.MockBill;
-import models.*;
+import mockFiles.MockBook;
+import mockFiles.MockCategory;
+import mockFiles.MockLibrarian;
+import models.Bill;
+import models.Book;
+import models.Category;
+import models.Person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,10 +38,10 @@ public class CheckOutControllerTest {
 
     @BeforeEach
     void setUpComponents(){
-        admin =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
-        category = new Category("Fantasy", "TestFiles//FantasyBooks.dat");
-        Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
-        Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
+        admin =new MockLibrarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
+        category = new MockCategory("Fantasy", "TestFiles//FantasyBooks.dat");
+        Book book1 = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
+        Book book2 = new MockBook("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
         category.addBookToCategory(book1);
         category.addBookToCategory(book2);
         books = List.of(book1,book2);

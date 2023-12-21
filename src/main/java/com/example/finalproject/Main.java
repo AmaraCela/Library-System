@@ -18,7 +18,7 @@ public class Main extends Application {
 
 //        new Administrator("Amara", "Cela", "acela@gmail.com", "29/12/2001", "acela21", "12345678", 3000, "067 71 71 711");
         RegisterStaffController.readFromFile();
-        new CategoryController().updateCategories();
+        CategoryController.updateCategories();
         WelcomeView welcomeView = new WelcomeView();
 
         Scene scene = new Scene(welcomeView,1000,600);
