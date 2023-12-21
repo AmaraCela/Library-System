@@ -175,7 +175,7 @@ public class SupplyBooksControllerTest {
     @Test
     void test_supply(){
         supplyBooksController.addBooks();
-        Book book3 = new Book("3333","Book3",category2,"s",100.32,213.3,123.1,"a",1);
+        Book book3 = new MockBook("3333","Book3",category2,"s",100.32,213.3,123.1,"a",1,"TestFiles//cost.txt");
         category2.addBookToCategory(book3);
         Assertions.assertEquals(List.of(book1,book2,book3),supplyBooksController.supply("3333","Book3",category2.getCategoryName(),"s",100.32,213.3,123.1,"a",1));
     }
