@@ -28,7 +28,7 @@ public class CategoryControllerTest {
     {
         File file = new File("TestFiles//fiction.dat");
         file.delete();
-        CategoryController.updateCategories();
+        categoryController.updateCategories();
     }
 
     @Test
@@ -45,7 +45,7 @@ public class CategoryControllerTest {
 
         categoryController.addCategories(category);
         CategoryController.updateCategoryBinaryFile();
-        CategoryController.updateCategories();
+        categoryController.updateCategories();
         assertEquals(List.of(category), CategoryController.getCategories());
 
     }
@@ -85,10 +85,10 @@ public class CategoryControllerTest {
     void test_writeCategoryToBinaryFile()
     {
         CategoryController.writeCategoryToBinaryFile(category);
-        CategoryController.updateCategories();
+        categoryController.updateCategories();
         Category category1 = new Category("Science","TestFiles//scienceBooks.dat");
         CategoryController.writeCategoryToBinaryFile(category1);
-        CategoryController.updateCategories();
+        categoryController.updateCategories();
         assertEquals(List.of(category, category1),CategoryController.getCategories());
 
     }
@@ -132,7 +132,7 @@ public class CategoryControllerTest {
     @Test
     void test_updateCategoriesEmptyFile()
     {
-        CategoryController.updateCategories();
+        categoryController.updateCategories();
         assertEquals(new ArrayList<Category>(),CategoryController.getCategories());
     }
 

@@ -1,7 +1,6 @@
 package Views;
 
 import Controllers.CategoryController;
-import Controllers.SupplyBooksController;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,15 +13,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.converter.DoubleStringConverter;
 import models.Book;
-import models.Category;
 
 import java.util.ArrayList;
 
 public class ManageBooksView extends BorderPane {
 
-    private final Stage stage;
+    private Stage stage;
     private final Button filterByCategoryBt = new Button("Filter by category");
     private final Button administratorPageBt = new Button();
     private final Button librarianPageBt = new Button();
@@ -224,7 +221,9 @@ public class ManageBooksView extends BorderPane {
     public void updateBooks()
     {
         this.books.clear();
+//        new CategoryController().updateCategories();
         CategoryController.updateCategories();
+
         for (int i = 0; i< CategoryController.getCategories().size(); i++)
         {
             System.out.println("The size of the updated books is: "+CategoryController.getCategories().get(i).getBooksOfCategory().size());

@@ -104,6 +104,7 @@ public class CategoryController extends Controller //ok
         return true;
     }
 
+    public CategoryController(){}
 
     ///Must be included when opening the program
     //reads all categories from category file

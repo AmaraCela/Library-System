@@ -14,6 +14,7 @@ public class ManageBooksController extends Controller //ok
 {
 
     private final ManageBooksView manageBooksView;
+
     public ManageBooksController(Person person, ManageBooksView manageBooksView)
     {
         this.manageBooksView = manageBooksView;

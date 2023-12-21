@@ -79,6 +79,7 @@ public class AddToStockController extends Controller//ok
         return ((AddToStockView) this.addToStockView).getBooks();
     }
 
+    // SHIFE
     public ArrayList<Book> addToBookList(){
         ArrayList<Book> books = new ArrayList<>();
         for (int i = 0; i< CategoryController.getCategories().size(); i++)
