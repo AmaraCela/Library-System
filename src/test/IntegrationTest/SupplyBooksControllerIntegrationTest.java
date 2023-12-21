@@ -39,6 +39,8 @@ public class SupplyBooksControllerIntegrationTest {
         category1.getBooksOfCategoryBinaryFile().delete();
         category2.getBooksOfCategoryBinaryFile().delete();
         category.getBinaryFile().delete();
+        File file = new File("TestFiles//cost.txt");
+        file.delete();
     }
     @Test
     void test_supply(){
