@@ -306,8 +306,6 @@ Q.idea/sonarlint/securityhotspotstore/a/9/a98e9a70de56ca4beee5431a15ffbbf47cd53e
 Å
 Q.idea/sonarlint/securityhotspotstore/c/7/c7b66764ad842d4b60441891f82a0ac92d5dffe6,f\8\f81df636ea9e7116deff1c6e359f60315db0060a
 Å
-Q.idea/sonarlint/securityhotspotstore/e/8/e854b4aecf0155c02f155a2c7f86d68e9697cb9b,7\e\7ebac66a3bce3f5f5327bb23544e9cdf76f9dade
-Å
 Q.idea/sonarlint/securityhotspotstore/2/3/23ee6dbb156095f3107dc3a36e857da3e9ae0172,f\2\f296bdd24b202894623247e798ee939ac4d94b25
 R
 ".idea/libraries/testfx_junit51.xml,d\6\d65d813904f2b556a243ce42d16a969fa003e94e
@@ -319,8 +317,6 @@ v
 F.idea/libraries/google_code_maven_play_plugin_eamelink_mockito_all.xml,4\9\4943e9edcb4bb637844c7e6bf825df3187f0a3e2
 w
 G.idea/sonarlint/issuestore/1/f/1f295811adc8c5c4962f1e40669db49d6c45a582,2\a\2a273c0cf6b6bbbdf8185b67606ebfae6362b274
-w
-G.idea/sonarlint/issuestore/e/8/e854b4aecf0155c02f155a2c7f86d68e9697cb9b,4\9\49ada164ef051d9a4b45d52293dbe6cb65e33158
 w
 G.idea/sonarlint/issuestore/7/1/71813eae13a2ffaf4f3375f60339171418a0e8ef,d\2\d27e6346e95f3de8ba75a8b1c7d45e4be09ee6b9
 w
@@ -551,8 +547,6 @@ Q.idea/sonarlint/securityhotspotstore/7/2/7294b78095b225440d640701e48e54ae813348
 Q.idea/sonarlint/securityhotspotstore/d/f/dfc4936a9cd9d26952b24f3d939249090cfc23eb,d\0\d098cad0e61449db7c6ec3a235d8cc6d3c2a6126
 Å
 Q.idea/sonarlint/securityhotspotstore/d/e/deeb4d591bc1f46a9e6f684578ffa8e7a5b5524d,d\c\dcb175e9f6aabccb2618358d30c25c2c7c763eee
-w
-G.idea/sonarlint/issuestore/d/1/d1e45df4efb24bdb4fdab12a8f1b02a7b6aa2b7b,2\5\25200b819ea22e5c3f3cf269acff08744371a3af
 Å
 Q.idea/sonarlint/securityhotspotstore/d/f/dfddc7849bd33794b0ae1726bb4e1a02a2c0cdd4,1\d\1d69b009fabd17a66a0138701f6be4b59fddd3f5
 Å
@@ -565,8 +559,6 @@ Q.idea/sonarlint/securityhotspotstore/0/c/0c04fcfc13c473ed0c9af017c94f18a36cbf4f
 Q.idea/sonarlint/securityhotspotstore/3/a/3acb6567eee6095799414b5cd20f3f78bd5fcdd1,9\7\9756d124e3eb5e10b2a0998ba93b547a3b47fe77
 w
 G.idea/sonarlint/issuestore/4/3/4356b6548885159aeb8f89fdda70612a30ee2bbf,e\7\e76ba8c4e95a6f71669814eec818bfb5c5eb6aa7
-Å
-Q.idea/sonarlint/securityhotspotstore/d/1/d1e45df4efb24bdb4fdab12a8f1b02a7b6aa2b7b,0\3\031c4826cb5a12bfc4a032ca77aed8b9dbe26ddc
 w
 G.idea/sonarlint/issuestore/4/6/462e01e339d49bbd1879c161115e1169cbe8beea,1\e\1ebe9a7f7043b0f61642fafc5050cd2f277542c5
 w
@@ -701,8 +693,6 @@ N
 src/main/java/models/Book.java,8\3\83e38b5f11d9df8e52dbea0cce94681e95a7c194
 Y
 )src/test/viewTest/AddToStockViewTest.java,d\0\d0788db0cfd44107d61e691a713f940dde14ac8f
-a
-1src/test/IntegrationTest/ManageBooksViewTest.java,3\a\3a851d112762a7366122d53a34338b31df81c0b1
 `
 0src/main/java/com/example/finalproject/Main.java,6\c\6cb19191abf5e5fac9a335e3cdeb07aa75feb135
 X
