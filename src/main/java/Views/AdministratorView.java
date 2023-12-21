@@ -25,7 +25,7 @@ public class AdministratorView extends BorderPane {
 
     private Menu addCategories = new Menu("Categories");
     private  Menu supplyBooks = new Menu("Books");
-    private  Menu permissions = new Menu("Permissions");
+
     private Menu logoutMenu = new Menu("Log out");
     private MenuItem registerLibrarian = new MenuItem("Register Librarian");
    private MenuItem registerManager = new MenuItem("Register Manager");
@@ -68,15 +68,10 @@ public class AdministratorView extends BorderPane {
 
 
 
-
-        permissions.getItems().addAll(permissionsLibrarianItem,permissionsManagerItem);
-
-
-
         logoutMenu.getItems().add(logOutItem);
 
 
-        menuBar.getMenus().addAll(addEmployees,updateEmployees,viewEmployees,addCategories,supplyBooks,permissions,logoutMenu);
+        menuBar.getMenus().addAll(addEmployees,updateEmployees,viewEmployees,addCategories,supplyBooks,logoutMenu);
 
         HBox hBox = new HBox(10);
         hBox.getChildren().add(menuBar);
@@ -122,10 +117,6 @@ public class AdministratorView extends BorderPane {
 
    public Menu getSupplyBooks() {
       return supplyBooks;
-   }
-
-   public Menu getPermissions() {
-      return permissions;
    }
 
    public Menu getLogoutMenu() {

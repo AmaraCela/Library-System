@@ -8,8 +8,6 @@ public class Librarian extends Person{
     private double personalRevenue;
     private int numberOfBills;
     private int numOfBooksSold;
-
-    private boolean checkOutPermission = true;
     public Librarian(String name, String surname, String email, String birthday, String username, String password, double salary, String phoneNo)  {
         super(name, surname, email, birthday, username, password, salary,phoneNo);
 
@@ -39,15 +37,6 @@ public class Librarian extends Person{
     public int getNumberOfBills()
     {
         return numberOfBills;
-    }
-
-
-    public boolean isCheckOutPermission() {
-        return checkOutPermission;
-    }
-
-    public void setCheckOutPermission(boolean checkOutPermission) {
-        this.checkOutPermission = checkOutPermission;
     }
 
     public int getNumOfBooksSold() {

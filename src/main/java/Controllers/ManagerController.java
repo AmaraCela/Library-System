@@ -5,9 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import models.Manager;
-import models.Person;
 import models.Controller;
+import models.Person;
 
 public class ManagerController extends Controller {
 
@@ -26,28 +25,18 @@ public class ManagerController extends Controller {
         this.managerView.getSupplyBooksItem().setOnAction(e->
         {
             label.setVisible(false);
-            if(!((Manager)person).isAddBooks())
-            {
-               label.setVisible(true);
-            }
-            else {
+
                 SupplyBooksView supplyBooksView = new SupplyBooksView(managerView.getStage());
                 new SupplyBooksController(person,supplyBooksView);
-            }
 
         });
         this.managerView.getManageCategoriesItem().setOnAction(e->
         {
             label.setVisible(false);
-            if(!((Manager)person).isManageCategories())
-            {
-                label.setVisible(true);
-            }
-            else
-            {
+
                 AddCategoryView addCategoryView = new AddCategoryView(managerView.getStage());
                 new CategoryController(person,addCategoryView);
-            }
+
 
         });
         this.managerView.getManageBooksItem().setOnAction(e->
@@ -67,15 +56,9 @@ public class ManagerController extends Controller {
         this.managerView.getAddToStockItem().setOnAction(e->
         {
             label.setVisible(false);
-            if(!((Manager)person).isAddToStock())
-            {
-                label.setVisible(true);
-            }
-            else
-            {
+
                 AddToStockView addToStockView = new AddToStockView(managerView.getStage());
                 new AddToStockController(person,addToStockView);
-            }
 
         });
         this.managerView.getIncomesItem().setOnAction(e->

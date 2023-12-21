@@ -64,17 +64,6 @@ public class AdministratorController extends Controller //ok
             ManageBooksView manageBooksView = new ManageBooksView(administratorView.getStage(),3);
             new ManageBooksController(administrator,manageBooksView);
         });
-        this.administratorView.getPermissionsLibrarianItem().setOnAction(e->
-        {
-            PermissionsLibrarianView permissionsLibrarianView = new PermissionsLibrarianView(administratorView.getStage());
-            new PermissionsLibrarianController(administrator,permissionsLibrarianView);
-        });
-        this.administratorView.getPermissionsManagerItem().setOnAction(e->
-        {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(administratorView.getStage());
-            new ManagerPermissionsController(administrator,managerPermissionsView);
-
-        });
         this.administratorView.getAddStockItem().setOnAction(e->
         {
             AddToStockView addToStockView = new AddToStockView(administratorView.getStage());

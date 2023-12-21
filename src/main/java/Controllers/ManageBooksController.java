@@ -28,13 +28,13 @@ public class ManageBooksController extends Controller //ok
         }
         else if (person instanceof Librarian)
         {
-            this.manageBooksView.getCheckOutBt().setVisible(((Librarian) person).isCheckOutPermission());
+            this.manageBooksView.getCheckOutBt().setVisible(true);
             this.manageBooksView.getSelectBt().setVisible(false);
             this.manageBooksView.getDeleteBt().setVisible(false);
         }
         else
         {
-            this.manageBooksView.getDeleteBt().setVisible(((Manager)person).isDeleteBooks());
+            this.manageBooksView.getDeleteBt().setVisible(true);
             this.manageBooksView.getCheckOutBt().setVisible(false);
             this.manageBooksView.getSelectBt().setVisible(false);
         }

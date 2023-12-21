@@ -78,21 +78,6 @@ public abstract class Controller {
                 return new ManagerController(person,managerView);
             }
         }
-        else if(currentView instanceof AddBooksPermissionView)
-        {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(((AddBooksPermissionView)currentView).getStage());
-            return new ManagerPermissionsController(person,managerPermissionsView);
-        }
-        else if(currentView instanceof AddCategoriesPermissionView)
-        {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(((AddCategoriesPermissionView)currentView).getStage());
-            return new ManagerPermissionsController(person,managerPermissionsView);
-        }
-        else if (currentView instanceof AddCopiesPermissionView)
-        {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(((AddCopiesPermissionView)currentView).getStage());
-            return new ManagerPermissionsController(person,managerPermissionsView);
-        }
         else if(currentView instanceof AddToStockView)
         {
             if(person instanceof Administrator)
@@ -118,21 +103,6 @@ public abstract class Controller {
                 ManagerView managerView = new ManagerView(((AddCategoryView)currentView).getStage());
                return new ManagerController(person,managerView);
             }
-        }
-        else if(currentView instanceof DeleteBooksPermissionView)
-        {
-            ManagerPermissionsView managerPermissionsView = new ManagerPermissionsView(((DeleteBooksPermissionView)currentView).getStage());
-            return new ManagerPermissionsController(person,managerPermissionsView);
-        }
-        else if(currentView instanceof ManagerPermissionsView)
-        {
-            AdministratorView administratorView = new AdministratorView(((ManagerPermissionsView)currentView).getStage());
-            return new AdministratorController(person,administratorView);
-        }
-        else if(currentView instanceof PermissionsLibrarianView)
-        {
-            AdministratorView administratorView = new AdministratorView(((PermissionsLibrarianView)currentView).getStage());
-            return new AdministratorController(person,administratorView);
         }
         return null;
     }
