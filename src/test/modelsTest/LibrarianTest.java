@@ -18,11 +18,24 @@ public class LibrarianTest {
     @ParameterizedTest
     @CsvSource({
             "2.5",
-            "3"
+            "1",
+            "0"
     })
-    void test_getPersonalRevenue(double total){
-        librarian.setPersonalRevenue(total);
-        Assertions.assertEquals(librarian.getPersonalRevenue(),total);
+    void test_getPersonalRevenueValid(double personalRevenue){
+        Assertions.assertTrue(personalRevenue >= 0);
+        librarian.setPersonalRevenue(personalRevenue);
+        Assertions.assertEquals(librarian.getPersonalRevenue(),personalRevenue);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "-1",
+            "-13"
+    })
+    void test_getPersonalRevenueInvalid(double personalRevenue){
+        Assertions.assertTrue(personalRevenue < 0);
+        librarian.setPersonalRevenue(personalRevenue);
+        Assertions.assertEquals(librarian.getPersonalRevenue(), personalRevenue);
     }
 
     @Test
@@ -42,14 +55,26 @@ public class LibrarianTest {
 
     @ParameterizedTest
     @CsvSource({
+            "0",
             "100",
             "56"
     })
-    void test_getNumOfBooksSold(int numOfBooks){
+    void test_getValidNumOfBooksSold(int numOfBooks){
+        Assertions.assertTrue(numOfBooks >= 0);
         librarian.setNumOfBooksSold(numOfBooks);
         Assertions.assertEquals(librarian.getNumOfBooksSold(),numOfBooks);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "-1",
+            "-2"
+    })
+    void test_getInvalidNumOfBooksSold(int numOfBooks){
+        Assertions.assertTrue(numOfBooks < 0);
+        librarian.setNumOfBooksSold(numOfBooks);
+        Assertions.assertEquals(librarian.getNumOfBooksSold(),numOfBooks);
+    }
     @Test
     void test_getNumberOfBills(){
         librarian.setNumberOfBills();

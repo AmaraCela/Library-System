@@ -16,15 +16,11 @@ import java.util.List;
 
 public class AddToStockTest {
 
-//    static Person person;
-//    static BorderPane addToStockView;
     AddToStockController addToStockController;
     static Category category;
     static List<Book> books;
     @BeforeAll
     static void setUp(){
-//        person = new Administrator("ADMIN","admini", "adm@gmail.com","12/01/2002","adm","adm123",1245.1,"pno");
-//        addToStockView = new AddToStockView(new MockStage());
         category = new Category("Fiction", "TestFiles//DramaBooks.dat");
         Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");

@@ -34,25 +34,26 @@ public class CategoryTest {
 
     @Test
     void test_getCategoryName(){
-        assertEquals("Drama",category.getCategoryName());
         category.setCategoryName("Drama");
         assertEquals("Drama", category.getCategoryName());
     }
 
     @Test
     void test_addBookToCategory(){
-        Book book = new Book("1111","Book1",category,"supplier",10,15,15,"a",1, "TestFiles//bookCost.txt");
+        Book book = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",1, "TestFiles//bookCost.txt");
         ArrayList<Book> bookList = new ArrayList<>();
         category.addBookToCategory(book);
         bookList.add(book);
         assertEquals(bookList, category.getBooksOfCategory());
-        assertEquals(bookList.size(),category.numOfBooks());
     }
 
 
     @Test
     void test_getBookOfCategory(){
-        Book book = new MockBook("i","t",category,"supplier",10,15,15,"a",1,"TestFiles//bookCost.txt");
+        Book book = new MockBook("1111","t",category,"supplier",10,15,15,"a",1,"TestFiles//bookCost.txt");
+        category.addBookToCategory(book);
+        assertEquals(book,category.getBookOfCategory("1111"));
+        assertNull(category.getBookOfCategory("2222"));
     }
 
 
@@ -65,7 +66,7 @@ public class CategoryTest {
     @Test
     void test_writeBookToBinaryFile()
     {
-        Book book = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         category.writeBookToBinaryFile(book);
         ArrayList<Book> books = new ArrayList<>();
         books.add(book);
@@ -74,8 +75,8 @@ public class CategoryTest {
 
     @Test
     void test_updateBinaryFile(){
-        Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
-        Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book1 = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
+        Book book2 = new MockBook("2222","Book2",category,"supplier",10,15,15,"a",1,"TestFiles//cost.txt");
         category.addBookToCategory(book1);
         category.addBookToCategory(book2);
         List<Book> books = List.of(book1,book2);

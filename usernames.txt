@@ -1,9 +1,1 @@
-Manager: johndoe john1234
-Manager: johndoe john1234
-Manager: johndoe john1234
-Manager: johndoe john1234
-Manager: johndoe john1234
-Manager: johndoe john1234
-Manager: johndoe john1234
-Manager: johndoe john1234
-Manager: johndoe john1234
+Librarian: jessyhamburg jessy1234
