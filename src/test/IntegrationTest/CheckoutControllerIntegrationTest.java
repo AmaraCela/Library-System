@@ -29,6 +29,8 @@ public class CheckoutControllerIntegrationTest {
         category = new Category("Fantasy", "TestFiles//FantasyBooks.dat");
         Book book1 = new Book("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
         Book book2 = new Book("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
+        category.addBookToCategory(book1);
+        category.addBookToCategory(book2);
         books = List.of(book1,book2);
         quantity = new ArrayList<>();
         checkOutController = new CheckOutController(books);
@@ -78,6 +80,6 @@ public class CheckoutControllerIntegrationTest {
     void test_decreaseStockOfItems(int value1, int value2){
         quantity.add(value1);
         quantity.add(value2);
-        Assertions.assertSame(category.readBooks(),checkOutController.decreaseStockOfItems(quantity));
+        Assertions.assertEquals(category.getBooksOfCategory(),checkOutController.decreaseStockOfItems(quantity));
     }
 }
