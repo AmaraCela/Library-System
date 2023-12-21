@@ -113,14 +113,4 @@ public class ManageBooksController extends Controller //ok
             this.goBack(manageBooksView,person);
         });
     }
-
-//    public List<Book> removeBooks(List<Book> selectedBooks, Category category){
-//        for (int i=0;i<selectedBooks.size();i++)
-//        {
-//            selectedBooks.get(i).getCategory().getBooksOfCategory().remove(selectedBooks.get(i));
-//            selectedBooks.get(i).getCategory().updateBinaryFile();
-//        }
-//        return category.readBooks();
-//    }
-
 }
