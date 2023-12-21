@@ -29,6 +29,8 @@ public class CategoryTest {
         file1.delete();
         File file2 = new File("TestFiles//bookCost.txt");
         file2.delete();
+        file1 = new File("TestFiles//cost.txt");
+        file1.delete();
     }
 
 

@@ -22,7 +22,7 @@ public class BookTest {
     void setUp()
     {
         Category category = new MockCategory("Fiction","TestFiles//fictionBooks.dat");
-        book = new MockBook("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+        book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
     }
 
     @AfterEach
