@@ -741,3 +741,9 @@ P
 cost.txt,9\5\9582d73028cfe9fc13281bd5293b4e38ded8922c
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+R
+"src/main/java/Views/LogInView.java,c\f\cfd9867f194f8b90df600cf15a470818d0c1acfc
+X
+(src/main/java/Views/AddCategoryView.java,8\a\8ad7f5109a741476d9ef7da70c106e0f70418243
+^
+.src/mock/mockFiles/MockCategoryController.java,a\a\aa8da6e20b4332d0845435e1d69ee876b91c0b33
