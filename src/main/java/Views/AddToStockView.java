@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -26,9 +27,10 @@ public class AddToStockView extends BorderPane {
 
     private ArrayList<Book> books;
 
-    private final Button pageBt= new Button();
+    public static Button pageBt= new Button();
     private final TextField copiesTf = new TextField();
-    private final Button addBt = new Button("Add");
+    public static Button addBt = new Button("Add");
+
     private final Label unSuccessfulLabel = new Label("Re-check the number!");
     private final Label label2 = new Label("You must select a book first!");
 
@@ -132,7 +134,11 @@ public class AddToStockView extends BorderPane {
         return label2;
     }
 
-    public static class ClickPane extends BorderPane{
-
+    public static class ClickPane extends StackPane {
+        public ClickPane(){
+            addBt.setId("addBt");
+            pageBt.setId("pageBt");
+            getChildren().addAll(addBt, pageBt);
+        }
     }
 }

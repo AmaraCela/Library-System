@@ -26,6 +26,7 @@ public class AddCategoryView extends BorderPane {
     private final TableColumn<Category,String> categoryNameColumn = new TableColumn<>("Category Name");
 
     private final Button addBt = new Button("Add");
+
     private final TextField categoryTf = new TextField();
     private final Label successfulLabel = new Label("Category added successfully!");
     private final Label unsuccessfulLabel = new Label("Category not valid!");

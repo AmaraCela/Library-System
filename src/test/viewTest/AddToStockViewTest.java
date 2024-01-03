@@ -10,16 +10,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import static org.testfx.assertions.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddToStockViewTest extends ApplicationTest {
 
     Button button;
+    Button button1;
     @Override
     public void start(Stage stage)
     {
         Parent sceneRoot = new AddToStockView.ClickPane();
         Scene scene = new Scene(sceneRoot,200,200);
+        System.out.println(sceneRoot.getChildrenUnmodifiable());
         stage.setScene(scene);
         stage.show();
     }
@@ -28,12 +30,14 @@ public class AddToStockViewTest extends ApplicationTest {
     @BeforeEach
     public void setUp()
     {
-        button = lookup(".button").queryAs(Button.class);
+        button = lookup("#addBt").queryAs(Button.class);
+        button1 = lookup("#pageBt").queryAs(Button.class);
     }
 
     @Test
     void test()
     {
-        assertThat(button).hasText("Enter");
+        assertEquals(button.getText(), "Add");
+        assertEquals(button1.getText(), "");
     }
 }
