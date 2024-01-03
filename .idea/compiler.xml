@@ -5,4 +5,9 @@
       <module name="Library-System" target="" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Library-System" options="--add-exports javafx.graphics/com.sun.javafx.application=Library.System" />
+    </option>
+  </component>
 </project>

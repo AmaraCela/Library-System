@@ -5,6 +5,7 @@ module com.example.finalproject {
     requires org.junit.jupiter.api;
     requires testfx.core;
     requires testfx.junit5;
+    requires javafx.graphics;
     requires javafx.base;
 
 

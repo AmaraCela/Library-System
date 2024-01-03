@@ -7,7 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import static org.testfx.assertions.api.Assertions.assertThat;
 
 public class AddToStockViewTest extends ApplicationTest {
 
@@ -28,9 +31,9 @@ public class AddToStockViewTest extends ApplicationTest {
         button = lookup(".button").queryAs(Button.class);
     }
 
-//    @Test
-//    void test()
-//    {
-//        assertThat(button).hasText("click me");
-//    }
+    @Test
+    void test()
+    {
+        assertThat(button).hasText("Enter");
+    }
 }
