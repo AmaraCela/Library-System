@@ -274,8 +274,6 @@ Q.idea/sonarlint/securityhotspotstore/b/4/b49e442a91a7a192969f7ad1b1228964939581
 Å
 Q.idea/sonarlint/securityhotspotstore/b/d/bd32ffd47132936da977dad59fa61f9c502170bd,b\b\bb6b9923735b2261e3a219d3f0b89723c657586f
 w
-G.idea/sonarlint/issuestore/3/e/3e49ea0235b514010ade65d7b83ed4f3567ef174,d\5\d548a3c616ab30b11ce2f924ca9f2b6011a87b90
-w
 G.idea/sonarlint/issuestore/0/9/098d2f7285fa13fc6af948f927472d4e336fc020,1\b\1b355149aa1a98b466eaba0b678df4ec6ddef5c0
 w
 G.idea/sonarlint/issuestore/0/9/093e27154c1732a8edf0a64ff8543bd8d36f8a1d,4\9\496500b79de77f787239564329a1a09413932562
@@ -491,8 +489,6 @@ G.idea/sonarlint/issuestore/8/a/8af04f20dede0b86627a7e96e602acc608795434,5\6\56
 Q.idea/sonarlint/securityhotspotstore/6/3/639b2a79d3fdf039006f941e69460c429d89417f,3\1\3121c07fd892267bf458c7cdfb165cdbebfe29f8
 Å
 Q.idea/sonarlint/securityhotspotstore/6/3/63bc383c04208e27e1060ccc6204af7f2c5bfb33,e\5\e538606059d024728463ccad7a47785aa96240dc
-Å
-Q.idea/sonarlint/securityhotspotstore/3/e/3e49ea0235b514010ade65d7b83ed4f3567ef174,3\a\3a1bcabf536d9cf4d097cfde75c1867152522330
 Å
 Q.idea/sonarlint/securityhotspotstore/0/9/093e27154c1732a8edf0a64ff8543bd8d36f8a1d,f\b\fbe6a580ec1ad2db83b2150d78bf033ad2565a76
 w
@@ -1363,8 +1359,6 @@ G.idea/sonarlint/issuestore/a/2/a27894e826a12e923848472b72b3143cbc8d64ca,f\7\f7
 Q.idea/sonarlint/securityhotspotstore/5/9/59c8bcd2d6b7ca49560f95d125f32f358d5e78e5,e\6\e6bfaf144b87f10583fa955d7b08b07a85f4ceb4
 Å
 Q.idea/sonarlint/securityhotspotstore/5/9/59b9c5f0558f76f41edda70346f4764dd402922b,9\9\9956e904fcab93663893fbebec5ccc4498da2cbd
-Å
-Q.idea/sonarlint/securityhotspotstore/9/5/9582d73028cfe9fc13281bd5293b4e38ded8922c,a\7\a72ef2bd2068252e6adcd450798055608d429188
 w
 G.idea/sonarlint/issuestore/a/2/a2a0c6096ba84b7cf2fe8524d54e22f748919349,d\7\d7b41ef1dfe455599dde97497765d168b4c9d416
 Å
@@ -2103,3 +2097,11 @@ X
 (src/main/java/Views/DeleteStaffView.java,6\c\6c1ad695c1b364bbf3ff8cf4ab91ea20a69073ee
 Z
 *src/test/viewTest/DeleteStaffViewTest.java,f\1\f19fb8cb1e09a093574b615be1803ddf7ad1a123
+T
+$src/main/java/Views/IncomesView.java,3\a\3a9d1e255e7ee50bb2784cb00e1061ec0f570690
+V
+&src/main/java/Views/LibrarianView.java,4\0\40d40775f7d8a9dbd2253db2f2fa86cf3e70d094
+P
+ src/main/java/Views/HelloFx.java,3\6\36fe399bc51711529fc80a7805f9f63e1aedd9cf
+T
+$src/test/viewTest/LogInViewTest.java,1\5\153e36ab94a539d2413d507bfdfa31ea6466ec87
