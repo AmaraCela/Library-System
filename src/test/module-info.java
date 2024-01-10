@@ -9,6 +9,7 @@ module Library.System {
     requires testfx.junit5;
     requires javafx.controls;
     requires org.assertj.core;
+    requires junit;
 
     opens modelsTest to org.junit.platform.commons;
     opens controllerTest to org.junit.platform.commons;

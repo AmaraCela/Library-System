@@ -101,17 +101,6 @@ public class AddToStockView extends BorderPane {
         return bookTableView;
     }
 
-    public TableColumn<Book, String> getIsbnColumn() {
-        return isbnColumn;
-    }
-
-    public TableColumn<Book, String> getTitleColumn() {
-        return titleColumn;
-    }
-
-    public TableColumn<Book, Integer> getStockColumn() {
-        return stockColumn;
-    }
 
     public ArrayList<Book> getBooks() {
         return books;
@@ -150,9 +139,6 @@ public class AddToStockView extends BorderPane {
             unSuccessfulLabel.setVisible(false);
             bookTableView.setId("bookTableView");
             getChildren().addAll(addBt, pageBt, unSuccessfulLabel, label2, copiesTf, bookTableView);
-        }
-        public static AddToStockController getAddToStockController() {
-            return addToStockController;
         }
     }
 }

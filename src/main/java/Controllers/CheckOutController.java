@@ -1,9 +1,6 @@
 package Controllers;
 
 import Views.CheckOutView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import models.*;
 
 import java.util.ArrayList;
@@ -32,7 +29,6 @@ public class CheckOutController extends Controller //ok
             this.checkOutView.getProceedBt().setVisible(true);
             this.checkOutView.getMustSelectLabel().setVisible(false);
         }
-
 
         this.checkOutView.getProceedBt().setOnAction(e ->
                 {
@@ -74,17 +70,12 @@ public class CheckOutController extends Controller //ok
         if (validateCheckOut(books, quantities)) {
 
             bill = new Bill(books, quantities);
-            Text text = new Text("The total is "+ bill.CalculateTotal());
-            text.setFont(Font.font("Arial Rounded MT Bold",12));
-            text.setFill(Color.DARKBLUE);
-            this.checkOutView.getGridPane().add(text,4,4);
-
+            this.checkOutView.getSuccess().setText("The total is "+bill.CalculateTotal());
             if(administrator instanceof Librarian)
             {
                 librarianCheckOut(administrator,bill,quantities);
 
             }
-
             decreaseStockOfItems(quantities);
         }
         else

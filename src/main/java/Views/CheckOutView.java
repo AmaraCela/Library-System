@@ -1,6 +1,6 @@
 package Views;
 
-import javafx.collections.ObservableList;
+import Controllers.CheckOutController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,8 +12,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Book;
+import models.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,18 +24,20 @@ public class CheckOutView extends BorderPane {
 
     private final Stage stage;
     private final ArrayList<TextField> textFields = new ArrayList<>();
-    private final Button proceedBt = new Button("Proceed");
-    private final ObservableList<Book> books;
-
+    private static final Button proceedBt = new Button("Proceed");
+    private final List<Book> books;
     private final Button backBt = new Button();
-    private final Label errorLabel = new Label("Re-check the quantities!");
-    private final Label mustSelectLabel = new Label("Must select books to check out!");
+    private static final Label errorLabel = new Label("Re-check the quantities!");
+    private static final Label mustSelectLabel = new Label("Must select books to check out!");
     private final  Label label1 = new Label("Book title: ");
     private final Label label2 = new Label("Quantity: ");
     private final GridPane gridPane = new GridPane();
+    private static TextField quantityTf = new TextField();
+    private CheckOutController controller;
+    private static Text success = new Text();
 
 
-    public CheckOutView(Stage stage, ObservableList<Book> books)
+    public CheckOutView(Person person, Stage stage, List<Book> books)
     {
         this.books = books;
 
@@ -58,9 +62,11 @@ public class CheckOutView extends BorderPane {
         for(i = 0;i<this.books.size();i++)
         {
             gridPane.add(new Label(this.books.get(i).getTitle()),0,i+1);
-            textFields.add(new TextField());
-            textFields.get(i).setText("1");
-            gridPane.add(textFields.get(i),1,i+1);
+            quantityTf = new TextField();
+            quantityTf.setId("quantityTf");
+            textFields.add(quantityTf);
+            quantityTf.setText("1");
+            gridPane.add(quantityTf,1,i+1);
         }
 
         gridPane.add(proceedBt,0,i+2);
@@ -70,6 +76,10 @@ public class CheckOutView extends BorderPane {
         gridPane.add(errorLabel,1,i+2);
         errorLabel.setVisible(false);
 
+        success.setFont(Font.font("Arial Rounded MT Bold",12));
+        success.setFill(Color.DARKBLUE);
+
+        gridPane.add(success,4,4);
         mustSelectLabel.setTextFill(Color.DARKRED);
         mustSelectLabel.setFont(Font.font("Arial Bold",14));
         gridPane.add(mustSelectLabel,1,i+2);
@@ -90,6 +100,8 @@ public class CheckOutView extends BorderPane {
 
         this.stage = stage;
         stage.setScene(scene);
+        controller = new CheckOutController(person,this,books);
+
     }
 
     public Stage getStage() {
@@ -132,5 +144,23 @@ public class CheckOutView extends BorderPane {
 
     public GridPane getGridPane() {
         return gridPane;
+    }
+
+    public Text getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Text success) {
+        this.success = success;
+    }
+
+    public static class ClickPane extends BorderPane{
+        public ClickPane()
+        {
+            proceedBt.setId("proceedBt");
+            errorLabel.setId("errorLabel");
+            success.setId("success");
+            getChildren().addAll(proceedBt,errorLabel, quantityTf, success);
+        }
     }
 }
