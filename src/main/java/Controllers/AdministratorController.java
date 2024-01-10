@@ -66,8 +66,8 @@ public class AdministratorController extends Controller //ok
         });
         this.administratorView.getAddStockItem().setOnAction(e->
         {
-            AddToStockView addToStockView = new AddToStockView(administratorView.getStage());
-            new AddToStockController(administrator,addToStockView);
+            AddToStockView addToStockView = new AddToStockView(administrator,administratorView.getStage());
+//            new AddToStockController(administrator,addToStockView);
         });
 
 

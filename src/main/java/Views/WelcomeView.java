@@ -58,4 +58,13 @@ public class WelcomeView extends BorderPane {
     public Button getEnterBt() {
         return enterBt;
     }
+
+    public static class ClickPane extends BorderPane
+    {
+         public ClickPane()
+         {
+             Button enterBt = new Button("Enter");
+             getChildren().add(enterBt);
+         }
+    }
 }

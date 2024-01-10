@@ -1,5 +1,6 @@
 package Views;
 
+import Controllers.AddToStockController;
 import Controllers.CategoryController;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -10,22 +11,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import models.Book;
+import models.Person;
 
 import java.util.ArrayList;
 
 public class AddToStockView extends BorderPane {
-    private Stage stage;
+    private final Stage stage;
     private static final TableView<Book> bookTableView = new TableView<>();
     private final TableColumn<Book,String> isbnColumn = new TableColumn<>("ISBN");
     private final TableColumn<Book,String> titleColumn = new TableColumn<>("Title");
     private final TableColumn<Book,Integer> stockColumn = new TableColumn<>("Stock");
 
-    private ArrayList<Book> books;
+    private final ArrayList<Book> books;
 
     public static Button pageBt= new Button();
     private static final TextField copiesTf = new TextField();
@@ -33,9 +34,10 @@ public class AddToStockView extends BorderPane {
 
     private static final Label unSuccessfulLabel = new Label("Re-check the number!");
     private static final Label label2 = new Label("You must select a book first!");
+    private static AddToStockController addToStockController;
 
 
-    public AddToStockView(Stage stage)
+    public AddToStockView(Person person, Stage stage)
     {
         this.stage = stage;
         books = new ArrayList<>();
@@ -88,6 +90,7 @@ public class AddToStockView extends BorderPane {
         gridPane.add(unSuccessfulLabel,1,3);
 
         this.setBottom(gridPane);
+        addToStockController = new AddToStockController(person, this);
     }
 
     public Stage getStage() {
@@ -134,18 +137,25 @@ public class AddToStockView extends BorderPane {
         return label2;
     }
 
-    public static class ClickPane extends StackPane {
+
+
+    public static class ClickPane extends BorderPane {
         public ClickPane(){
+
+            System.out.println(unSuccessfulLabel.isVisible()+"here");
             addBt.setId("addBt");
             pageBt.setId("pageBt");
-            addBt.setOnAction(actionEvent -> addBt.setText("Clicked"));
-            pageBt.setOnAction(actionEvent -> pageBt.setText("Clicked"));
+//            addBt.setOnAction(actionEvent -> addBt.setText("Clicked"));
+//            pageBt.setOnAction(actionEvent -> pageBt.setText("Clicked"));
             unSuccessfulLabel.setId("unSuccessfulLabel");
             label2.setId("label2");
             copiesTf.setId("copiesTf");
             unSuccessfulLabel.setVisible(false);
             bookTableView.setId("bookTableView");
             getChildren().addAll(addBt, pageBt, unSuccessfulLabel, label2, copiesTf, bookTableView);
+        }
+        public static AddToStockController getAddToStockController() {
+            return addToStockController;
         }
     }
 }

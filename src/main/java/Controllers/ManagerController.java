@@ -57,8 +57,8 @@ public class ManagerController extends Controller {
         {
             label.setVisible(false);
 
-                AddToStockView addToStockView = new AddToStockView(managerView.getStage());
-                new AddToStockController(person,addToStockView);
+                AddToStockView addToStockView = new AddToStockView(person,managerView.getStage());
+//                new AddToStockController(person,addToStockView);
 
         });
         this.managerView.getIncomesItem().setOnAction(e->

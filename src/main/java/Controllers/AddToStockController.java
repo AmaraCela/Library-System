@@ -26,21 +26,25 @@ public class AddToStockController extends Controller {
             this.goBack(addToStockView, person);
         });
         ((AddToStockView)this.addToStockView).getAddBt().setOnAction((e) -> {
-            ((AddToStockView)this.addToStockView).getLabel2().setVisible(false);
-            ((AddToStockView)this.addToStockView).getUnSuccessfulLabel().setVisible(false);
-            ObservableList<Book> selectedBooks = ((AddToStockView)this.addToStockView).getBookTableView().getSelectionModel().getSelectedItems();
-            if (selectedBooks.size() == 0) {
-                ((AddToStockView)this.addToStockView).getLabel2().setVisible(true);
-            } else {
-                this.returnBookToDisplay(selectedBooks);
-            }
-
+        onAddPress();
         });
     }
 
     public AddToStockController() {
     }
 
+    public void onAddPress()
+    {
+        ((AddToStockView)this.addToStockView).getLabel2().setVisible(false);
+        ((AddToStockView)this.addToStockView).getUnSuccessfulLabel().setVisible(false);
+        ObservableList<Book> selectedBooks = ((AddToStockView)this.addToStockView).getBookTableView().getSelectionModel().getSelectedItems();
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        if (selectedBooks.size() == 0) {
+            ((AddToStockView)this.addToStockView).getLabel2().setVisible(true);
+        } else {
+            this.returnBookToDisplay(selectedBooks);
+        }
+    }
     public ArrayList<Book> returnBookToDisplay(ObservableList<Book> selectedBooks) {
         try {
             int stock = Integer.parseInt(((AddToStockView)this.addToStockView).getCopiesTf().getText());
