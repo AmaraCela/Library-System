@@ -26,7 +26,6 @@ public class SupplyBooksController extends Controller //ok
 
         });
 
-
             this.supplyBooksView.getAddCategoryBt().setOnAction(e->
             {
                 this.supplyBooksView.getTextISBN().setVisible(false);

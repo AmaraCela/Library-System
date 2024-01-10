@@ -19,13 +19,13 @@ public class AdministratorController extends Controller //ok
 
         this.administratorView.getRegisterLibrarian().setOnAction(e->
         {
-            RegisterStaffView registerStaffView = new RegisterStaffView(administratorView.getStage());
-            RegisterStaffController registerStaffController = new RegisterStaffController(administrator,registerStaffView,1);
+            RegisterStaffView registerStaffView = new RegisterStaffView(administrator,administratorView.getStage(),1);
+//            RegisterStaffController registerStaffController = new RegisterStaffController(administrator,registerStaffView,1);
         });
         this.administratorView.getRegisterManager().setOnAction(e->
         {
-            RegisterStaffView registerStaffView = new RegisterStaffView(administratorView.getStage());
-            RegisterStaffController registerStaffController = new RegisterStaffController(administrator,registerStaffView,2);
+            RegisterStaffView registerStaffView = new RegisterStaffView(administrator,administratorView.getStage(),2);
+//            RegisterStaffController registerStaffController = new RegisterStaffController(administrator,registerStaffView,2);
         });
 
         this.administratorView.getViewLibrarian().setOnAction(e->

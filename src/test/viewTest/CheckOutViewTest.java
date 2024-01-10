@@ -81,4 +81,6 @@ public class CheckOutViewTest extends ApplicationTest {
         clickOn(proceedBt);
         assertTrue(errorLabel.isVisible());
     }
+
+
 }

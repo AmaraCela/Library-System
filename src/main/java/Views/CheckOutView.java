@@ -150,10 +150,6 @@ public class CheckOutView extends BorderPane {
         return success;
     }
 
-    public void setSuccess(Text success) {
-        this.success = success;
-    }
-
     public static class ClickPane extends BorderPane{
         public ClickPane()
         {

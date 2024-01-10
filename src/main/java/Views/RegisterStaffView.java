@@ -1,5 +1,6 @@
 package Views;
 
+import Controllers.RegisterStaffController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,75 +20,73 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import models.Person;
 
 public class RegisterStaffView extends BorderPane {
 
     private final Stage stage;
 
-    private final  Image image = new Image("file:errorIcon.jpg");
+    private static final Image image = new Image("file:errorIcon.jpg");
 
-    private final TextField usernameTf = new TextField();
-    private final PasswordField passwordTf = new PasswordField();
-    private final TextField nameTf = new TextField();
-    private final TextField surnameTf = new TextField();
-    private final TextField emailTf = new TextField();
-    private final TextField phoneNoTf = new TextField();
-    private final TextField birthdayTf = new TextField();
-    private final TextField salaryTf = new TextField();
+    private static final TextField usernameTf = new TextField();
+    private static final PasswordField passwordTf = new PasswordField();
+    private static final TextField nameTf = new TextField();
+    private static final TextField surnameTf = new TextField();
+    private static final TextField emailTf = new TextField();
+    private static final TextField phoneNoTf = new TextField();
+    private static final TextField birthdayTf = new TextField();
+    private static final TextField salaryTf = new TextField();
 
-    private final Button signUpBt = new Button("Sign Up");
-    private final Label usernameErrorLabel = new Label("Username not available!");
+    private static final Button signUpBt = new Button("Sign Up");
+    private static final Label usernameErrorLabel = new Label("Username not available!");
 
-    private final Label passwordErrorLabel = new Label("Password must have at least 8 characters!");
+    private static final Label passwordErrorLabel = new Label("Password must have at least 8 characters!");
 
-    private final Label nameErrorLabel = new Label("Name can not have this length!");
-
-
-
-    private final Label surnameErrorLabel = new Label("Last name can not have this length!");
-
-    private final Label emailErrorLabel = new Label("Enter a valid email!");
-
-
-    private final Label birthdayErrorLabel = new Label("Accepted birthday format is dd/mm/yyyy.");
-
-    private final Label phonenoErrorLabel = new Label("Accepted number format is 06d dd dd ddd.");
+    private static final Label nameErrorLabel = new Label("Name can not have this length!");
 
 
 
-    private final Label salaryErrorLabel = new Label("Enter a valid salary!");
+    private static final Label surnameErrorLabel = new Label("Last name can not have this length!");
 
-    private final ImageView salaryError = new ImageView(image);
-
-
-    private final ImageView usernameError = new ImageView(image);
-
-    private final ImageView passwordError = new ImageView(image);
-
-    private final ImageView nameError = new ImageView(image);
-
-    private final ImageView surnameError = new ImageView(image);
+    private static final Label emailErrorLabel = new Label("Enter a valid email!");
 
 
-    private final ImageView birthdayError = new ImageView(image);
+    private static final Label birthdayErrorLabel = new Label("Accepted birthday format is dd/mm/yyyy.");
 
-
-    private final ImageView emailError = new ImageView(image);
-
-
-    private final ImageView phoneError = new ImageView(image);
-
-    private final Text succesfulText = new Text("Registration successful!");
-    private final Text unsuccessfulText = new Text("Registration unsuccessful! Check the above fields again!");
+    private static final Label phonenoErrorLabel = new Label("Accepted number format is 06d dd dd ddd.");
 
 
 
+    private static final Label salaryErrorLabel = new Label("Enter a valid salary!");
+
+    private static final ImageView salaryError = new ImageView(image);
 
 
+    private static final ImageView usernameError = new ImageView(image);
+
+    private static final ImageView passwordError = new ImageView(image);
+
+    private static final ImageView nameError = new ImageView(image);
+
+    private static final ImageView surnameError = new ImageView(image);
+
+
+    private static final ImageView birthdayError = new ImageView(image);
+
+
+    private static final ImageView emailError = new ImageView(image);
+
+
+    private static final ImageView phoneError = new ImageView(image);
+
+    private static Text successful = new Text("Registration successful!");
+    private static final Text unsuccessfulText = new Text("Registration unsuccessful! Check the above fields again!");
 
     private final Button administratorPageBt = new Button();
 
-        public RegisterStaffView (Stage stage)
+    private RegisterStaffController controller;
+
+        public RegisterStaffView (Person person, Stage stage, int choice)
         {
             this.stage = stage;
 
@@ -106,9 +105,9 @@ public class RegisterStaffView extends BorderPane {
             rectangle.xProperty().bind(gridPane.layoutXProperty());
             rectangle.xProperty().bind(gridPane.maxHeightProperty());
 
-            succesfulText.setFont(Font.font("Arial Black", FontWeight.BOLD,15));
-            succesfulText.setFill(Color.rgb(80,120,20));
-            succesfulText.setTextAlignment(TextAlignment.CENTER);
+            successful.setFont(Font.font("Arial Black", FontWeight.BOLD,15));
+            successful.setFill(Color.rgb(80,120,20));
+            successful.setTextAlignment(TextAlignment.CENTER);
 
             StackPane stackPane = new StackPane();
             stackPane.getChildren().add(rectangle);
@@ -246,6 +245,7 @@ public class RegisterStaffView extends BorderPane {
 
             Scene scene = new Scene(this,1000,600);
             stage.setScene(scene);
+            controller = new RegisterStaffController(person,this,choice);
         }
 
 
@@ -362,10 +362,50 @@ public class RegisterStaffView extends BorderPane {
     }
 
     public Text getSuccesfulText() {
-        return succesfulText;
+        return successful;
     }
 
     public Text getUnsuccessfulText() {
         return unsuccessfulText;
+    }
+
+    public static class ClickPane extends BorderPane{
+            public ClickPane()
+            {
+                usernameTf.setId("usernameTf");
+                passwordTf.setId("passwordTf");
+                nameTf.setId("nameTf");
+                surnameTf.setId("surnameTf");
+                emailTf.setId("emailTf");
+                phoneNoTf.setId("phoneNoTf");
+                birthdayTf.setId("birthdayTf");
+                salaryTf.setId("salaryTf");
+                signUpBt.setId("signUpBt");
+                usernameErrorLabel.setId("usernameErrorLabel");
+                passwordErrorLabel.setId("passwordErrorLabel");
+                nameErrorLabel.setId("nameErrorLabel");
+                surnameErrorLabel.setId("surnameErrorLabel");
+                emailErrorLabel.setId("emailErrorLabel");
+                birthdayErrorLabel.setId("birthdayErrorLabel");
+                phonenoErrorLabel.setId("phonenoErrorLabel");
+                salaryErrorLabel.setId("salaryErrorLabel");
+                salaryError.setId("salaryError");
+                usernameError.setId("usernameError");
+                passwordError.setId("passwordError");
+                nameError.setId("nameError");
+                surnameError.setId("surnameError");
+                birthdayError.setId("birthdayError");
+                emailError.setId("emailError");
+                phoneError.setId("phoneError");
+                successful.setId("successful");
+                successful.getStyleClass().add("successful");
+                unsuccessfulText.setId("unsuccessfulText");
+                getChildren().addAll(usernameTf,passwordTf,nameTf,surnameTf,emailTf,phoneNoTf,
+                        birthdayTf,salaryTf,signUpBt,usernameErrorLabel,passwordErrorLabel,
+                        nameErrorLabel,surnameErrorLabel,emailErrorLabel,birthdayErrorLabel,
+                        phonenoErrorLabel,salaryErrorLabel,salaryError,usernameError,nameError,
+                        passwordError,surnameError,birthdayError,emailError,phoneError,successful,unsuccessfulText);
+                System.out.println(lookup(".successful"));
+            }
     }
 }

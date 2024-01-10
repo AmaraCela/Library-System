@@ -192,6 +192,7 @@ public class RegisterStaffController extends Controller//ok
             else
             {
                 this.registerStaffView.getUnsuccessfulText().setVisible(true);
+                this.registerStaffView.getSalaryErrorLabel().setVisible(true);
                 this.registerStaffView.setBottom(this.registerStaffView.getUnsuccessfulText());
             }
         }
@@ -278,6 +279,7 @@ public class RegisterStaffController extends Controller//ok
     {
         if(salary<=100 || salary>=5001)
         {
+
             throw new IllegalSalaryException();
         }
         return true;
