@@ -16,26 +16,28 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import models.Category;
+import models.Person;
 
 import java.util.ArrayList;
 
 public class AddCategoryView extends BorderPane {
 
     private Stage stage;
-    private final TableView<Category> categoryTableView = new TableView<>();
+    private static final TableView<Category> categoryTableView = new TableView<>();
     private final TableColumn<Category,String> categoryNameColumn = new TableColumn<>("Category Name");
 
-    private final Button addBt = new Button("Add");
+    private static final Button addBt = new Button("Add");
 
-    private final TextField categoryTf = new TextField();
-    private final Label successfulLabel = new Label("Category added successfully!");
-    private final Label unsuccessfulLabel = new Label("Category not valid!");
+    private static final TextField categoryTf = new TextField();
+    private static final Label successfulLabel = new Label("Category added successfully!");
+    private static final Label unsuccessfulLabel = new Label("Category not valid!");
 
-    private final Button administratorPageBt = new Button();
-    private final Button deleteBt = new Button("Delete");
+    private static final Button administratorPageBt = new Button();
+    private static final Button deleteBt = new Button("Delete");
+    private static CategoryController categoryController;
 
 
-    public AddCategoryView(Stage stage)
+    public AddCategoryView(Person person, Stage stage)
     {
         this.stage = stage;
         this.setPadding(new Insets(0,0,20,0));
@@ -94,7 +96,7 @@ public class AddCategoryView extends BorderPane {
 
         Scene scene = new Scene(this,1000,600);
         stage.setScene(scene);
-
+        categoryController = new CategoryController(person,this);
     }
 
     public Stage getStage() {
@@ -105,9 +107,6 @@ public class AddCategoryView extends BorderPane {
         return categoryTableView;
     }
 
-    public TableColumn<Category, String> getCategoryNameColumn() {
-        return categoryNameColumn;
-    }
 
     public Button getAddBt() {
         return addBt;
@@ -131,5 +130,19 @@ public class AddCategoryView extends BorderPane {
 
     public Button getDeleteBt() {
         return deleteBt;
+    }
+
+
+    public static class ClickPane extends BorderPane{
+        public ClickPane(){
+            addBt.setId("addBt");
+            categoryTableView.setId("categoryTableView");
+            successfulLabel.setId("success");
+            unsuccessfulLabel.setId("failure");
+            categoryTf.setId("categoryTf");
+            deleteBt.setId("deleteBt");
+            administratorPageBt.setId("administratorPateBt");
+            getChildren().addAll(addBt, categoryTableView, successfulLabel, unsuccessfulLabel, categoryTf, deleteBt, administratorPageBt);
+        }
     }
 }

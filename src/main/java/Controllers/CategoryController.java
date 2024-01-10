@@ -31,7 +31,7 @@ public class CategoryController extends Controller //ok
 
         this.categoryView.getAdministratorPageBt().setOnAction(e->
         {
-            this.goBack(categoryView,administrator);
+            this.goBack(categoryView, administrator);
 
         });
 
@@ -201,8 +201,10 @@ public class CategoryController extends Controller //ok
         this.categoryView.getSuccessfulLabel().setVisible(false);
         this.categoryView.getUnsuccessfulLabel().setVisible(false);
         String categoryName = this.categoryView.getCategoryTf().getText();
+        System.out.println(categoryName);
         if(handleCategory(categoryName))
         {
+            System.out.println("HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             Category category = new Category(categoryName);
             addCategory(category);
             this.categoryView.getSuccessfulLabel().setVisible(true);

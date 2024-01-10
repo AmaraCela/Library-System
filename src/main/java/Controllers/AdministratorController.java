@@ -50,8 +50,8 @@ public class AdministratorController extends Controller //ok
         });
         this.administratorView.getAddBookCatgory().setOnAction(e->
         {
-            AddCategoryView addCategoryView = new AddCategoryView(administratorView.getStage());
-            CategoryController categoryController = new CategoryController(administrator,addCategoryView);
+            AddCategoryView addCategoryView = new AddCategoryView(administrator,administratorView.getStage());
+//            CategoryController categoryController = new CategoryController(administrator,addCategoryView);
 
         });
         this.administratorView.getSupplyBooksItem().setOnAction(e->

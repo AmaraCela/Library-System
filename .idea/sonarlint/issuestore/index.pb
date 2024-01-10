@@ -747,3 +747,7 @@ X
 (src/main/java/Views/AddCategoryView.java,8\a\8ad7f5109a741476d9ef7da70c106e0f70418243
 ^
 .src/mock/mockFiles/MockCategoryController.java,a\a\aa8da6e20b4332d0845435e1d69ee876b91c0b33
+=
+employees.dat,e\8\e854b4aecf0155c02f155a2c7f86d68e9697cb9b
+=
+usernames.txt,1\a\1a072594ec51167b90b32f64b39f6d1be122f60f

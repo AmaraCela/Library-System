@@ -34,8 +34,8 @@ public class ManagerController extends Controller {
         {
             label.setVisible(false);
 
-                AddCategoryView addCategoryView = new AddCategoryView(managerView.getStage());
-                new CategoryController(person,addCategoryView);
+                AddCategoryView addCategoryView = new AddCategoryView(person, managerView.getStage());
+//                new CategoryController(person,addCategoryView);
 
 
         });
