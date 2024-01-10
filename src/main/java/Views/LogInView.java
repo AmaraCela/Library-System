@@ -1,5 +1,6 @@
 package Views;
 
+import Controllers.LogInController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,11 +18,12 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class LogInView extends BorderPane {
-    private TextField usernameTf = new TextField();
-    private PasswordField passwordTf = new PasswordField();
-    private Button logInBt = new Button("Log in");
+    private static TextField usernameTf = new TextField();
+    private static PasswordField passwordTf = new PasswordField();
+    private static Button logInBt = new Button("Log in");
     private GridPane gridPane = new GridPane();
     private Stage stage;
+    public static Label loginSuccessful = new Label("You successfully logged in!");
 
 
     public LogInView (Stage stage)
@@ -50,7 +52,7 @@ public class LogInView extends BorderPane {
         rectangle1.toBack();
         this.setCenter(stackPaneCenter);
 
-
+        loginSuccessful.setVisible(false);
         Label label1 = new Label("Username:");
         Label label2 = new Label("Password:");
         label1.setFont(Font.font("Arial Rounded MT Bold"));
@@ -71,6 +73,7 @@ public class LogInView extends BorderPane {
         this.setBottom(stackPaneBottom);
         Scene scene = new Scene(this,1000,600);
         stage.setScene(scene);
+        new LogInController(this);
     }
 
     public TextField getUsernameTf() {
@@ -91,6 +94,18 @@ public class LogInView extends BorderPane {
 
     public Stage getStage() {
         return stage;
+    }
+
+    public static class ClickPane extends BorderPane{
+
+        public ClickPane(){
+            logInBt.setId("logInBt");
+            usernameTf.setId("usernameTf");
+            passwordTf.setId("passwordTf");
+            loginSuccessful.setId("loginSuccessful");
+            System.out.println(loginSuccessful.getId());
+            getChildren().addAll(logInBt, usernameTf, passwordTf, loginSuccessful);
+        }
     }
 }
 

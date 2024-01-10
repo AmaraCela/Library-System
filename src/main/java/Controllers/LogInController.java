@@ -61,6 +61,7 @@ public class LogInController extends Controller {
                 new LibrarianController(person,librarianView);
                 person.personnelData();
             }
+            LogInView.loginSuccessful.setVisible(true);
         }
     }
 
