@@ -1,6 +1,7 @@
 package Views;
 
 import Controllers.CategoryController;
+import Controllers.SupplyBooksController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -17,41 +18,42 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import models.Person;
 
 import java.util.ArrayList;
 
 public class SupplyBooksView extends BorderPane {
 
     private final Stage stage;
-    private final Button administratorPageBt = new Button();
-    private final Button addBt = new Button("Add");
-    private final ComboBox<String> categoryCB = new ComboBox<>();
-    private final TextField categoryTf = new TextField();
-    private final Button addCategoryBt = new Button("Add Category");
-    private final TextField ISBNTf = new TextField();
-    private final TextField titleTf = new TextField();
-    private final TextField supplierTf = new TextField();
-    private final TextField purchasedPriceTf = new TextField();
-    private final TextField originalPriceTf = new TextField();
-    private final TextField sellingPriceTf = new TextField();
-    private final TextField authorTf = new TextField();
-    private final TextField stockTf = new TextField();
-    private final Text textSuccessful = new Text("Book added successfully!");
-    private final Text textISBN = new Text("The ISBN is already entered!");
-    private final Text textTitle = new Text("The title can not have this length!");
-    private final Text textSupplier = new Text("The supplier can not have this length!");
-    private final Text textPrice = new Text("Check the price!");
-    private final Text textOriginalPrice = new Text("Check the price!");
-    private final Text textSellingPrice = new Text("Check the price!");
-    private final Text textStock = new Text("Can not have a negative stock!");
-    private final Text textCategory = new Text("Select the category!");
-    private final Text textAuthor = new Text("Check the author!");
+    private static final Button administratorPageBt = new Button();
+    private static final Button addBt = new Button("Add");
+    private static final ComboBox<String> categoryCB = new ComboBox<>();
+    private static final TextField categoryTf = new TextField();
+    private static final Button addCategoryBt = new Button("Add Category");
+    private static final TextField ISBNTf = new TextField();
+    private static final TextField titleTf = new TextField();
+    private static final TextField supplierTf = new TextField();
+    private static final TextField purchasedPriceTf = new TextField();
+    private static final TextField originalPriceTf = new TextField();
+    private static final TextField sellingPriceTf = new TextField();
+    private static final TextField authorTf = new TextField();
+    private static final TextField stockTf = new TextField();
+    private static final Text textSuccessful = new Text("Book added successfully!");
+    private static final Text textISBN = new Text("The ISBN is already entered!");
+    private static final Text textTitle = new Text("The title can not have this length!");
+    private static final Text textSupplier = new Text("The supplier can not have this length!");
+    private static final Text textPrice = new Text("Check the price!");
+    private static final Text textOriginalPrice = new Text("Check the price!");
+    private static final Text textSellingPrice = new Text("Check the price!");
+    private static final Text textStock = new Text("Can not have a negative stock!");
+    private static final Text textCategory = new Text("Select the category!");
+    private static final Text textAuthor = new Text("Check the author!");
 
-    private final Text textInvalidCategory = new Text("Enter a valid category!");
-    private final Label label = new Label("Add new category");
-    private final Label categoryLabel = new Label("Category: ");
+    private static final Text textInvalidCategory = new Text("Enter a valid category!");
+    private static final Label label = new Label("Add new category");
+    private static final Label categoryLabel = new Label("Category: ");
 
-    public SupplyBooksView(Stage stage)
+    public SupplyBooksView(Stage stage, Person person)
     {
         this.stage = stage;
         GridPane gridPane = new GridPane();
@@ -106,6 +108,7 @@ public class SupplyBooksView extends BorderPane {
 
         gridPane.add(textInvalidCategory,0,19);
         textInvalidCategory.setVisible(false);
+        categoryCB.getItems().clear();
 
         if(categories.size() == 0) {
             addBt.setVisible(false);
@@ -177,7 +180,7 @@ public class SupplyBooksView extends BorderPane {
 
         Scene scene = new Scene(this,1000,600);
         stage.setScene(scene);
-
+        new SupplyBooksController(person, this);
     }
 
     public Stage getStage() {
@@ -282,5 +285,56 @@ public class SupplyBooksView extends BorderPane {
 
     public Text getTextAuthor() {
         return textAuthor;
+    }
+
+    public static void clearTextFields(){
+        ISBNTf.clear();
+        titleTf.clear();
+        originalPriceTf.clear();
+        sellingPriceTf.clear();
+        authorTf.clear();
+        stockTf.clear();
+        categoryTf.clear();
+        supplierTf.clear();
+        purchasedPriceTf.clear();
+//        categoryCB.getItems().clear();
+    }
+
+    public static class ClickPane extends BorderPane{
+        public ClickPane(){
+            administratorPageBt.setId("administratorPageBt");
+            addBt.setId("addBt");
+            administratorPageBt.setOnAction(actionEvent -> {
+                System.out.println("haha");
+                administratorPageBt.setText("Clicked");
+            });
+            categoryTf.setId("categoryTf");
+            ISBNTf.setId("ISBNTf");
+            titleTf.setId("titleTf");
+            supplierTf.setId("supplierTf");
+            purchasedPriceTf.setId("purchasedPriceTf");
+            originalPriceTf.setId("originalPriceTf");
+            sellingPriceTf.setId("sellingPriceTf");
+            authorTf.setId("authorTf");
+            stockTf.setId("stockTf");
+            textSuccessful.setId("textSuccessful");
+            textISBN.setId("textISBN");
+            textTitle.setId("textTitle");
+            textSupplier.setId("textSupplier");
+            textPrice.setId("textPrice");
+            textOriginalPrice.setId("textOriginalPrice");
+            textSellingPrice.setId("textSellingPrice");
+            textStock.setId("textStock");
+            textCategory.setId("textCategory");
+            textAuthor.setId("textAuthor");
+
+            textInvalidCategory.setId("textInvalidCategory");
+            label.setId("label");
+            categoryLabel.setId("categoryLabel");
+            categoryCB.setId("categoryCB");
+            addCategoryBt.setId("addCategoryBt");
+            getChildren().addAll(administratorPageBt, addBt, categoryTf, ISBNTf, titleTf, supplierTf, purchasedPriceTf, originalPriceTf, sellingPriceTf, authorTf, stockTf
+            ,textSuccessful, textISBN, textTitle, textSupplier, textPrice, textOriginalPrice, textSellingPrice, textStock,textCategory, textAuthor, textInvalidCategory, label, categoryLabel, categoryCB, addCategoryBt);
+        }
     }
 }

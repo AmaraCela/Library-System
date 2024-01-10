@@ -56,8 +56,8 @@ public class AdministratorController extends Controller //ok
         });
         this.administratorView.getSupplyBooksItem().setOnAction(e->
         {
-            SupplyBooksView supplyBooksView = new SupplyBooksView(administratorView.getStage());
-            new SupplyBooksController(administrator,supplyBooksView);
+            SupplyBooksView supplyBooksView = new SupplyBooksView(administratorView.getStage(), administrator);
+//            new SupplyBooksController(administrator,supplyBooksView);
         });
         this.administratorView.getViewBooks().setOnAction(e->
         {

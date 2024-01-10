@@ -8,7 +8,6 @@ import Views.WelcomeView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import models.Administrator;
 
 import java.io.IOException;
 
@@ -17,7 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
 
-        new Administrator("Amara", "Cela", "acela@gmail.com", "29/12/2001", "acela21", "12345678", 3000, "067 71 71 711");
+//        new Administrator("Amara", "Cela", "acela@gmail.com", "29/12/2001", "acela21", "12345678", 3000, "067 71 71 711");
         RegisterStaffController.readFromFile();
         CategoryController.updateCategories();
         WelcomeView welcomeView = new WelcomeView();

@@ -26,8 +26,8 @@ public class ManagerController extends Controller {
         {
             label.setVisible(false);
 
-                SupplyBooksView supplyBooksView = new SupplyBooksView(managerView.getStage());
-                new SupplyBooksController(person,supplyBooksView);
+                SupplyBooksView supplyBooksView = new SupplyBooksView(managerView.getStage(), person);
+//                new SupplyBooksController(person,supplyBooksView);
 
         });
         this.managerView.getManageCategoriesItem().setOnAction(e->
