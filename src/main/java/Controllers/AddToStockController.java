@@ -35,10 +35,10 @@ public class AddToStockController extends Controller {
 
     public void onAddPress()
     {
+
         ((AddToStockView)this.addToStockView).getLabel2().setVisible(false);
         ((AddToStockView)this.addToStockView).getUnSuccessfulLabel().setVisible(false);
         ObservableList<Book> selectedBooks = ((AddToStockView)this.addToStockView).getBookTableView().getSelectionModel().getSelectedItems();
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         if (selectedBooks.size() == 0) {
             ((AddToStockView)this.addToStockView).getLabel2().setVisible(true);
         } else {

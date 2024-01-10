@@ -142,11 +142,8 @@ public class AddToStockView extends BorderPane {
     public static class ClickPane extends BorderPane {
         public ClickPane(){
 
-            System.out.println(unSuccessfulLabel.isVisible()+"here");
             addBt.setId("addBt");
             pageBt.setId("pageBt");
-//            addBt.setOnAction(actionEvent -> addBt.setText("Clicked"));
-//            pageBt.setOnAction(actionEvent -> pageBt.setText("Clicked"));
             unSuccessfulLabel.setId("unSuccessfulLabel");
             label2.setId("label2");
             copiesTf.setId("copiesTf");

@@ -1,5 +1,6 @@
 package viewTest;
 
+import Controllers.CategoryController;
 import Views.AddToStockView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,25 +9,37 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
 import models.Manager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.io.File;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class AddToStockViewTest extends ApplicationTest {
 
     Button button;
     Button button1;
     Label unSuccessfulLabel;
+
+    Label label2;
     TextField copiesTf;
     TableView tableView;
     Parent sceneRoot;
+
+    static Category category;
+    static Book book;
+    static CategoryController categoryController;
+
+
 
     @Override
     public void start(Stage stage)
@@ -39,6 +52,16 @@ public class AddToStockViewTest extends ApplicationTest {
     }
 
 
+    @BeforeAll
+    public static void setUpAll()
+    {
+        category = new Category("Fiction","TestFiles//fictionBooks.dat");
+        book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+        categoryController = new CategoryController();
+        categoryController.addCategories(category);
+        category.addBookToCategory(book);
+    }
+
     @BeforeEach
     public void setUp()
     {
@@ -47,38 +70,41 @@ public class AddToStockViewTest extends ApplicationTest {
         unSuccessfulLabel = lookup("#unSuccessfulLabel").queryAs(Label.class);
         copiesTf = lookup("#copiesTf").queryAs(TextField.class);
         tableView = lookup("#bookTableView").queryAs(TableView.class);
-//        controller = new AddToStockController();
+        label2 = lookup("#label2").queryAs(Label.class);
+        tableView.getItems().clear();
+//        tableView.getColumns().clear();
     }
 
-    @Test
-    void test()
+    @AfterEach
+    public void tearDown()
     {
-        assertEquals("Add",button.getText());
-        assertEquals("",button1.getText());
+        File file = new File("TestFiles//fictionBooks.dat");
+        file.delete();
+        file = new File("TestFiles//cost.txt");
+        file.delete();
+        tableView.getItems().clear();
+//        tableView.getColumns().clear();
     }
 
-//    @Test
-//    void clickOnAddBt(){
-//        clickOn(button);
-//        assertEquals(button.getText(), "Clicked");
-//    }
-//
-//    @Test
-//    void clickOnPageBt(){
-//        clickOn(button1);
-//        assertEquals(button1.getText(), "Clicked");
-//    }
-
     @Test
-    void test_unSuccessfulLabelVisibilityFalse(){
-        Category category = new MockCategory("Fiction","TestFiles//fictionBooks.dat");
-        Book book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+    void test_addValidAmountToStock(){
+        List<Book> books = List.of(book);
         tableView.getItems().add(book);
         tableView.getSelectionModel().select(0);
-        System.out.println(tableView.getSelectionModel().getSelectedItems());
-        clickOn(copiesTf).write("0");
+        clickOn(copiesTf).write("1");
         clickOn(button);
-        System.out.println(unSuccessfulLabel.isVisible());
+        assertFalse(unSuccessfulLabel.isVisible());
+        assertEquals(11,((Book)tableView.getItems().get(0)).getStock());
+        System.out.println(tableView.getColumns().size());
+    }
+
+    @Test
+    void test_addInvalidAmountToStock()
+    {
+        tableView.getItems().add(book);
+        tableView.getSelectionModel().select(0);
+        clickOn(copiesTf).write("-1");
+        clickOn(button);
         assertTrue(unSuccessfulLabel.isVisible());
     }
 }
