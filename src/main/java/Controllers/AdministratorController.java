@@ -30,13 +30,13 @@ public class AdministratorController extends Controller //ok
 
         this.administratorView.getViewLibrarian().setOnAction(e->
         {
-            DeleteStaffView viewStaffView = new DeleteStaffView(administratorView.getStage(),1);
-            new DeleteStaffController(administrator,viewStaffView);
+            DeleteStaffView viewStaffView = new DeleteStaffView(administratorView.getStage(),1, administrator);
+//            new DeleteStaffController(administrator,viewStaffView);
         });
         this.administratorView.getViewManager().setOnAction(e->
         {
-            DeleteStaffView viewStaffView = new DeleteStaffView(administratorView.getStage(),2);
-            new DeleteStaffController(administrator,viewStaffView);
+            DeleteStaffView viewStaffView = new DeleteStaffView(administratorView.getStage(),2, administrator);
+//            new DeleteStaffController(administrator,viewStaffView);
         });
         this.administratorView.getModifyLibrarian().setOnAction(e->
         {

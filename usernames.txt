@@ -1,5 +1,5 @@
 Manager: i p
+Librarian: i p
 Manager: i p
 Manager: i p
-Manager: i p
-Manager: i p
+Librarian: i p

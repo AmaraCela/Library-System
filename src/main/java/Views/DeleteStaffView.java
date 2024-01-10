@@ -1,5 +1,7 @@
 package Views;
 
+import Controllers.DeleteStaffController;
+import Controllers.RegisterStaffController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -23,11 +25,10 @@ import javafx.util.converter.DoubleStringConverter;
 import models.Person;
 
 import java.util.ArrayList;
-import Controllers.*;
 
 public class DeleteStaffView extends BorderPane {
 
-    private final TableView<Person> tableView = new TableView<>();
+    private static final TableView<Person> tableView = new TableView<>();
     private Stage stage;
     private final TableColumn<Person,String> usernameColumn = new TableColumn<>("Username");
     private final TableColumn <Person,String> nameColumn = new TableColumn<>("First name");
@@ -37,11 +38,11 @@ public class DeleteStaffView extends BorderPane {
     private final TableColumn<Person,String> phonenoColumn = new TableColumn<>("Phone number");
     private final TableColumn <Person,String>birthdayColumn = new TableColumn<>("Birthday");
 
-    private final Button administratorPageBt = new Button();
-    private final Button deleteBt = new Button("Delete");
+    private static final Button administratorPageBt = new Button();
+    private static final Button deleteBt = new Button("Delete");
 
     private int choice;
-    public DeleteStaffView(Stage stage, int choice)
+    public DeleteStaffView(Stage stage, int choice, Person person)
     {
         this.choice=choice;
         ArrayList <Person> accounts;
@@ -98,6 +99,7 @@ public class DeleteStaffView extends BorderPane {
         this.setBottom(stackPane);
         Scene scene = new Scene(this,1000,600);
         stage.setScene(scene);
+        new DeleteStaffController(person, this);
     }
 
     public Button getAdministratorPageBt() {
@@ -112,34 +114,6 @@ public class DeleteStaffView extends BorderPane {
         return tableView;
     }
 
-    public TableColumn<Person, String> getUsernameColumn() {
-        return usernameColumn;
-    }
-
-    public TableColumn<Person, String> getNameColumn() {
-        return nameColumn;
-    }
-
-    public TableColumn<Person, String> getSurnameColumn() {
-        return surnameColumn;
-    }
-
-    public TableColumn<Person, Double> getSalaryColumn() {
-        return salaryColumn;
-    }
-
-    public TableColumn<Person, String> getEmailColumn() {
-        return emailColumn;
-    }
-
-    public TableColumn<Person, String> getPhonenoColumn() {
-        return phonenoColumn;
-    }
-
-    public TableColumn<Person, String> getBirthdayColumn() {
-        return birthdayColumn;
-    }
-
     public Button getDeleteBt() {
         return deleteBt;
     }
@@ -147,4 +121,16 @@ public class DeleteStaffView extends BorderPane {
     public int getChoice() {
         return choice;
     }
+
+    public static class ClickPane extends BorderPane{
+
+        public ClickPane(){
+            administratorPageBt.setId("administratorPageBt");
+            deleteBt.setId("deleteBt");
+            tableView.setId("tableView");
+            getChildren().addAll(administratorPageBt, deleteBt, tableView);
+        }
+    }
+
+    public DeleteStaffView(){}
 }
