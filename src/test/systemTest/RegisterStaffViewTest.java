@@ -116,10 +116,8 @@ public class RegisterStaffViewTest extends ApplicationTest {
         birthdayError = lookup("#birthdayError").queryAs(ImageView.class);
         emailError = lookup("#emailError ").queryAs(ImageView.class);
         phoneError = lookup("#phoneError").queryAs(ImageView.class);
-        successful = lookup("#successful").queryAs(Text.class);
-
-
-//        unsuccessfulText = lookup("#unsuccessfulText").queryAs(Text.class);
+        successful = (Text) sceneRoot.getChildrenUnmodifiable().get(0);
+        unsuccessfulText = (Text) sceneRoot.getChildrenUnmodifiable().get(1);
     }
 
     @Test
@@ -134,7 +132,7 @@ public class RegisterStaffViewTest extends ApplicationTest {
         clickOn(birthdayTf).write("20 12 2000");
         clickOn(salaryTf).write("200");
         clickOn(signUpBt);
-//        assertTrue(successful.isVisible());
+        assertTrue(successful.isVisible());
     }
 
     @Test
@@ -149,6 +147,7 @@ public class RegisterStaffViewTest extends ApplicationTest {
         clickOn(birthdayTf).write("1");
         clickOn(salaryTf).write("1");
         clickOn(signUpBt);
+        assertTrue(unsuccessfulText.isVisible());
         clickOn(usernameError);
         assertTrue(usernameErrorLabel.isVisible());
         clickOn(passwordError);
