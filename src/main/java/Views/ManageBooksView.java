@@ -1,6 +1,7 @@
 package Views;
 
 import Controllers.CategoryController;
+import Controllers.ManageBooksController;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,18 +15,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import models.Book;
+import models.Person;
 
 import java.util.ArrayList;
 
 public class ManageBooksView extends BorderPane {
 
     private Stage stage;
-    private final Button filterByCategoryBt = new Button("Filter by category");
+    private static final Button filterByCategoryBt = new Button("Filter by category");
     private final Button administratorPageBt = new Button();
     private final Button librarianPageBt = new Button();
 
     private final Button managerPageBt = new Button();
-    private final TableView <Book> tableView = new TableView<>();
+    private static final TableView <Book> tableView = new TableView<>();
     private final TableColumn<Book,String> isbnColumn = new TableColumn<>("ISBN");
     private final TableColumn<Book,String> titleColumn = new TableColumn<>("Title");
     private final TableColumn<Book,String> supplierColumn = new TableColumn<>("Supplier");
@@ -35,14 +37,13 @@ public class ManageBooksView extends BorderPane {
     private final TableColumn<Book,String> authorColumn = new TableColumn<>("Author");
     private final TableColumn<Book, Integer> stockColumn = new TableColumn<>("Stock");
     private final GridPane gridPane = new GridPane();
-    private final Button deleteBt = new Button("Delete books");
-    private final Button checkOutBt = new Button("Check out");
-    private final Button selectBt = new Button("Select");
-    private final TableColumn<Book, String> categoryColumn = new TableColumn<>("Category");
+    private static final Button deleteBt = new Button("Delete books");
+    private static final Button checkOutBt = new Button("Check out");
+    private static final Button selectBt = new Button("Select");
     private final ArrayList<CheckBox> checkBoxes = new ArrayList<>();
 
     private  ArrayList<Book> books;
-    public ManageBooksView(Stage stage,int choice)
+    public ManageBooksView(Person person, Stage stage, int choice)
     {
         this.books = new ArrayList<>();
         this.stage = stage;
@@ -143,6 +144,8 @@ public class ManageBooksView extends BorderPane {
         Scene scene = new Scene(this,1000,600);
         stage.setScene(scene);
 
+        new ManageBooksController(person,this);
+
     }
 
 
@@ -226,7 +229,6 @@ public class ManageBooksView extends BorderPane {
 
         for (int i = 0; i< CategoryController.getCategories().size(); i++)
         {
-            System.out.println("The size of the updated books is: "+CategoryController.getCategories().get(i).getBooksOfCategory().size());
             this.books.addAll(CategoryController.getCategories().get(i).getBooksOfCategory());
         }
     }
@@ -239,5 +241,16 @@ public class ManageBooksView extends BorderPane {
         return managerPageBt;
     }
 
+    public static class ClickPane extends BorderPane{
+        public ClickPane()
+        {
+            filterByCategoryBt.setId("filterByCategoryBt");
+            tableView.setId("tableView");
+            deleteBt.setId("deleteBt");
+            selectBt.setId("selectBt");
+            checkOutBt.setId("checkOutBt");
+            getChildren().addAll(filterByCategoryBt,tableView,deleteBt,selectBt,checkOutBt);
+        }
+    }
 
 }

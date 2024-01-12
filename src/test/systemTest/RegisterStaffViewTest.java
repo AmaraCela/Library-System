@@ -1,5 +1,6 @@
 package systemTest;
 
+import Controllers.RegisterStaffController;
 import Views.RegisterStaffView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,9 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Manager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -55,9 +59,25 @@ public class RegisterStaffViewTest extends ApplicationTest {
         Scene scene = new Scene(sceneRoot,500,500);
         stage.setScene(scene);
         stage.show();
+        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
         new RegisterStaffView(new Manager("n","s","e","b","i","p",1,"1"),stage,1);
     }
 
+    @AfterAll
+    public static void tearDownAll()
+    {
+        File file = new File("TestFiles//fictionBooks.dat");
+        file.delete();
+        file = new File("TestFiles//cost.txt");
+        file.delete();
+        file = new File("TestFiles/usernames.txt");
+        file.delete();
+        file = new File("TestFiles/employees.dat");
+        file.delete();
+        file = new File("cost.txt");
+        file.delete();
+    }
 
 
     @BeforeEach
@@ -96,7 +116,9 @@ public class RegisterStaffViewTest extends ApplicationTest {
         birthdayError = lookup("#birthdayError").queryAs(ImageView.class);
         emailError = lookup("#emailError ").queryAs(ImageView.class);
         phoneError = lookup("#phoneError").queryAs(ImageView.class);
-//        successful = lookup("#successful").queryText();
+        successful = lookup("#successful").queryAs(Text.class);
+
+
 //        unsuccessfulText = lookup("#unsuccessfulText").queryAs(Text.class);
     }
 

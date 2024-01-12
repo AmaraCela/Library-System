@@ -42,8 +42,8 @@ public class ManagerController extends Controller {
         this.managerView.getManageBooksItem().setOnAction(e->
         {
             label.setVisible(false);
-            ManageBooksView manageBooksView = new ManageBooksView(managerView.getStage(),2);
-            new ManageBooksController(person,manageBooksView);
+            ManageBooksView manageBooksView = new ManageBooksView(person,managerView.getStage(),2);
+//            new ManageBooksController(person,manageBooksView);
 
         });
         this.managerView.getLogOutItem().setOnAction(e->

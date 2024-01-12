@@ -18,11 +18,11 @@ public abstract class Controller {
         {
             ManageBooksView manageBooksView ;
             if (person instanceof Librarian) {
-                manageBooksView = new ManageBooksView(((CheckOutView) currentView).getStage(),1);
+                manageBooksView = new ManageBooksView(person,((CheckOutView) currentView).getStage(),1);
             } else if (person instanceof Manager) {
-                manageBooksView = new ManageBooksView(((CheckOutView)currentView).getStage(),2);
+                manageBooksView = new ManageBooksView(person,((CheckOutView)currentView).getStage(),2);
             } else {
-                manageBooksView = new ManageBooksView(((CheckOutView)currentView).getStage(),3);
+                manageBooksView = new ManageBooksView(person,((CheckOutView)currentView).getStage(),3);
             }
 
             return new ManageBooksController(person, manageBooksView);

@@ -405,7 +405,7 @@ public class RegisterStaffView extends BorderPane {
                         nameErrorLabel,surnameErrorLabel,emailErrorLabel,birthdayErrorLabel,
                         phonenoErrorLabel,salaryErrorLabel,salaryError,usernameError,nameError,
                         passwordError,surnameError,birthdayError,emailError,phoneError,successful,unsuccessfulText);
-                System.out.println(lookup(".successful"));
+                System.out.println(lookup("#successful"));
             }
     }
 }

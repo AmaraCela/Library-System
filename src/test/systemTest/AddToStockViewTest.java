@@ -1,6 +1,7 @@
 package systemTest;
 
 import Controllers.CategoryController;
+import Controllers.RegisterStaffController;
 import Views.AddToStockView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -48,6 +49,8 @@ public class AddToStockViewTest extends ApplicationTest {
         Scene scene = new Scene(sceneRoot,500,500);
         stage.setScene(scene);
         stage.show();
+        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
         new AddToStockView(new Manager("n","s","e","b","i","p",1,"1"),stage).getScene();
     }
 
@@ -62,6 +65,7 @@ public class AddToStockViewTest extends ApplicationTest {
         category.addBookToCategory(book);
     }
 
+
     @BeforeEach
     public void setUp()
     {
@@ -73,7 +77,6 @@ public class AddToStockViewTest extends ApplicationTest {
         label2 = lookup("#label2").queryAs(Label.class);
         tableView.getItems().clear();
         copiesTf.clear();
-//        tableView.getColumns().clear();
     }
 
     @AfterEach
@@ -83,8 +86,13 @@ public class AddToStockViewTest extends ApplicationTest {
         file.delete();
         file = new File("TestFiles//cost.txt");
         file.delete();
+        file = new File("TestFiles/usernames.txt");
+        file.delete();
+        file = new File("TestFiles/employees.dat");
+        file.delete();
+        file = new File("cost.txt");
+        file.delete();
         tableView.getItems().clear();
-//        tableView.getColumns().clear();
     }
 
     @Test
@@ -96,7 +104,6 @@ public class AddToStockViewTest extends ApplicationTest {
         clickOn(button);
         assertFalse(unSuccessfulLabel.isVisible());
         assertEquals(11,((Book)tableView.getItems().get(0)).getStock());
-        System.out.println(tableView.getColumns().size());
     }
 
     @Test

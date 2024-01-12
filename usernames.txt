@@ -1,2 +1,0 @@
-Manager: johndoe john1234
-Manager: johndoe john1234

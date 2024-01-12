@@ -16,8 +16,8 @@ public class LibrarianController extends Controller {
 
      this.librarianView.getViewBooksItem().setOnAction(e->
      {
-         ManageBooksView manageBooksView = new ManageBooksView(librarianView.getStage(),1);
-         new ManageBooksController(librarian,manageBooksView);
+         ManageBooksView manageBooksView = new ManageBooksView(librarian,librarianView.getStage(),1);
+//         new ManageBooksController(librarian,manageBooksView);
      });
      this.librarianView.getLogOutItem().setOnAction(e->
      {

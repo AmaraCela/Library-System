@@ -580,5 +580,11 @@ public class RegisterStaffController extends Controller//ok
         return cost;
     }
 
+    public static void setFile(File file) {
+        RegisterStaffController.file = file;
+    }
 
+    public static void setBinaryFile(File binaryFile) {
+        RegisterStaffController.binaryFile = binaryFile;
+    }
 }

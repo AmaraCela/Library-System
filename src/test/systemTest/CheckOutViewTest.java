@@ -1,5 +1,6 @@
 package systemTest;
 
+import Controllers.RegisterStaffController;
 import Views.CheckOutView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,11 +12,13 @@ import javafx.stage.Stage;
 import models.Book;
 import models.Category;
 import models.Manager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +40,9 @@ public class CheckOutViewTest extends ApplicationTest {
         Scene scene = new Scene(sceneRoot, 500, 500);
         stage.setScene(scene);
         stage.show();
+
+        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
         category = new Category("Fiction","TestFiles//fictionBooks.dat");
         book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
         new CheckOutView(new Manager("n","s","e","b","i","p",1,"1"),stage, List.of(book)).getScene();
@@ -51,6 +57,23 @@ public class CheckOutViewTest extends ApplicationTest {
         quantityTf = lookup("#quantityTf").queryAs(TextField.class);
         success = lookup("#success").queryAs(Text.class);
 
+    }
+
+    @AfterAll
+    public static void tearDownAll()
+    {
+        File file = new File("TestFiles//fictionBooks.dat");
+        file.delete();
+        file = new File("TestFiles//cost.txt");
+        file.delete();
+        file = new File("TestFiles/usernames.txt");
+        file.delete();
+        file = new File("TestFiles/employees.dat");
+        file.delete();
+        file = new File("cost.txt");
+        file.delete();
+        file = new File("revenues.txt");
+        file.delete();
     }
 
     @Test
