@@ -31,6 +31,8 @@ public class LogInController extends Controller {
 
     public void login(String username, String password)
     {
+        RegisterStaffController.readFromFile();
+        System.out.println("hereeeeeeeeeeeeeeeeeeeeeee");
         person = RegisterStaffController.isAccount(username, password);
         if (person == null) {
             Text text = new Text("Enter a valid username and password!");
@@ -40,6 +42,8 @@ public class LogInController extends Controller {
             this.logInView.getUsernameTf().clear();
             this.logInView.getPasswordTf().clear();
             this.logInView.getGridPane().add(text,1,3);
+            System.out.println("NULLLLLLLLLLLLLLL");
+            LogInView.loginFailed.setVisible(true);
         }
         else
         {
@@ -48,6 +52,7 @@ public class LogInController extends Controller {
                 AdministratorView administratorView= new AdministratorView(this.logInView.getStage());
                 new AdministratorController(person,administratorView);
                 person.personnelData();
+                System.out.println("HEREEEEEEEEEEEEEEEEEEEEEEE");
             }
             else if(person instanceof Manager)
             {
@@ -62,6 +67,7 @@ public class LogInController extends Controller {
                 person.personnelData();
             }
             LogInView.loginSuccessful.setVisible(true);
+            System.out.println(LogInView.loginSuccessful);
         }
     }
 

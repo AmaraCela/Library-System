@@ -19,6 +19,7 @@ public class DeleteStaffControllerTest {
     {
         Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         List<Person> list = List.of(person);
-        assertEquals(new ArrayList<Person>(),deleteStaffController.delete(list));
+        ArrayList<Person> d = deleteStaffController.delete(list);
+        assertEquals(new ArrayList<Person>(),d);
     }
 }

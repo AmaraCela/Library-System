@@ -1,0 +1,29 @@
+
+“
+java:S1319¬"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(”Á»Æûÿÿÿÿ8šÒ‡§Ï1
+
+java:S1319±"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(˜ÓÁÔ8›Ò‡§Ï1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü‚ùıúÿÿÿÿ8Ò‡§Ï1
+K
+java:S2689”"-Do not use a FileOutputStream in append mode.(üä»„8”Ó‡§Ï1
+D
+java:S3010"'Remove this assignment of "binaryFile".(¢´ïÂ8Ó‡§Ï1
+N
+java:S1602",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8Ó‡§Ï1
+N
+java:S1602!",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ŸÓ‡§Ï1
+I
+java:S3010/"'Remove this assignment of "categories".(ÈÊÄ·ıÿÿÿÿ8 Ó‡§Ï1
+I
+java:S30100"'Remove this assignment of "binaryFile".(Şˆ˜¥üÿÿÿÿ8 Ó‡§Ï1
+o	java:S1006"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹áıùÿÿÿÿ8¡Ó‡§Ï1
+G	java:S106O"+Replace this use of System.out by a logger.(•à¡·8­Ó‡§Ï1
+G	java:S106"+Replace this use of System.out by a logger.(ÅÒ«É8µÓ‡§Ï1
+M	java:S106ƒ"+Replace this use of System.out by a logger.(Ïòôüûÿÿÿÿ8µÓ‡§Ï1
+H	java:S106‡"+Replace this use of System.out by a logger.(ìÃÈ‡8µÓ‡§Ï1
+H	java:S106¡"+Replace this use of System.out by a logger.(¦ÓÙß8¸Ó‡§Ï1
+H	java:S106¥"+Replace this use of System.out by a logger.(•à¡·8¹Ó‡§Ï1
+M	java:S106Ì"+Replace this use of System.out by a logger.(œÎöûÿÿÿÿ8¼Ó‡§Ï1
+H	java:S106Ï"+Replace this use of System.out by a logger.(€¹˜Ü8¼Ó‡§Ï1
+Y	java:S125Ş"<This block of commented-out lines of code should be removed.(ğ÷Ò¯8¿Ó‡§Ï1
+X	java:S125à"<This block of commented-out lines of code should be removed.(ÖëÃ[8¿Ó‡§Ï1

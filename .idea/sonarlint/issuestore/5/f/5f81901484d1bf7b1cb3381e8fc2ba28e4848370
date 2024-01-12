@@ -1,0 +1,11 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü‚ùýúÿÿÿÿ8ƒà ¥Ï1
+V
+java:S1481"4Remove this unused "supplyBooksView" local variable.(ì¾á ýÿÿÿÿ8í¼¡¥Ï1
+X	java:S125"<This block of commented-out lines of code should be removed.(Ç·ÊÐ8í¼¡¥Ï1
+Q
+java:S1481%"4Remove this unused "addCategoryView" local variable.(ÐÖˆù8Üá ¥Ï1
+]	java:S125&"<This block of commented-out lines of code should be removed.(˜Á«Æÿÿÿÿÿ8Üá ¥Ï1
+P
+java:S1481<"3Remove this unused "addToStockView" local variable.(Ðƒß·8†â ¥Ï1
+X	java:S125="<This block of commented-out lines of code should be removed.(¶Œš8†â ¥Ï1

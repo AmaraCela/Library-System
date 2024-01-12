@@ -36,7 +36,6 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="junit5-r5.10" level="project" />
     <orderEntry type="library" name="java" level="project" />
     <orderEntry type="library" name="java1" level="project" />
     <orderEntry type="library" name="mockrunner.core" level="application" />
@@ -61,6 +60,7 @@
     <orderEntry type="library" name="google.code.maven.play.plugin.eamelink.mockito.all" level="project" />
     <orderEntry type="library" name="testfx.junit51" level="project" />
     <orderEntry type="library" name="bluecatcode.junit.4.10.extended2" level="project" />
+    <orderEntry type="library" name="bluecatcode.junit.4.10.extended3" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="2eeaa054-a14b-4b44-8189-636579792d3a" />

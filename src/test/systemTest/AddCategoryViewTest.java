@@ -1,5 +1,6 @@
 package systemTest;
 
+import Controllers.RegisterStaffController;
 import Views.AddCategoryView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Category;
 import models.Manager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,6 +35,8 @@ public class AddCategoryViewTest extends ApplicationTest {
     public void start(Stage stage){
         sceneRoot = new AddCategoryView.ClickPane();
         Scene scene = new Scene(sceneRoot, 500, 500);
+        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
         stage.setScene(scene);
         stage.show();
         new AddCategoryView(new Manager("n","s","e","b","i","p",1,"1"),stage).getScene();
@@ -48,6 +53,23 @@ public class AddCategoryViewTest extends ApplicationTest {
         administratorPageBt = lookup("#administratorPateBt").queryAs(Button.class);
     }
 
+    @AfterAll
+    public static void tearDownAll()
+    {
+        File file = new File("TestFiles//fictionBooks.dat");
+        file.delete();
+        file = new File("TestFiles//cost.txt");
+        file.delete();
+        file = new File("TestFiles/usernames.txt");
+        file.delete();
+        file = new File("TestFiles/employees.dat");
+        file.delete();
+        file = new File("cost.txt");
+        file.delete();
+        file = new File("categories.dat");
+        file.delete();
+    }
+
     @Test
     void test_AddBtClick(){
         assertEquals(addBt.getText(), "Add");
@@ -59,7 +81,7 @@ public class AddCategoryViewTest extends ApplicationTest {
     }
     @Test
     void test_addCategorySuccessfully(){
-        categoryTf.setText("Drama");
+        clickOn(categoryTf).write("Drama");
         clickOn(addBt);
 //        categoryTableView.getSelectionModel().select(0);
 //        System.out.println(categoryTableView.getSelectionModel().getSelectedItems());

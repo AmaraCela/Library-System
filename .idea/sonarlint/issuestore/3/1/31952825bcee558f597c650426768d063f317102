@@ -1,0 +1,9 @@
+
+s
+java:S1192-"QDefine a constant instead of duplicating this literal "Check the price!" 3 times.(›Ì÷­úÿÿÿÿ8êÒ­÷Ï1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²êî’üÿÿÿÿ8ñÒ­÷Ï1
+`
+java:S1155q">Use isEmpty() to check whether the collection is empty or not.(¬û¦©ÿÿÿÿÿ8ÇÔ­÷Ï1
+Y	java:S125«"<This block of commented-out lines of code should be removed.(ñ‘„Ó8äÔ­÷Ï1
+Y	java:S125¬"<This block of commented-out lines of code should be removed.(‹˜¼Ê8žÕ­÷Ï1
+H	java:S106´"+Replace this use of System.out by a logger.(íå8£Õ­÷Ï1

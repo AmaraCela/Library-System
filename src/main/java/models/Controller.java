@@ -27,9 +27,9 @@ public abstract class Controller {
 
             return new ManageBooksController(person, manageBooksView);
         }
-        else if(Objects.requireNonNull(currentView) instanceof DeleteStaffView)
+        else if(Objects.requireNonNull(currentView) instanceof DeleteStaffVieww)
         {
-            AdministratorView administratorView = new AdministratorView(((DeleteStaffView)currentView).getStage());
+            AdministratorView administratorView = new AdministratorView(((DeleteStaffVieww)currentView).getStage());
             return new AdministratorController(person,administratorView);
         }
         else if(Objects.requireNonNull(currentView) instanceof IncomesView)

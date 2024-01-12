@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LogInView extends BorderPane {
@@ -23,8 +24,8 @@ public class LogInView extends BorderPane {
     private static Button logInBt = new Button("Log in");
     private GridPane gridPane = new GridPane();
     private Stage stage;
-    public static Label loginSuccessful = new Label("You successfully logged in!");
-
+    public static Text loginSuccessful = new Text("You successfully logged in!");
+    public static Text loginFailed = new Text("Wrong credentials");
 
     public LogInView (Stage stage)
     {
@@ -53,6 +54,7 @@ public class LogInView extends BorderPane {
         this.setCenter(stackPaneCenter);
 
         loginSuccessful.setVisible(false);
+        loginFailed.setVisible(false);
         Label label1 = new Label("Username:");
         Label label2 = new Label("Password:");
         label1.setFont(Font.font("Arial Rounded MT Bold"));
@@ -99,12 +101,13 @@ public class LogInView extends BorderPane {
     public static class ClickPane extends BorderPane{
 
         public ClickPane(){
+            loginSuccessful.setId("loginSuccessful");
+            loginFailed.setId("loginFailed");
             logInBt.setId("logInBt");
             usernameTf.setId("usernameTf");
             passwordTf.setId("passwordTf");
-            loginSuccessful.setId("loginSuccessful");
             System.out.println(loginSuccessful.getId());
-            getChildren().addAll(logInBt, usernameTf, passwordTf, loginSuccessful);
+            getChildren().addAll(logInBt, usernameTf, passwordTf, loginSuccessful, loginFailed);
         }
     }
 }

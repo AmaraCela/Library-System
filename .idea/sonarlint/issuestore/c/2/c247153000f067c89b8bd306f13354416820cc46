@@ -1,0 +1,35 @@
+
+
+java:S1319µ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ıÊËœ8Ê­÷Ï1
+“
+java:S1319Ÿ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(·ø†êøÿÿÿÿ8Ê­÷Ï1
+r	java:S117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú³£ÿüÿÿÿÿ8Ê­÷Ï1
+n	java:S117¼"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾¸ö÷8‘Ê­÷Ï1
+s	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ø†êøÿÿÿÿ8‘Ê­÷Ï1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü‚ùıúÿÿÿÿ8Ê­÷Ï1
+„
+java:S4144Ş"fUpdate this method so that its implementation is not identical to "validatePurchasePrice" on line 213.(¤ÄÇË8ÓË­÷Ï1
+„
+java:S4144æ"fUpdate this method so that its implementation is not identical to "validatePurchasePrice" on line 213.(Æª8ÓË­÷Ï1
+^	java:S107Ÿ"<Method has 9 parameters, which is greater than 7 authorized.(·ø†êøÿÿÿÿ8ÚË­÷Ï1
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 35 to the 15 allowed.(„äœŸùÿÿÿÿ8ŞË­÷Ï1
+N
+java:S1602",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ëË­÷Ï1
+[
+java:S1155)">Use isEmpty() to check whether the collection is empty or not.(ÔÀÔ²8ÿË­÷Ï1
+H	java:S106Ÿ"+Replace this use of System.out by a logger.(°«•±8ØÌ­÷Ï1
+d
+java:S1126Î"AReplace this if-then-else statement by a single return statement.(ôº§ ıÿÿÿÿ8òÌ­÷Ï1
+_
+java:S1126×"AReplace this if-then-else statement by a single return statement.(îÓòº8õÌ­÷Ï1
+_
+java:S1126à"AReplace this if-then-else statement by a single return statement.(îÓòº8öÌ­÷Ï1
+_
+java:S1126è"AReplace this if-then-else statement by a single return statement.(îÓòº8øÌ­÷Ï1
+d
+java:S1126ğ"AReplace this if-then-else statement by a single return statement.(×†Ö€úÿÿÿÿ8úÌ­÷Ï1
+^
+java:S1126ú"AReplace this if-then-else statement by a single return statement.(Ò¯²8€Í­÷Ï1
+_
+java:S1126„"AReplace this if-then-else statement by a single return statement.(œ˜û¦8ƒÍ­÷Ï1

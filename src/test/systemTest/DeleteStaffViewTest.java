@@ -1,6 +1,7 @@
 package systemTest;
 
-import Views.DeleteStaffView;
+import Controllers.RegisterStaffController;
+import Views.DeleteStaffVieww;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,10 +10,12 @@ import javafx.stage.Stage;
 import models.Librarian;
 import models.Manager;
 import models.Person;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,10 +28,12 @@ public class DeleteStaffViewTest extends ApplicationTest {
     Button deleteBt;
     TableView<Person> tableView;
     public void start(Stage stage){
-        sceneRoot = new DeleteStaffView.ClickPane();
+        sceneRoot = new DeleteStaffVieww.ClickPane();
         Scene scene = new Scene(sceneRoot, 500, 500);
+        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
         stage.setScene(scene);
-        new DeleteStaffView(stage, 2, new Manager("n","s","e","b","i","p",1,"1"));
+        new DeleteStaffVieww(stage, 2, new Manager("n","s","e","b","i","p",1,"1"));
         stage.show();
     }
 
@@ -39,6 +44,21 @@ public class DeleteStaffViewTest extends ApplicationTest {
         administratorPageBt = lookup("#administratorPageBt").queryAs(Button.class);
         deleteBt = lookup("#deleteBt").queryAs(Button.class);
         tableView = lookup("#tableView").queryTableView();
+    }
+
+    @AfterAll
+    public static void tearDownAll()
+    {
+        File file = new File("TestFiles//fictionBooks.dat");
+        file.delete();
+        file = new File("TestFiles//cost.txt");
+        file.delete();
+        file = new File("TestFiles/usernames.txt");
+        file.delete();
+        file = new File("TestFiles/employees.dat");
+        file.delete();
+        file = new File("cost.txt");
+        file.delete();
     }
 
     @Test
