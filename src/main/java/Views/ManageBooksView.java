@@ -45,6 +45,7 @@ public class ManageBooksView extends BorderPane {
     private  ArrayList<Book> books;
     public ManageBooksView(Person person, Stage stage, int choice)
     {
+        tableView.getItems().clear();
         this.books = new ArrayList<>();
         this.stage = stage;
         deleteBt.setVisible(false);
