@@ -1,4 +1,4 @@
-package viewTest;
+package systemTest;
 
 import Views.DeleteStaffView;
 import javafx.scene.Parent;

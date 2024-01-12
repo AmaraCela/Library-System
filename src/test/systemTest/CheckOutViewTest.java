@@ -1,4 +1,4 @@
-package viewTest;
+package systemTest;
 
 import Views.CheckOutView;
 import javafx.scene.Parent;

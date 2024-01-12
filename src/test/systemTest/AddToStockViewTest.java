@@ -1,4 +1,4 @@
-package viewTest;
+package systemTest;
 
 import Controllers.CategoryController;
 import Views.AddToStockView;
@@ -72,6 +72,7 @@ public class AddToStockViewTest extends ApplicationTest {
         tableView = lookup("#bookTableView").queryAs(TableView.class);
         label2 = lookup("#label2").queryAs(Label.class);
         tableView.getItems().clear();
+        copiesTf.clear();
 //        tableView.getColumns().clear();
     }
 

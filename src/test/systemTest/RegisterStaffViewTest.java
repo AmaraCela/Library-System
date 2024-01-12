@@ -1,4 +1,4 @@
-package viewTest;
+package systemTest;
 
 import Views.RegisterStaffView;
 import javafx.scene.Parent;
@@ -96,8 +96,8 @@ public class RegisterStaffViewTest extends ApplicationTest {
         birthdayError = lookup("#birthdayError").queryAs(ImageView.class);
         emailError = lookup("#emailError ").queryAs(ImageView.class);
         phoneError = lookup("#phoneError").queryAs(ImageView.class);
-        successful = lookup("#successful").queryText();
-        unsuccessfulText = lookup("#unsuccessfulText").queryAs(Text.class);
+//        successful = lookup("#successful").queryText();
+//        unsuccessfulText = lookup("#unsuccessfulText").queryAs(Text.class);
     }
 
     @Test

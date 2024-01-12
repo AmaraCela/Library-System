@@ -13,7 +13,7 @@ module Library.System {
 
     opens modelsTest to org.junit.platform.commons;
     opens controllerTest to org.junit.platform.commons;
-    opens viewTest to org.junit.platform.commons;
+    opens systemTest to org.junit.platform.commons;
     opens mockFiles to com.example.finalproject;
     opens IntegrationTest to org.junit.platform.commons;
 

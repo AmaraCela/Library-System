@@ -1,4 +1,4 @@
-package viewTest;
+package systemTest;
 
 import Views.AddCategoryView;
 import javafx.scene.Parent;

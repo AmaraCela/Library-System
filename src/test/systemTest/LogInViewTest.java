@@ -1,4 +1,4 @@
-package viewTest;
+package systemTest;
 
 import Views.LogInView;
 import javafx.scene.Parent;
