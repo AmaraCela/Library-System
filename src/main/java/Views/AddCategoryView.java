@@ -23,12 +23,12 @@ import java.util.ArrayList;
 public class AddCategoryView extends BorderPane {
 
     private Stage stage;
-    private static final TableView<Category> categoryTableView = new TableView<>();
+    private static TableView<Category> categoryTableView = new TableView<>();
     private final TableColumn<Category,String> categoryNameColumn = new TableColumn<>("Category Name");
 
     private static final Button addBt = new Button("Add");
 
-    private static final TextField categoryTf = new TextField();
+    private static TextField categoryTf = new TextField();
     private static final Label successfulLabel = new Label("Category added successfully!");
     private static final Label unsuccessfulLabel = new Label("Category not valid!");
 
@@ -40,6 +40,8 @@ public class AddCategoryView extends BorderPane {
     public AddCategoryView(Person person, Stage stage)
     {
         this.stage = stage;
+        categoryTf = new TextField();
+        AddCategoryView.categoryTableView = new TableView<>();
         this.setPadding(new Insets(0,0,20,0));
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(20,0,0,0));

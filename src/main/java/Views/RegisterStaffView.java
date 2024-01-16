@@ -28,14 +28,14 @@ public class RegisterStaffView extends BorderPane {
 
     private static final Image image = new Image("file:errorIcon.jpg");
 
-    private static final TextField usernameTf = new TextField();
-    private static final PasswordField passwordTf = new PasswordField();
-    private static final TextField nameTf = new TextField();
-    private static final TextField surnameTf = new TextField();
-    private static final TextField emailTf = new TextField();
-    private static final TextField phoneNoTf = new TextField();
-    private static final TextField birthdayTf = new TextField();
-    private static final TextField salaryTf = new TextField();
+    private static  TextField usernameTf = new TextField();
+    private static  PasswordField passwordTf = new PasswordField();
+    private static  TextField nameTf = new TextField();
+    private static  TextField surnameTf = new TextField();
+    private static  TextField emailTf = new TextField();
+    private static  TextField phoneNoTf = new TextField();
+    private static  TextField birthdayTf = new TextField();
+    private static  TextField salaryTf = new TextField();
 
     private static final Button signUpBt = new Button("Sign Up");
     private static final Label usernameErrorLabel = new Label("Username not available!");
@@ -89,6 +89,14 @@ public class RegisterStaffView extends BorderPane {
         public RegisterStaffView (Person person, Stage stage, int choice)
         {
             this.stage = stage;
+            usernameTf = new TextField();
+            passwordTf = new PasswordField();
+            nameTf = new TextField();
+            surnameTf = new TextField();
+            emailTf = new TextField();
+            phoneNoTf = new TextField();
+            birthdayTf = new TextField();
+            salaryTf = new TextField();
 
             GridPane gridPane = new GridPane();
             gridPane.setHgap(0);

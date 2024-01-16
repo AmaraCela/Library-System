@@ -23,6 +23,7 @@ public class CategoryController extends Controller //ok
     {
 
         CategoryController.binaryFile =  new File("categories.dat");
+        CategoryController.updateCategories();
         this.categoryView = addCategoryView;
         this.categoryView.getAddBt().setOnAction(e->
         {

@@ -28,16 +28,16 @@ public class SupplyBooksView extends BorderPane {
     private static final Button administratorPageBt = new Button();
     private static final Button addBt = new Button("Add");
     private static final ComboBox<String> categoryCB = new ComboBox<>();
-    private static final TextField categoryTf = new TextField();
+    private static TextField categoryTf = new TextField();
     private static final Button addCategoryBt = new Button("Add Category");
-    private static final TextField ISBNTf = new TextField();
-    private static final TextField titleTf = new TextField();
-    private static final TextField supplierTf = new TextField();
-    private static final TextField purchasedPriceTf = new TextField();
-    private static final TextField originalPriceTf = new TextField();
-    private static final TextField sellingPriceTf = new TextField();
-    private static final TextField authorTf = new TextField();
-    private static final TextField stockTf = new TextField();
+    private static TextField ISBNTf = new TextField();
+    private static TextField titleTf = new TextField();
+    private static TextField supplierTf = new TextField();
+    private static TextField purchasedPriceTf = new TextField();
+    private static TextField originalPriceTf = new TextField();
+    private static TextField sellingPriceTf = new TextField();
+    private static TextField authorTf = new TextField();
+    private static TextField stockTf = new TextField();
     private static final Text textSuccessful = new Text("Book added successfully!");
     private static final Text textISBN = new Text("The ISBN is already entered!");
     private static final Text textTitle = new Text("The title can not have this length!");
@@ -55,6 +55,15 @@ public class SupplyBooksView extends BorderPane {
 
     public SupplyBooksView(Stage stage, Person person)
     {
+        ISBNTf = new TextField();
+        titleTf = new TextField();
+        supplierTf = new TextField();
+        purchasedPriceTf = new TextField();
+        originalPriceTf = new TextField();
+        sellingPriceTf = new TextField();
+        authorTf = new TextField();
+        stockTf = new TextField();
+        categoryTf = new TextField();
         this.stage = stage;
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);

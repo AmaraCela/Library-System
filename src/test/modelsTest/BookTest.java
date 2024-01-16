@@ -33,6 +33,8 @@ public class BookTest {
         file.delete();
         file = new File("TestFiles//cost1.txt");
         file.delete();
+        file = new File("cost.txt");
+        file.delete();
         Book.readFromFile("TestFiles//cost.txt");
     }
     @ParameterizedTest

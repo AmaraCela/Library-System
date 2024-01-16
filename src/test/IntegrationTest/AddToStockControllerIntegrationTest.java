@@ -34,6 +34,8 @@ public class AddToStockControllerIntegrationTest {
     static void dropDown(){
         File file = new File("TestFiles//DramaBooks.dat");
         file.delete();
+        file = new File("cost.txt");
+        file.delete();
     }
 
     @AfterEach

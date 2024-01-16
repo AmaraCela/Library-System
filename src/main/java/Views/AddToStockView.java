@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class AddToStockView extends BorderPane {
     private final Stage stage;
-    private static final TableView<Book> bookTableView = new TableView<>();
+    private static TableView<Book> bookTableView = new TableView<>();
     private final TableColumn<Book,String> isbnColumn = new TableColumn<>("ISBN");
     private final TableColumn<Book,String> titleColumn = new TableColumn<>("Title");
     private final TableColumn<Book,Integer> stockColumn = new TableColumn<>("Stock");
@@ -29,7 +29,7 @@ public class AddToStockView extends BorderPane {
     private final ArrayList<Book> books;
 
     public static Button pageBt= new Button();
-    private static final TextField copiesTf = new TextField();
+    private static TextField copiesTf = new TextField();
     public static Button addBt = new Button("Add");
 
     private static final Label unSuccessfulLabel = new Label("Re-check the number!");
@@ -39,6 +39,8 @@ public class AddToStockView extends BorderPane {
 
     public AddToStockView(Person person, Stage stage)
     {
+        bookTableView = new TableView<>();
+        copiesTf = new TextField();
         this.stage = stage;
         books = new ArrayList<>();
         for (int i = 0; i< CategoryController.getCategories().size(); i++)

@@ -13,8 +13,11 @@ public class Librarian extends Person{
 
     }
 
+    public Librarian()
+    {
 
-    //mock checkoutcontroller
+    }
+
     public void setPersonalRevenue(double total)
     {
         personalRevenue+=total;

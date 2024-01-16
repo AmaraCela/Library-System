@@ -29,6 +29,8 @@ public class LogInView extends BorderPane {
 
     public LogInView (Stage stage)
     {
+        usernameTf = new TextField();
+        passwordTf = new PasswordField();
         this.stage = stage;
         StackPane stackPaneCenter = new StackPane();
         StackPane stackPaneBottom = new StackPane();

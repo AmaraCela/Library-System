@@ -32,6 +32,9 @@ public abstract class Person implements Serializable {
 
     private static double employeeCost;
 
+    public Person()
+    {
+    }
 
     public Person(String name, String surname, String email, String birthday, String username, String password, double salary, String phoneNo) {
         this.name = name;

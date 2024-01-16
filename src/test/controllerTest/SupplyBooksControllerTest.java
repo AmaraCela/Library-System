@@ -46,6 +46,8 @@ public class SupplyBooksControllerTest {
         category.getBinaryFile().delete();
         File file = new File("TestFiles//cost.txt");
         file.delete();
+        file = new File("cost.txt");
+        file.delete();
     }
 
     @Test

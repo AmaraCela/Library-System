@@ -47,6 +47,10 @@ public class CheckoutControllerIntegrationTest {
 
         File file3 = new File("TestFiles//cost.txt");
         file3.delete();
+        file3 = new File("usernames.txt");
+        file3.delete();
+        file3 = new File("employees.dat");
+        file3.delete();
     }
     @Test
     void test_librarianCheckOut(){

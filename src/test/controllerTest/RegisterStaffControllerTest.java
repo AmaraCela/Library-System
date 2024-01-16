@@ -37,6 +37,7 @@ public class RegisterStaffControllerTest {
         RegisterStaffController.readFromFile();
     }
 
+
     //equivalence class testing
     @Test
     void test_validateUsernameEmptyString()
@@ -48,19 +49,20 @@ public class RegisterStaffControllerTest {
     void test_validateUsernameAlreadyPresent()
     {
         Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         assertFalse(RegisterStaffController.validateUsername("u"));
     }
     @Test
     void test_validateUsernameNotPresent()
     {
         Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         assertTrue(RegisterStaffController.validateUsername("amara"));
     }
 
     @Test
     void test_validateUsernameNull()
     {
-        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
         assertFalse(RegisterStaffController.validateUsername(null));
     }
 
@@ -195,7 +197,7 @@ public class RegisterStaffControllerTest {
     void test_signUpCorrectLibrarian()
     {
 
-        assertEquals(new Librarian("name","surname","e@gmail.com","29 12 2001","username","password",1000,"067 77 77 777"),registerStaffController.signUp("name","surname","e@gmail.com","29 12 2001","username","password",1000,"067 77 77 777",1));
+        assertEquals(new MockLibrarian("name","surname","e@gmail.com","29 12 2001","username","password",1000,"067 77 77 777"),registerStaffController.signUp("name","surname","e@gmail.com","29 12 2001","username","password",1000,"067 77 77 777",1));
 
     }
 
@@ -216,6 +218,7 @@ public class RegisterStaffControllerTest {
     void test_addPersonAccount()
     {
         Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         assertEquals(List.of(person),RegisterStaffController.getAccounts());
     }
 
@@ -223,15 +226,15 @@ public class RegisterStaffControllerTest {
     @Test
     void test_isAccountTrue()
     {
-        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
         assertEquals(person,RegisterStaffController.isAccount("u","p"));
-
     }
 
     @Test
     void test_isAccountFalseUsername()
     {
-        Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        Person person = new Librarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         assertNull(RegisterStaffController.isAccount("a","p"));
 
     }
@@ -240,6 +243,7 @@ public class RegisterStaffControllerTest {
     void test_isAccountFalsePassword()
     {
         Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         assertNull(RegisterStaffController.isAccount("u","a"));
     }
 
@@ -247,6 +251,7 @@ public class RegisterStaffControllerTest {
     void test_getLibrarians()
     {
         Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         person = new Manager("n","s","e","b","u","p",1,"pno");
         assertEquals(List.of(person),RegisterStaffController.getLibrarians());
     }
@@ -255,7 +260,8 @@ public class RegisterStaffControllerTest {
     void test_getManagers()
     {
         Person person = new Manager("n","s","e","b","u","p",1,"pno");
-        person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        Person person1 = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person1);
         assertEquals(List.of(person),RegisterStaffController.getManagers());
     }
 
@@ -279,9 +285,10 @@ public class RegisterStaffControllerTest {
     @Test
     void test_writeToTextFile()
     {
-        new MockLibrarian("n","s","e","b","u","p",1,"pno");
+
         new Manager("n","s","e","b","u","p",1,"pno");
         new Administrator("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount( new MockLibrarian("n","s","e","b","u","p",1,"pno"));
         RegisterStaffController.writeToTextFile();
     }
 
@@ -289,7 +296,7 @@ public class RegisterStaffControllerTest {
     void test_writeToTextFileNotFound()
     {
         registerStaffController = new RegisterStaffController(new File("TestFiles//personnel.dat"), new File("TestFilesss//usernames.txt"),1);
-        new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(new MockLibrarian("n","s","e","b","u","p",1,"pno"));
     }
 
     @Test
@@ -304,6 +311,7 @@ public class RegisterStaffControllerTest {
     void test_updateBinaryFile()
     {
         Person person = new MockLibrarian("n","s","e","b","u","p",1,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         RegisterStaffController.updateBinaryFile();
         assertEquals(List.of(person),RegisterStaffController.getAccounts());
     }
@@ -320,7 +328,8 @@ public class RegisterStaffControllerTest {
     {
         assertEquals(0, RegisterStaffController.getEmployeesCost());
 
-        new Librarian("n","s","e","b","u","p",100,"pno");
+        Person person=new MockLibrarian("n","s","e","b","u","p",100,"pno");
+        RegisterStaffController.AddPersonAccount(person);
         assertEquals(100.0, RegisterStaffController.getEmployeesCost(),0.1);
     }
 
