@@ -14,8 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SupplyBooksViewTest extends ApplicationTest {
 
@@ -88,23 +87,17 @@ public class SupplyBooksViewTest extends ApplicationTest {
 
         SupplyBooksView.clearTextFields();
     }
-
-//    @Test
-//    void test_admBtnClick(){
-//
-//        clickOn(administratorPageBt);
-//        assertEquals(administratorPageBt.getText(), "Clicked");
-//    }
-
+    
+//    @Order(2)
     @Test
     void test_addValidBook(){
        clickOn(ISBNTf).write("1111");
        clickOn(titleTf).write("Book1");
-       clickOn(authorTf).write("author1");
+       clickOn(supplierTf).write("supplier1");
        clickOn(purchasedPriceTf).write("1200");
        clickOn(originalPriceTf).write("1000");
        clickOn(sellingPriceTf).write("1350");
-       clickOn(supplierTf).write("supplier1");
+       clickOn(authorTf).write("author1");
        clickOn(stockTf).write("2");
        clickOn(categoryTf).write("Comedy");
        clickOn(addCategoryBt);
@@ -123,15 +116,16 @@ public class SupplyBooksViewTest extends ApplicationTest {
         assertFalse(textStock.isVisible());
     }
 
+//    @Order(1)
     @Test
     void test_addInvalidBook(){
         clickOn(ISBNTf).write("");
         clickOn(titleTf).write("Book2");
-        clickOn(authorTf).write("author2");
+        clickOn(supplierTf).write("supplier2");
         clickOn(purchasedPriceTf).write("1200");
         clickOn(originalPriceTf).write("1000");
         clickOn(sellingPriceTf).write("1350");
-        clickOn(supplierTf).write("supplier2");
+        clickOn(authorTf).write("author2");
         clickOn(stockTf).write("1");
         clickOn(categoryTf).write("Comedy");
         clickOn(addCategoryBt);
