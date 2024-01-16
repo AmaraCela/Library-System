@@ -1,0 +1,70 @@
+
+
+java:S1319÷"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ğ¤ÒÛ8å»œÑ1
+
+java:S1319…"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(÷ãÊB8ç»œÑ1
+
+java:S1319Â"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(œ¡«¥8é»œÑ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ü‚ùıúÿÿÿÿ8˜¼œÑ1
+s
+java:S2095•"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(€‚Œ¶ûÿÿÿÿ8‚ËœÑ1
+l
+java:S2095"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(â¿Ô¯8„ËœÑ1
+}
+java:S2095‘"ZUse try-with-resources or close this "HeaderlessObjectOutputStream" in a "finally" clause.(¯Ïâ‘úÿÿÿÿ8„ËœÑ1
+P
+java:S2689•"-Do not use a FileOutputStream in append mode.(€‚Œ¶ûÿÿÿÿ8ŒËœÑ1
+^	java:S107é"<Method has 9 parameters, which is greater than 7 authorized.(Í˜ãÂüÿÿÿÿ8æËœÑ1
+D
+java:S3010"'Remove this assignment of "binaryFile".(¯ÿ™®8¼ÌœÑ1
+>
+java:S3010"!Remove this assignment of "file".(„¤­¨8¼ÌœÑ1
+O
+java:S1172"-Remove this unused method parameter "choice".(ëÆ…Ğşÿÿÿÿ8ÌÌœÑ1
+I
+java:S3010""'Remove this assignment of "binaryFile".(§ç‹˜ÿÿÿÿÿ8ÖÌœÑ1
+C
+java:S3010#"!Remove this assignment of "file".(”×›¼ıÿÿÿÿ8×ÌœÑ1
+N
+java:S1602@",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8²ÍœÑ1
+N
+java:S1602F",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8¼ÍœÑ1
+N
+java:S1602M",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ÁÍœÑ1
+]	java:S125N"<This block of commented-out lines of code should be removed.(şÜè¶ùÿÿÿÿ8ÆÍœÑ1
+N
+java:S1602T",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ÆÍœÑ1
+N
+java:S1602Z",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ËÍœÑ1
+N
+java:S1602`",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ÒÍœÑ1
+N
+java:S1602f",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ÙÍœÑ1
+N
+java:S1602j",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ŞÍœÑ1
+N
+java:S1602s",Remove useless curly braces around statement(ÒÌâ–øÿÿÿÿ8ãÍœÑ1
+c
+java:S2147Ì"ECombine this catch with the one at line 199, which has the same body.(±—œ–8‚ÎœÑ1
+^	java:S125¯"<This block of commented-out lines of code should be removed.(Ç¨ş•şÿÿÿÿ8ÃÎœÑ1
+H	java:S106á"+Replace this use of System.out by a logger.(Ó…Î”8™ÏœÑ1
+H	java:S106å"+Replace this use of System.out by a logger.(¯™ê¶8›ÏœÑ1
+M	java:S106é"+Replace this use of System.out by a logger.(â§¢…üÿÿÿÿ8ÏœÑ1
+H	java:S106í"+Replace this use of System.out by a logger.(ıìç8 ÏœÑ1
+Y	java:S125ó"<This block of commented-out lines of code should be removed.(Ú°à¬8¬ÏœÑ1
+_
+java:S1126¼"AReplace this if-then-else statement by a single return statement.(šÔ£‹8ÌÏœÑ1
+d
+java:S1126Å"AReplace this if-then-else statement by a single return statement.(õ‹˜«şÿÿÿÿ8ÔÏœÑ1
+_
+java:S1126Î"AReplace this if-then-else statement by a single return statement.(™Ûâ8ÚÏœÑ1
+_
+java:S1126×"AReplace this if-then-else statement by a single return statement.(¯ß «8ÍĞœÑ1
+H	java:S106â"+Replace this use of System.out by a logger.(ï«©8ÚĞœÑ1
+k	java:S100’"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ•¡8…ÑœÑ1
+Y	java:S125ª"<This block of commented-out lines of code should be removed.(Ú°à¬8ÑœÑ1
+Y	java:S125Ç"<This block of commented-out lines of code should be removed.(Ú°à¬8¤ÑœÑ1
+M	java:S106†"+Replace this use of System.out by a logger.(µ‘ÆÁÿÿÿÿÿ8ÌÑœÑ1
+H	java:S106"+Replace this use of System.out by a logger.(–Ü8İÑœÑ1
+M	java:S106´"+Replace this use of System.out by a logger.(Û„·ûÿÿÿÿ8éÑœÑ1
+M	java:S106¸"+Replace this use of System.out by a logger.(½¾ô˜ùÿÿÿÿ8éÑœÑ1
