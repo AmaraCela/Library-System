@@ -21,7 +21,7 @@ public class Category implements Serializable {
     }
     public Category(String categoryName){
         this.categoryName = categoryName;
-        this.booksOfCategoryBinaryFile = new File(this.categoryName+"Books.data");
+        this.booksOfCategoryBinaryFile = new File(this.categoryName+"Books.dat");
     }
 
     //reads the books of the category

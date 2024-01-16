@@ -10,11 +10,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Manager;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.File;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SupplyBooksViewTest extends ApplicationTest {
 
@@ -87,8 +92,15 @@ public class SupplyBooksViewTest extends ApplicationTest {
 
         SupplyBooksView.clearTextFields();
     }
+
+    @AfterEach
+    void dropDown(){
+        File file = new File("categories.dat");
+        file.delete();
+
+    }
     
-//    @Order(2)
+    @Order(2)
     @Test
     void test_addValidBook(){
        clickOn(ISBNTf).write("1111");
@@ -99,8 +111,8 @@ public class SupplyBooksViewTest extends ApplicationTest {
        clickOn(sellingPriceTf).write("1350");
        clickOn(authorTf).write("author1");
        clickOn(stockTf).write("2");
-       clickOn(categoryTf).write("Comedy");
-       clickOn(addCategoryBt);
+//       clickOn(categoryTf).write("Comedy");
+//       clickOn(addCategoryBt);
 //        clickOn(categoryCB.getItems().get(0));
         clickOn(categoryCB).clickOn(categoryCB.getItems().get(0));
 //        System.out.println(categoryCB.getItems().get(0));
@@ -116,7 +128,7 @@ public class SupplyBooksViewTest extends ApplicationTest {
         assertFalse(textStock.isVisible());
     }
 
-//    @Order(1)
+    @Order(1)
     @Test
     void test_addInvalidBook(){
         clickOn(ISBNTf).write("");

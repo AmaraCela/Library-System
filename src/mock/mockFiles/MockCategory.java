@@ -32,15 +32,15 @@ public class MockCategory extends Category {
         return bookList;
     }
 
-    @Override
-    public void updateBinaryFile(){
-
-    }
-
-    @Override
-    public void updateBooksOfCategory(int index, Book book){
-
-    }
+//    @Override
+//    public void updateBinaryFile(){
+//
+//    }
+//
+//    @Override
+//    public void updateBooksOfCategory(int index, Book book){
+//
+//    }
 
     @Override
     public Book getBookOfCategory(String ISBN)
