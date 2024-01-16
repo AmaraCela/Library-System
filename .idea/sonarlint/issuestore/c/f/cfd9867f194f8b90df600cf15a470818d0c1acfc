@@ -1,7 +1,0 @@
-
-}
-java:S1104"[Make loginSuccessful a static final constant or non-public and provide accessors if needed.(æÈ»Œıÿÿÿÿ8¬”ÀÏ1
-W
-java:S1444"5Make this "public static loginSuccessful" field final(æÈ»Œıÿÿÿÿ8¬”ÀÏ1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²êî’üÿÿÿÿ8¬”ÀÏ1
-G	java:S106j"+Replace this use of System.out by a logger.(ÇŠù÷8Ç•ÀÏ1

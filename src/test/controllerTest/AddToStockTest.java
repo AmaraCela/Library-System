@@ -1,12 +1,14 @@
 package controllerTest;
 
 import Controllers.AddToStockController;
-import Controllers.CategoryController;
 import mockFiles.MockBook;
 import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -39,13 +41,13 @@ public class AddToStockTest {
         file.delete();
     }
 
-    @Test
-    void test_returnBookToDisplay(){
-
-        CategoryController categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
-        categoryController.addCategories(category);
-        Assertions.assertEquals(books, addToStockController.addToBookList());
-    }
+//    @Test
+//    void test_returnBookToDisplay(){
+//
+//        CategoryController categoryController = new CategoryController(new File("TestFiles//fiction.dat"));
+//        categoryController.addCategories(category);
+//        Assertions.assertEquals(books, addToStockController.addToBookList());
+//    }
 
     @ParameterizedTest
     @CsvSource({

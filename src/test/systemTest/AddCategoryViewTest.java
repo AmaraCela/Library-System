@@ -83,8 +83,6 @@ public class AddCategoryViewTest extends ApplicationTest {
     void test_addCategorySuccessfully(){
         clickOn(categoryTf).write("Drama");
         clickOn(addBt);
-//        categoryTableView.getSelectionModel().select(0);
-//        System.out.println(categoryTableView.getSelectionModel().getSelectedItems());
         assertTrue(successfulLabel.isVisible());
         assertFalse(unsuccessfulLabel.isVisible());
     }

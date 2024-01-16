@@ -1,8 +1,0 @@
-
-t
-java:S1192–"VDefine a constant instead of duplicating this literal "Arial Rounded MT Bold" 8 times.(Í€æ‹8¥ò§úÏ1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(²êî’üÿÿÿÿ8¯ò§úÏ1
-^	java:S125æ"<This block of commented-out lines of code should be removed.(¥°ªşÿÿÿÿ8ùó§úÏ1
-M	java:S106˜"+Replace this use of System.out by a logger.(·Ú—üÿÿÿÿ8Àô§úÏ1
-K
-java:S1068W".Remove this unused "controller" private field.(­Ì§Ò8Çô§úÏ1
