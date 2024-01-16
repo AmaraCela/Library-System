@@ -140,8 +140,8 @@ public class RegisterStaffViewTest extends ApplicationTest {
     {
         clickOn(usernameTf).write("i");
         clickOn(passwordTf).write("1");
-        clickOn(nameTf).write("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
-        clickOn(surnameTf).write("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+        clickOn(nameTf).write("");
+        clickOn(surnameTf).write("");
         clickOn(emailTf).write("l");
         clickOn(phoneNoTf).write("1");
         clickOn(birthdayTf).write("1");

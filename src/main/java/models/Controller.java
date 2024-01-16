@@ -9,7 +9,7 @@ import java.util.Objects;
 public abstract class Controller {
     public Controller goBack(BorderPane currentView, Person person)
     {
-        if(Objects.requireNonNull(currentView) instanceof AdministratorView)
+        if(currentView instanceof AdministratorView)
         {
             LogInView logInView=new LogInView(((AdministratorView) currentView).getStage());
             return new LogInController(logInView);
