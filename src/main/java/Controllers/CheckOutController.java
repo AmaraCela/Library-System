@@ -122,7 +122,6 @@ public class CheckOutController extends Controller //ok
     public ArrayList<Integer> getQuantities()
     {
         ArrayList<Integer> quantities = new ArrayList<>();
-
         for (int i = 0; i < this.checkOutView.getTextFields().size(); i++) {
             try {
                 quantities.add(Integer.parseInt(this.checkOutView.getTextFields().get(i).getText()));
@@ -133,7 +132,6 @@ public class CheckOutController extends Controller //ok
             }
 
         }
-
         return quantities;
     }
 }

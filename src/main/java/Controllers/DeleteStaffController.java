@@ -16,6 +16,7 @@ import java.util.List;
 public class DeleteStaffController extends Controller {
     private DeleteStaffVieww deleteStaffView;
 
+
     public DeleteStaffController(Person administrator, DeleteStaffVieww viewStaffView) {
         this.deleteStaffView = viewStaffView;
         this.deleteStaffView.getAdministratorPageBt().setOnAction((e) -> {
@@ -32,7 +33,7 @@ public class DeleteStaffController extends Controller {
     public DeleteStaffController(){}
 
     public ArrayList<Person> delete(List<Person> selectedAccounts) {
-        RegisterStaffController.getAccounts().removeAll(selectedAccounts);
+       RegisterStaffController.getAccounts().removeAll(selectedAccounts);
         return RegisterStaffController.getAccounts();
     }
 

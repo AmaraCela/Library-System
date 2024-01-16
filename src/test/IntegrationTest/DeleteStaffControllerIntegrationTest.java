@@ -1,4 +1,4 @@
-package controllerTest;
+package IntegrationTest;
 
 import Controllers.DeleteStaffController;
 import mockFiles.MockLibrarian;
@@ -10,8 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DeleteStaffControllerTest {
-
+public class DeleteStaffControllerIntegrationTest {
     DeleteStaffController deleteStaffController = new DeleteStaffController();
 
     @Test

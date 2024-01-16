@@ -204,7 +204,7 @@ public class CategoryController extends Controller //ok
         System.out.println(categoryName);
         if(handleCategory(categoryName))
         {
-            System.out.println("HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
             Category category = new Category(categoryName);
             addCategory(category);
             this.categoryView.getSuccessfulLabel().setVisible(true);
