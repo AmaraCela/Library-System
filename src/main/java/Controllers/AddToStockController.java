@@ -65,9 +65,9 @@ public class AddToStockController extends Controller {
         return ((AddToStockView)this.addToStockView).getBooks();
     }
 
+
     public ArrayList<Book> addToBookList() {
         ArrayList<Book> books = new ArrayList();
-
         for(int i = 0; i < CategoryController.getCategories().size(); ++i) {
             books.addAll(((Category)CategoryController.getCategories().get(i)).getBooksOfCategory());
         }

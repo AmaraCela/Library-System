@@ -21,6 +21,7 @@ public class RegisterStaffController extends Controller//ok
 
     private RegisterStaffView registerStaffView;
 
+
     public RegisterStaffController(File binaryFile, File textFile, int choice)
     {
         RegisterStaffController.binaryFile = binaryFile;
