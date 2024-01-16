@@ -40,8 +40,8 @@ public class AddCategoryView extends BorderPane {
     public AddCategoryView(Person person, Stage stage)
     {
         this.stage = stage;
-        categoryTf = new TextField();
-        AddCategoryView.categoryTableView = new TableView<>();
+        categoryTf.clear();
+        AddCategoryView.categoryTableView.getColumns().clear();
         this.setPadding(new Insets(0,0,20,0));
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(20,0,0,0));

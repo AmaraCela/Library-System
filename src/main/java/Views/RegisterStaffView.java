@@ -89,14 +89,14 @@ public class RegisterStaffView extends BorderPane {
         public RegisterStaffView (Person person, Stage stage, int choice)
         {
             this.stage = stage;
-            usernameTf = new TextField();
-            passwordTf = new PasswordField();
-            nameTf = new TextField();
-            surnameTf = new TextField();
-            emailTf = new TextField();
-            phoneNoTf = new TextField();
-            birthdayTf = new TextField();
-            salaryTf = new TextField();
+            usernameTf.clear();
+            passwordTf.clear();
+            nameTf.clear();
+            surnameTf.clear();
+            emailTf.clear();
+            phoneNoTf.clear();
+            birthdayTf.clear();
+            salaryTf.clear();
 
             GridPane gridPane = new GridPane();
             gridPane.setHgap(0);

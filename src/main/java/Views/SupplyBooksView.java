@@ -55,15 +55,15 @@ public class SupplyBooksView extends BorderPane {
 
     public SupplyBooksView(Stage stage, Person person)
     {
-        ISBNTf = new TextField();
-        titleTf = new TextField();
-        supplierTf = new TextField();
-        purchasedPriceTf = new TextField();
-        originalPriceTf = new TextField();
-        sellingPriceTf = new TextField();
-        authorTf = new TextField();
-        stockTf = new TextField();
-        categoryTf = new TextField();
+        ISBNTf.clear();
+        titleTf.clear();
+        supplierTf.clear();
+        purchasedPriceTf.clear();
+        originalPriceTf.clear();
+        sellingPriceTf.clear();
+        authorTf.clear();
+        stockTf.clear();
+        categoryTf.clear();
         this.stage = stage;
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);

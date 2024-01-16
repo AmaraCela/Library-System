@@ -40,7 +40,7 @@ public class CheckOutView extends BorderPane {
     public CheckOutView(Person person, Stage stage, List<Book> books)
     {
         this.books = books;
-        quantityTf = new TextField();
+        quantityTf.clear();
 
         this.setPadding(new Insets(30));
 
