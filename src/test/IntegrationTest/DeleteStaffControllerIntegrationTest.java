@@ -4,16 +4,11 @@ import Controllers.DeleteStaffController;
 import Controllers.RegisterStaffController;
 import models.Librarian;
 import models.Person;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class DeleteStaffControllerIntegrationTest {
     DeleteStaffController deleteStaffController = new DeleteStaffController();
@@ -47,6 +42,6 @@ public class DeleteStaffControllerIntegrationTest {
         Person person = new Librarian("n","s","e","b","u","p",1,"pno");
         List<Person> list = List.of(person);
         ArrayList<Person> d = deleteStaffController.delete(list);
-        assertEquals(RegisterStaffController.getAccounts(), d);
+        Assertions.assertEquals(RegisterStaffController.getAccounts(), d);
     }
 }
