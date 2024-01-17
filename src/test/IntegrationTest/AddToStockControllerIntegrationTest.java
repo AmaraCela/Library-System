@@ -42,8 +42,7 @@ public class AddToStockControllerIntegrationTest {
     void drop(){
         File file = new File("TestFiles//fiction.dat");
         file.delete();
-        File file1 = new File("TestFiles//cost.txt");
-        file1.delete();
+
     }
     @Test
     void test_returnBookToDisplay(){

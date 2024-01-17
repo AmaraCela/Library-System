@@ -30,8 +30,8 @@ public class DeleteStaffViewTest extends ApplicationTest {
     public void start(Stage stage){
         sceneRoot = new DeleteStaffVieww.ClickPane();
         Scene scene = new Scene(sceneRoot, 500, 500);
-        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
-        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
         stage.setScene(scene);
         new DeleteStaffVieww(stage, 2, new Manager("n","s","e","b","i","p",1,"1"));
         stage.show();
@@ -53,9 +53,9 @@ public class DeleteStaffViewTest extends ApplicationTest {
         file.delete();
         file = new File("TestFiles//cost.txt");
         file.delete();
-        file = new File("TestFiles/usernames.txt");
+        file = new File("TestFiles//usernames.txt");
         file.delete();
-        file = new File("TestFiles/employees.dat");
+        file = new File("TestFiles//employees.dat");
         file.delete();
         file = new File("cost.txt");
         file.delete();

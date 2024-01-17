@@ -39,6 +39,8 @@ public class AddToStockTest {
     {
         File file = new File("TestFiles//cost.txt");
         file.delete();
+        file = new File("TestFiles//DramaBooks.dat");
+        file.delete();
     }
 
 //    @Test

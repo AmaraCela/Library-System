@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import models.Administrator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,6 +45,8 @@ public class LogInViewTest extends ApplicationTest {
     }
     @Test
     void test_loginSuccessfully(){
+
+        new Administrator("Amara", "Cela", "acela@gmail.com", "29/12/2001", "acela21", "12345678", 3000, "067 71 71 711");
         clickOn(usernameTf).write("acela21");
         clickOn(passwordTf).write("12345678");
         clickOn(logInBt);

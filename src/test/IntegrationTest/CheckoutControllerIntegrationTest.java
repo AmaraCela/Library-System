@@ -1,6 +1,7 @@
 package IntegrationTest;
 
 import Controllers.CheckOutController;
+import Controllers.RegisterStaffController;
 import models.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,7 +22,9 @@ public class CheckoutControllerIntegrationTest {
 
     @BeforeAll
     static void setUp(){
-        librarian =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
+       RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+       RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+       librarian =new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
     }
 
     @BeforeEach
@@ -44,13 +47,20 @@ public class CheckoutControllerIntegrationTest {
         file1.delete();
         File file2 = new File("TestFiles//revenues.txt");
         file2.delete();
-
         File file3 = new File("TestFiles//cost.txt");
         file3.delete();
-        file3 = new File("usernames.txt");
+        file3 = new File("TestFiles//usernames.txt");
         file3.delete();
-        file3 = new File("employees.dat");
+        file3 = new File("TestFiles//employees.txt");
         file3.delete();
+
+    }
+
+    @AfterAll
+    static void tearDownAll()
+    {
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
     }
     @Test
     void test_librarianCheckOut(){

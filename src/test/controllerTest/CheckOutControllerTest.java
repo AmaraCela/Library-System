@@ -56,6 +56,9 @@ public class CheckOutControllerTest {
         category.getBooksOfCategoryBinaryFile().delete();
         File file = new File("TestFiles//cost.txt");
         file.delete();
+        file = new File("TestFiles//FantasyBooks.dat");
+        file.delete();
+
     }
     @ParameterizedTest
     @CsvSource({

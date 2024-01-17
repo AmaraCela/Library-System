@@ -29,6 +29,8 @@ public class CategoryControllerTest {
     {
         File file = new File("TestFiles//fiction.dat");
         file.delete();
+        file = new File("TestFiles//fictionBooks.dat");
+        file.delete();
         categoryController.updateCategories();
     }
 

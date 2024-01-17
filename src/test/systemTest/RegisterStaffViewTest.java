@@ -59,8 +59,8 @@ public class RegisterStaffViewTest extends ApplicationTest {
         Scene scene = new Scene(sceneRoot,500,500);
         stage.setScene(scene);
         stage.show();
-        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
-        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
         new RegisterStaffView(new Manager("n","s","e","b","i","p",1,"1"),stage,1);
     }
 
@@ -71,9 +71,9 @@ public class RegisterStaffViewTest extends ApplicationTest {
         file.delete();
         file = new File("TestFiles//cost.txt");
         file.delete();
-        file = new File("TestFiles/usernames.txt");
+        file = new File("TestFiles//usernames.txt");
         file.delete();
-        file = new File("TestFiles/employees.dat");
+        file = new File("TestFiles//employees.dat");
         file.delete();
         file = new File("cost.txt");
         file.delete();

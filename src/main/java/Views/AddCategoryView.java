@@ -42,6 +42,7 @@ public class AddCategoryView extends BorderPane {
         this.stage = stage;
         categoryTf.clear();
         AddCategoryView.categoryTableView.getColumns().clear();
+        categoryTableView.getItems().clear();
         this.setPadding(new Insets(0,0,20,0));
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(20,0,0,0));

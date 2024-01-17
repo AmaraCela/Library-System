@@ -40,6 +40,7 @@ public class AddToStockView extends BorderPane {
     public AddToStockView(Person person, Stage stage)
     {
         bookTableView.getColumns().clear();
+        bookTableView.getItems().clear();
         copiesTf.clear();
         this.stage = stage;
         books = new ArrayList<>();

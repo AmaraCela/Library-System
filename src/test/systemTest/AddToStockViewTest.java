@@ -49,8 +49,8 @@ public class AddToStockViewTest extends ApplicationTest {
         Scene scene = new Scene(sceneRoot,500,500);
         stage.setScene(scene);
         stage.show();
-        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
-        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
         new AddToStockView(new Manager("n","s","e","b","i","p",1,"1"),stage).getScene();
     }
 
@@ -59,7 +59,7 @@ public class AddToStockViewTest extends ApplicationTest {
     public static void setUpAll()
     {
         category = new Category("Fiction","TestFiles//fictionBooks.dat");
-        book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
+        book = new Book("1","t1",category,"s1",10,15,15,"a1",1,"TestFiles//cost.txt");
         categoryController = new CategoryController();
         categoryController.addCategories(category);
         category.addBookToCategory(book);
@@ -86,9 +86,9 @@ public class AddToStockViewTest extends ApplicationTest {
         file.delete();
         file = new File("TestFiles//cost.txt");
         file.delete();
-        file = new File("TestFiles/usernames.txt");
+        file = new File("TestFiles//usernames.txt");
         file.delete();
-        file = new File("TestFiles/employees.dat");
+        file = new File("TestFiles//employees.dat");
         file.delete();
         file = new File("cost.txt");
         file.delete();
@@ -97,13 +97,15 @@ public class AddToStockViewTest extends ApplicationTest {
 
     @Test
     void test_addValidAmountToStock(){
+        tableView.getItems().clear();
         List<Book> books = List.of(book);
         tableView.getItems().add(book);
+        System.out.println(tableView.getItems());
         tableView.getSelectionModel().select(0);
         clickOn(copiesTf).write("1");
         clickOn(button);
         assertFalse(unSuccessfulLabel.isVisible());
-        assertEquals(11,((Book)tableView.getItems().get(0)).getStock());
+        assertEquals(2,((Book)tableView.getItems().get(0)).getStock());
     }
 
     @Test
