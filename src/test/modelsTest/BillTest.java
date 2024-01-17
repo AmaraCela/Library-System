@@ -1,10 +1,11 @@
 package modelsTest;
 
+import Controllers.RegisterStaffController;
 import mockFiles.MockBook;
-//import mockFiles.MockCategory;
 import models.Bill;
 import models.Book;
 import models.Category;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,13 @@ class BillTest {
         file = new File("TestFiles//cost.txt");
         file.delete();
         Bill.readRevenues("TestFiles//revenues.txt");
+
+        RegisterStaffController.readFromFile();
+    }
+
+    @AfterAll
+    static void returnOriginalFiles(){
+        RegisterStaffController.readFromFile();
     }
 
     @Test

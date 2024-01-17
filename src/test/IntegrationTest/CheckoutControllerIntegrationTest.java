@@ -54,13 +54,16 @@ public class CheckoutControllerIntegrationTest {
         file3 = new File("TestFiles//employees.txt");
         file3.delete();
 
+        RegisterStaffController.readFromFile();
     }
 
     @AfterAll
-    static void tearDownAll()
+    static void returnOriginalFiles()
     {
         RegisterStaffController.setFile(new File("usernames.txt"));
         RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
     }
     @Test
     void test_librarianCheckOut(){

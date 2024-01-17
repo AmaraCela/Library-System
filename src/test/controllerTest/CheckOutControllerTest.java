@@ -1,6 +1,7 @@
 package controllerTest;
 
 import Controllers.CheckOutController;
+import Controllers.RegisterStaffController;
 import mockFiles.MockBill;
 import mockFiles.MockBook;
 import mockFiles.MockCategory;
@@ -9,10 +10,7 @@ import models.Bill;
 import models.Book;
 import models.Category;
 import models.Person;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -39,12 +37,17 @@ public class CheckOutControllerTest {
 
     @BeforeEach
     void setUpComponents(){
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         admin =new MockLibrarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
         category = new MockCategory("Fantasy", "TestFiles//FantasyBooks.dat");
         Book book1 = new MockBook("1111","Book1",category,"supplier",10,15,15,"a",3,"TestFiles//cost.txt");
         Book book2 = new MockBook("2222","Book2",category,"supplier",10,15,15,"a",4,"TestFiles//cost.txt");
+
         category.addBookToCategory(book1);
         category.addBookToCategory(book2);
+
         books = List.of(book1,book2);
         quantity = new ArrayList<>();
         checkOutController = new CheckOutController(books);
@@ -53,12 +56,27 @@ public class CheckOutControllerTest {
     @AfterEach
     void tearDown()
     {
+        File file = new File("TestFiles//employees.dat");
+        file.delete();
+        file = new File("TestFiles//usernames.txt");
+        file.delete();
+
         category.getBooksOfCategoryBinaryFile().delete();
-        File file = new File("TestFiles//cost.txt");
+        file = new File("TestFiles//cost.txt");
         file.delete();
         file = new File("TestFiles//FantasyBooks.dat");
         file.delete();
 
+        RegisterStaffController.readFromFile();
+    }
+
+    @AfterAll
+    static void returnOriginalFiles(){
+
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
     }
     @ParameterizedTest
     @CsvSource({

@@ -1,5 +1,6 @@
 package systemTest;
 
+import Controllers.RegisterStaffController;
 import Views.LogInView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,11 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Administrator;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import java.io.File;
 
 public class LogInViewTest extends ApplicationTest {
 
@@ -31,6 +31,9 @@ public class LogInViewTest extends ApplicationTest {
     }
     @BeforeEach
     void setUp(){
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         logInBt = lookup("#logInBt").queryAs(Button.class);
         usernameTf = lookup("#usernameTf").queryAs(TextField.class);
         passwordTf = lookup("#passwordTf").queryAs(TextField.class);
@@ -40,9 +43,27 @@ public class LogInViewTest extends ApplicationTest {
 
     @AfterEach
     void clearUp(){
+
+        File file = new File("TestFiles//usernames.txt");
+        file.delete();
+        file = new File("TestFiles//employees.dat");
+        file.delete();
+
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
         usernameTf.clear();
         passwordTf.clear();
+
+        RegisterStaffController.readFromFile();
+
     }
+
+    @AfterAll
+    static void returnOriginalFiles(){
+        RegisterStaffController.readFromFile();
+    }
+
     @Test
     void test_loginSuccessfully(){
 

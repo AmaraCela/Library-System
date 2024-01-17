@@ -1,15 +1,13 @@
 package controllerTest;
 
 import Controllers.CategoryController;
+import Controllers.RegisterStaffController;
 import Controllers.SupplyBooksController;
 import mockFiles.MockBook;
 import mockFiles.MockCategory;
 import models.Book;
 import models.Category;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -27,6 +25,9 @@ public class SupplyBooksControllerTest {
 
     @BeforeEach
     void setUpComponents() {
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         supplyBooksController = new SupplyBooksController();
         category1 = new MockCategory("Fiction", "TestFiles//FictionBooks.dat");
         category2 = new MockCategory("Drama", "TestFiles//DramaBooks.dat");
@@ -48,9 +49,23 @@ public class SupplyBooksControllerTest {
         file.delete();
         file = new File("cost.txt");
         file.delete();
+        file = new File("TestFiles//employees.dat");
+        file.delete();
+        file = new File("TestFiles//usernames.txt");
+        file.delete();
+
+        RegisterStaffController.readFromFile();
 
     }
 
+    @AfterAll
+    static void returnOriginalFiles(){
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
+
+    }
     @Test
     void test_addBooks() {
         Assertions.assertEquals(List.of(book1, book2), supplyBooksController.addBooks());

@@ -35,8 +35,10 @@ public class AddCategoryViewTest extends ApplicationTest {
     public void start(Stage stage){
         sceneRoot = new AddCategoryView.ClickPane();
         Scene scene = new Scene(sceneRoot, 500, 500);
+
         RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
         RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         stage.setScene(scene);
         stage.show();
         new AddCategoryView(new Manager("n","s","e","b","i","p",1,"1"),stage).getScene();
@@ -68,6 +70,12 @@ public class AddCategoryViewTest extends ApplicationTest {
         file.delete();
         file = new File("categories.dat");
         file.delete();
+
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
+
     }
 
     @Test

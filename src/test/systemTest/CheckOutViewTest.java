@@ -44,6 +44,7 @@ public class CheckOutViewTest extends ApplicationTest {
 
         RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
         RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         category = new Category("Fiction","TestFiles//fictionBooks.dat");
         book = new Book("1","t1",category,"s1",10,15,15,"a1",10,"TestFiles//cost.txt");
         new CheckOutView(new Manager("n","s","e","b","i","p",1,"1"),stage, List.of(book)).getScene();
@@ -75,6 +76,12 @@ public class CheckOutViewTest extends ApplicationTest {
         file.delete();
         file = new File("revenues.txt");
         file.delete();
+
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
+
     }
 
     @Test

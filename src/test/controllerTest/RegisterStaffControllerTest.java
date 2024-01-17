@@ -7,6 +7,7 @@ import models.Administrator;
 import models.Librarian;
 import models.Manager;
 import models.Person;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,9 @@ public class RegisterStaffControllerTest {
     @BeforeEach
     void setUp()
     {
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         registerStaffController = new RegisterStaffController(new File("TestFiles//personnel.dat"),new File("TestFiles//usernames.txt"),1);
     }
     @AfterEach
@@ -32,9 +36,21 @@ public class RegisterStaffControllerTest {
     {
         File file = new File("TestFiles//personnel.dat");
         file.delete();
+        file = new File("TestFiles//employees.dat");
+        file.delete();
         file = new File("TestFiles//usernames.txt");
         file.delete();
+
         RegisterStaffController.readFromFile();
+    }
+
+    @AfterAll
+    static void returnOriginalFiles(){
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
+
     }
 
 

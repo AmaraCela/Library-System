@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Manager;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
@@ -59,11 +60,22 @@ public class RegisterStaffViewTest extends ApplicationTest {
         Scene scene = new Scene(sceneRoot,500,500);
         stage.setScene(scene);
         stage.show();
+
         RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
         RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         new RegisterStaffView(new Manager("n","s","e","b","i","p",1,"1"),stage,1);
     }
 
+    @AfterEach
+    void tear(){
+        File file = new File("TestFiles//usernames.txt");
+        file.delete();
+        file = new File("TestFiles//employees.dat");
+        file.delete();
+
+        RegisterStaffController.readFromFile();
+    }
     @AfterAll
     public static void tearDownAll()
     {
@@ -71,18 +83,22 @@ public class RegisterStaffViewTest extends ApplicationTest {
         file.delete();
         file = new File("TestFiles//cost.txt");
         file.delete();
-        file = new File("TestFiles//usernames.txt");
-        file.delete();
-        file = new File("TestFiles//employees.dat");
-        file.delete();
         file = new File("cost.txt");
         file.delete();
+
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
     }
 
 
     @BeforeEach
     public void setup()
     {
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         usernameTf = lookup("#usernameTf").queryAs(TextField.class);
         usernameTf.clear();
         passwordTf = lookup("#passwordTf").queryAs(PasswordField.class);

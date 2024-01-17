@@ -21,23 +21,32 @@ public class AdministratorAndPersonTest {
     @BeforeEach
     void setUp()
     {
-        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
-        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         administrator = new Administrator("n","s","e","b","u","p",100,"pno");
     }
     @AfterAll
     public static void tearDownAll()
     {
-        File file = new File("TestFiles/usernames.txt");
+        File file = new File("TestFiles//usernames.txt");
         file.delete();
-        file = new File("TestFiles/employees.dat");
+        file = new File("TestFiles//employees.dat");
         file.delete();
+
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
+
     }
 
     @AfterEach
     void tearDown()
     {
         Person.setEmployeeCost(0);
+        RegisterStaffController.readFromFile();
+
     }
     @ParameterizedTest
     @CsvSource({

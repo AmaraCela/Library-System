@@ -13,10 +13,7 @@ import javafx.stage.Stage;
 import models.Book;
 import models.Category;
 import models.Manager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import java.io.File;
@@ -49,8 +46,10 @@ public class AddToStockViewTest extends ApplicationTest {
         Scene scene = new Scene(sceneRoot,500,500);
         stage.setScene(scene);
         stage.show();
+
         RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
         RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         new AddToStockView(new Manager("n","s","e","b","i","p",1,"1"),stage).getScene();
     }
 
@@ -92,7 +91,19 @@ public class AddToStockViewTest extends ApplicationTest {
         file.delete();
         file = new File("cost.txt");
         file.delete();
+
+        RegisterStaffController.readFromFile();
+
         tableView.getItems().clear();
+    }
+
+    @AfterAll
+    static void returnOriginalFiles(){
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
+
     }
 
     @Test

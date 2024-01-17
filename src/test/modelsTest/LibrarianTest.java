@@ -16,17 +16,24 @@ public class LibrarianTest {
     Librarian librarian;
     @BeforeEach
     void setUp(){
-        RegisterStaffController.setFile(new File("TestFiles/usernames.txt"));
-        RegisterStaffController.setBinaryFile(new File("TestFiles/employees.dat"));
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         librarian = new Librarian("Jessy", "Hamburg", "jhamburg21@epoka.edu.al","21/01/2001","jessyhamburg","jessy1234",310,"0697654124");
     }
     @AfterAll
     public static void tearDown()
     {
-        File file = new File("TestFiles/usernames.txt");
+        File file = new File("TestFiles//usernames.txt");
         file.delete();
-        file = new File("TestFiles/employees.dat");
+        file = new File("TestFiles//employees.dat");
         file.delete();
+
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
+
+        RegisterStaffController.readFromFile();
+
     }
 
     @ParameterizedTest

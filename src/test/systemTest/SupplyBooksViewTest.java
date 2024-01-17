@@ -1,5 +1,6 @@
 package systemTest;
 
+import Controllers.RegisterStaffController;
 import Views.SupplyBooksView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.Manager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import java.io.File;
@@ -55,6 +53,10 @@ public class SupplyBooksViewTest extends ApplicationTest {
         sceneRoot = new SupplyBooksView.ClickPane();
         Scene scene = new Scene(sceneRoot, 700, 700);
         stage.setScene(scene);
+
+        RegisterStaffController.setFile(new File("TestFiles//usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("TestFiles//employees.dat"));
+
         new SupplyBooksView(stage, new Manager("n","s","e","b","i","p",1,"1"));
         stage.show();
     }
@@ -93,11 +95,20 @@ public class SupplyBooksViewTest extends ApplicationTest {
         SupplyBooksView.clearTextFields();
     }
 
-    @AfterEach
-    void dropDown(){
+//    @AfterEach
+//    void tearDownTempFiles(){
+//        File file = new File("categories.dat");
+//        file.delete();
+//    }
+
+    @AfterAll
+    static void returnOriginalFiles(){
+        RegisterStaffController.setFile(new File("usernames.txt"));
+        RegisterStaffController.setBinaryFile(new File("employees.dat"));
         File file = new File("categories.dat");
         file.delete();
 
+        RegisterStaffController.readFromFile();
     }
     
     @Order(2)
